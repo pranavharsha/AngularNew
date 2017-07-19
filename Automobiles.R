@@ -3,6 +3,7 @@ library(car)
 library(corrplot)
 library(caret)
 library(dummies)
+library(MASS)
 
 AutoMaster=read.csv("C:\\Users\\KATTAP02\\Downloads\\Zillow\\Automobiles.csv",header=T,sep="\t")
 str(AutoMaster)
@@ -60,6 +61,9 @@ plot(pcaregmodel)
 
 steppcamodel=stepAIC(pcaregmodel,direction="both")
 summary(steppcamodel)
+
+preds1=predict(pcaregmodel,testpcafinal)
+regr.eval(testpcafinal$price,preds1)
 
 
 
