@@ -1,0 +1,197 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+clearing environment and calling libraries
+```{r}
+rm(list=ls())
+
+library(caret)
+library(DMwR)
+library(glmnet)
+library(foreign)
+library(dplyr)
+library(ggplot2)
+library(pROC)
+require(e1071)
+library(C50)
+library(rpart)
+library(MLmetrics)
+library(kernlab)
+library(randomForest)
+library(mlr)
+library(rpart)
+library(data.table)
+library(h2o)
+library(factoextra)
+
+```
+Reading Data and getting Insights
+```{r}
+MasterData=read.csv("Data.csv")
+Data=MasterData
+Data$ID=NULL
+str(Data)
+
+Data$TARGET=as.factor(Data$TARGET)
+sum(is.na(Data))
+
+```
+Splitting the data into train, validation & test data sets as we see there are no null values
+```{r}
+set.seed(7)
+
+trainrows=createDataPartition(Data$TARGET,p=0.7,list = F)
+traindata=Data[trainrows,]
+testdata=Data[-trainrows,]
+
+valrows=createDataPartition(traindata$TARGET,p=0.7,list=F)
+traindata=traindata[valrows,]
+valdata=traindata[-valrows,]
+
+```
+Pre processing the data
+```{r}
+
+preprocstep=preProcess(traindata,method = c("center","scale"))
+PreProctraindata=predict(preprocstep,traindata)
+PreProcvaldata=predict(preprocstep,valdata)
+PreProctestdata=predict(preprocstep,testdata)
+
+```
+Applying PCA
+```{r}
+
+pcaout=prcomp(PreProctraindata[setdiff(names(PreProctraindata),"TARGET")])
+summary(pcaout)
+
+screeplot(pcaout,npcs=length(pcaout$sdev),type="lines",xlim=c(0,30))
+
+fviz_screeplot(pcaout, ncp=30)
+
+
+```
+Predicting Train, Test, Validation data sets with the output of PCA
+```{r}
+
+trainpcafinal=as.data.frame(predict(pcaout,PreProctraindata[,setdiff(names(PreProctraindata),"Target")]))
+trainpcafinal=trainpcafinal[,1:20]
+trainpcafinal=data.frame(trainpcafinal,PreProctraindata$TARGET)
+colnames(trainpcafinal)[21]="TARGET"
+
+Valpcafinal=as.data.frame(predict(pcaout,PreProcvaldata[,setdiff(names(PreProcvaldata),"Target")]))
+Valpcafinal=Valpcafinal[,1:20]
+Valpcafinal=data.frame(Valpcafinal,PreProcvaldata$TARGET)
+colnames(Valpcafinal)[21]="TARGET"
+
+testpcafinal=as.data.frame(predict(pcaout,PreProctestdata[,setdiff(names(PreProctestdata),"Target")]))
+testpcafinal=testpcafinal[,1:20]
+testpcafinal=data.frame(testpcafinal,PreProctestdata$TARGET)
+colnames(testpcafinal)[21]="TARGET"
+
+```
+checking class imbalance for the train data
+```{r}
+trainbal=prop.table(table(trainpcafinal$TARGET))
+trainbal
+
+ggplot(trainpcafinal,aes(x=TARGET))+geom_bar(aes(y = (..count..)*100/sum(..count..)),show.legend = T)+xlab("Target")+ylab("Percentage")+ggtitle("Class Balance in train data")
+
+
+```
+Handling the class imbalance in the data. We are handling the class imbalance using smote from DMwR
+
+```{r}
+
+SmotedPcaTrain=SMOTE(TARGET~.,trainpcafinal,perc.over = 100, perc.under=200)
+prop.table(table(SmotedPcaTrain$TARGET))
+
+```
+knn
+```{r}
+knnmodel1=knn3(TARGET ~ . , trainpcafinal, k = 9)
+preds_k <- predict(knnmodel1, Valpcafinal)
+predsknn <- ifelse(preds_k[, 1] > preds_k[, 2], 0, 1)
+roc_obj <- roc(Valpcafinal$TARGET, predsknn)
+auc(roc_obj)
+
+knnmodel1=knn3(TARGET ~ . , SmotedPcaTrain, k = 9)
+preds_k <- predict(knnmodel1, Valpcafinal)
+predsknn <- ifelse(preds_k[, 1] > preds_k[, 2], 0, 1)
+roc_obj <- roc(Valpcafinal$TARGET, predsknn)
+auc(roc_obj)
+
+```
+
+```{r}
+k=c(1:30)
+knnAuc1=c()
+knnAuc2=c()
+for(i in k)
+{
+knnmodel1=knn3(TARGET ~ . , trainpcafinal, k = i)
+preds_k <- predict(knnmodel1, Valpcafinal)
+predsknn <- ifelse(preds_k[, 1] > preds_k[, 2], 0, 1)
+roc_obj <- roc(Valpcafinal$TARGET, predsknn)
+knnAuc1[i]=auc(roc_obj)
+}
+knnAuc1
+
+for(i in k)
+{
+knnmodel1=knn3(TARGET ~ . , SmotedPcaTrain, k = i)
+preds_k <- predict(knnmodel1, Valpcafinal)
+predsknn <- ifelse(preds_k[, 1] > preds_k[, 2], 0, 1)
+roc_obj <- roc(Valpcafinal$TARGET, predsknn)
+knnAuc2[i]=auc(roc_obj)
+}
+knnAuc2
+
+k=k[c(3:30)]
+knnAuc1=knnAuc1[c(3:30)]
+knnAuc2=knnAuc2[c(3:30)]
+
+qplot(k,knnAuc1,geom = "line")
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
