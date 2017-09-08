@@ -29,6 +29,7 @@ library(rpart)
 library(data.table)
 library(h2o)
 library(factoextra)
+library(ROCR)
 
 ```
 Reading Data and getting Insights
@@ -113,22 +114,9 @@ prop.table(table(SmotedPcaTrain$TARGET))
 
 ```
 knn
-```{r}
-knnmodel1=knn3(TARGET ~ . , trainpcafinal, k = 9)
-preds_k <- predict(knnmodel1, Valpcafinal)
-predsknn <- ifelse(preds_k[, 1] > preds_k[, 2], 0, 1)
-roc_obj <- roc(Valpcafinal$TARGET, predsknn)
-auc(roc_obj)
-
-knnmodel1=knn3(TARGET ~ . , SmotedPcaTrain, k = 9)
-preds_k <- predict(knnmodel1, Valpcafinal)
-predsknn <- ifelse(preds_k[, 1] > preds_k[, 2], 0, 1)
-roc_obj <- roc(Valpcafinal$TARGET, predsknn)
-auc(roc_obj)
-
-```
 
 ```{r}
+
 k=c(1:30)
 knnAuc1=c()
 knnAuc2=c()
@@ -156,7 +144,218 @@ k=k[c(3:30)]
 knnAuc1=knnAuc1[c(3:30)]
 knnAuc2=knnAuc2[c(3:30)]
 
-qplot(k,knnAuc1,geom = "line")
+knndf=data.frame(k=k,NonSmoted=knnAuc1,Smoted=knnAuc2)
+
+ggplot(data=knndf,aes(x=k,y=NonSmoted))+geom_bar(stat="identity", fill="steelblue")+ylab("Non Smoted AUC")+xlab("Value of K")
+
+ggplot(data=knndf,aes(x=k,y=Smoted))+geom_bar(stat="identity", fill="steelblue")+ylab("Smoted AUC")+xlab("Value of K")
+
+```
+SVM Vanilla Kernel
+```{r}
+svmModel1=ksvm(TARGET~.,trainpcafinal,kernel="vanilladot",prob.model= TRUE)
+predssvm1 <- predict(svmModel1, Valpcafinal)
+predprobs1=predict(svmModel1, Valpcafinal,type = "prob")
+svmfinalpreds1=ifelse(predprobs1[, 1] > predprobs1[, 2], 0, 1)
+svmRocObj1<- roc(Valpcafinal$TARGET, svmfinalpreds1)
+svmAuc1=auc(svmRocObj1)
+svmAuc1
+#confusionMatrix(predssvm1, Valpcafinal$TARGET)
+
+svmModel2=ksvm(TARGET~.,SmotedPcaTrain,kernel="vanilladot",prob.model= TRUE)
+predssvm2 <- predict(svmModel2, Valpcafinal)
+predprobs2=predict(svmModel2, Valpcafinal,type = "prob")
+svmfinalpreds2=ifelse(predprobs2[, 1] > predprobs2[, 2], 0, 1)
+svmRocObj2<- roc(Valpcafinal$TARGET, svmfinalpreds2)
+svmAuc2=auc(svmRocObj2)
+svmAuc2
+#confusionMatrix(predssvm2, Valpcafinal$TARGET)
+
+```
+SVM tanhdot kernel
+```{r}
+svmModel3=ksvm(TARGET~.,trainpcafinal,kernel="tanhdot",prob.model= TRUE)
+predssvm3 <- predict(svmModel3, Valpcafinal)
+predprobs3=predict(svmModel3, Valpcafinal,type = "prob")
+svmfinalpreds3=ifelse(predprobs3[, 1] > predprobs3[, 2], 0, 1)
+svmRocObj3<- roc(Valpcafinal$TARGET, svmfinalpreds3)
+svmAuc3=auc(svmRocObj3)
+svmAuc3
+#confusionMatrix(predssvm3, Valpcafinal$TARGET)
+
+svmModel4=ksvm(TARGET~.,SmotedPcaTrain,kernel="tanhdot",prob.model= TRUE)
+predssvm4 <- predict(svmModel4, Valpcafinal)
+predprobs4=predict(svmModel4, Valpcafinal,type = "prob")
+svmfinalpreds4=ifelse(predprobs4[, 1] > predprobs4[, 2], 0, 1)
+svmRocObj4<- roc(Valpcafinal$TARGET, svmfinalpreds4)
+svmAuc4=auc(svmRocObj4)
+svmAuc4
+#confusionMatrix(predssvm4, Valpcafinal$TARGET)
+
+
+```
+
+SVM rbfdot kernel
+
+```{r}
+
+svmModel5=ksvm(TARGET~.,trainpcafinal,kernel="rbfdot",prob.model= TRUE)
+predssvm5 <- predict(svmModel5, Valpcafinal)
+predprobs5=predict(svmModel5, Valpcafinal,type = "prob")
+svmfinalpreds5=ifelse(predprobs5[, 1] > predprobs5[, 2], 0, 1)
+svmRocObj5<- roc(Valpcafinal$TARGET, svmfinalpreds5)
+svmAuc5=auc(svmRocObj5)
+svmAuc5
+#confusionMatrix(predssvm5, Valpcafinal$TARGET)
+
+svmModel6=ksvm(TARGET~.,SmotedPcaTrain,kernel="rbfdot",prob.model= TRUE)
+predssvm6 <- predict(svmModel6, Valpcafinal)
+predprobs6=predict(svmModel6, Valpcafinal,type = "prob")
+svmfinalpreds6=ifelse(predprobs6[, 1] > predprobs6[, 2], 0, 1)
+svmRocObj6<- roc(Valpcafinal$TARGET, svmfinalpreds6)
+svmAuc6=auc(svmRocObj6)
+svmAuc6
+#confusionMatrix(predssvm6, Valpcafinal$TARGET)
+
+```
+SVM polydot
+```{r}
+svmModel7=ksvm(TARGET~.,trainpcafinal,kernel="polydot",prob.model= TRUE)
+predssvm7 <- predict(svmModel7, Valpcafinal)
+predprobs7=predict(svmModel7, Valpcafinal,type = "prob")
+svmfinalpreds7=ifelse(predprobs7[, 1] > predprobs7[, 2], 0, 1)
+svmRocObj7<- roc(Valpcafinal$TARGET, svmfinalpreds7)
+svmAuc7=auc(svmRocObj7)
+svmAuc7
+#confusionMatrix(predssvm7, Valpcafinal$TARGET)
+
+svmModel8=ksvm(TARGET~.,SmotedPcaTrain,kernel="polydot",prob.model= TRUE)
+predssvm8 <- predict(svmModel8, Valpcafinal)
+predprobs8=predict(svmModel8, Valpcafinal,type = "prob")
+svmfinalpreds8=ifelse(predprobs8[, 1] > predprobs8[, 2], 0, 1)
+svmRocObj8<- roc(Valpcafinal$TARGET, svmfinalpreds8)
+svmAuc8=auc(svmRocObj8)
+svmAuc8
+#confusionMatrix(predssvm8, Valpcafinal$TARGET)
+
+```
+Decision Trees
+```{r}
+DtModel1=rpart(TARGET~.,trainpcafinal)
+DT1Preds=predict(DtModel1,Valpcafinal[,setdiff(names(Valpcafinal),"Target")])
+preds_tree1 <- ifelse(DT1Preds[, 1] > DT1Preds[, 2], 0, 1)
+treerocobj1 <- roc(Valpcafinal$TARGET, preds_tree1)
+DTauc1=auc(treerocobj1)
+DTauc1
+
+DtModel2=rpart(TARGET~.,SmotedPcaTrain)
+DT2Preds=predict(DtModel2,Valpcafinal[,setdiff(names(Valpcafinal),"Target")])
+preds_tree2 <- ifelse(DT2Preds[, 1] > DT2Preds[, 2], 0, 1)
+treerocobj2 <- roc(Valpcafinal$TARGET, preds_tree2)
+DTauc2=auc(treerocobj2)
+DTauc2
+
+```
+Random Forests
+```{r}
+
+RfModel1=randomForest(TARGET~ . , trainpcafinal)
+predsrf1 <- predict(RfModel1, Valpcafinal)
+probpredsRf1=predict(RfModel1, Valpcafinal,type = "prob")
+Rfpredsfinal1=ifelse(probpredsRf1[, 1] > probpredsRf1[, 2], 0, 1)
+RFRocObj1<- roc(Valpcafinal$TARGET, Rfpredsfinal1)
+RFAuc1=auc(RFRocObj1)
+RFAuc1
+#confusionMatrix(predsrf1, Valpcafinal$TARGET)
+
+RfModel2=randomForest(TARGET~ . , SmotedPcaTrain)
+predsrf2 <- predict(RfModel2, Valpcafinal)
+probpredsRf2=predict(RfModel2, Valpcafinal,type = "prob")
+Rfpredsfinal2=ifelse(probpredsRf2[, 1] > probpredsRf2[, 2], 0, 1)
+RFRocObj2<- roc(Valpcafinal$TARGET, Rfpredsfinal2)
+RFAuc2=auc(RFRocObj2)
+RFAuc2
+#confusionMatrix(predsrf2, Valpcafinal$TARGET)
+
+```
+Random Forests parameter tuning
+```{r}
+trainTask1=makeClassifTask(data=trainpcafinal,target = "TARGET")
+trainTask2=makeClassifTask(data=SmotedPcaTrain,target = "TARGET")
+
+ValTask1=makeClassifTask(data=Valpcafinal,target = "TARGET")
+ValTask2=makeClassifTask(data=Valpcafinal,target = "TARGET")
+
+getParamSet("classif.randomForest")
+rf=makeLearner("classif.randomForest", predict.type = "response", par.vals = list(ntree = 200, mtry = 3))
+
+rf$par.vals = list(importance = TRUE)
+
+rf_param = makeParamSet(
+makeIntegerParam("ntree",lower = 50, upper = 500),
+makeIntegerParam("mtry", lower = 3, upper = 10),
+makeIntegerParam("nodesize", lower = 10, upper = 50)
+)
+
+rancontrol = makeTuneControlRandom(maxit = 50L)
+rancontrol2=makeTuneControlGrid(resolution= 10L)
+set_cv = makeResampleDesc("CV",iters = 5L)
+
+rf_tune1 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.set = rf_param, control = rancontrol, measures = kappa)
+
+rf_tune2 = tuneParams(learner = rf, resampling = set_cv, task = trainTask2, par.set = rf_param, control = rancontrol, measures = kappa)
+
+rf_tune3 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.set = rf_param, control = rancontrol2, measures = kappa)
+
+rf_tune4 = tuneParams(learner = rf, resampling = set_cv, task = trainTask2, par.set = rf_param, control = rancontrol2, measures = kappa)
+
+
+```
+Getting Tuned Parameters of Random Forest Models
+```{r}
+
+rf_tune1$y
+rf_tune2$y
+rf_tune3$y
+rf_tune4$y
+
+rf_tune1$x
+rf_tune2$x
+rf_tune3$x
+rf_tune4$x
+
+```
+SVM parameter tuning
+```{r}
+getParamSet("classif.ksvm")
+ksvm = makeLearner("classif.ksvm", predict.type = "response")
+pssvm = makeParamSet(makeDiscreteParam("C", values = 2^c(-8,-4,-2,0)),makeDiscreteParam("sigma", values = 2^c(-8,-4,0,4)))
+ctrl = makeTuneControlGrid()
+set_cv = makeResampleDesc("CV",iters = 5L)
+
+svmtune1=tuneParams(ksvm, task = trainTask1, resampling = set_cv, par.set = pssvm, control = ctrl,measures = kappa)
+
+svmtune2=tuneParams(ksvm, task = trainTask2, resampling = set_cv, par.set = pssvm, control = ctrl,measures = kappa)
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
 
 ```
 

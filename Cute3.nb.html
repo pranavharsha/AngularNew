@@ -177,184 +177,25 @@ $(document).ready(function () {
 <p>clearing environment and calling libraries</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcblxuYGBgIn0= -->
-<pre class="r"><code>library(caret)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShST0NSKVxuXG5gYGAifQ== -->
+<pre class="r"><code>library(ROCR)
 </code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsYXR0aWNlXG5Mb2FkaW5nIHJlcXVpcmVkIHBhY2thZ2U6IGdncGxvdDJcbiJ9 -->
-<pre><code>Loading required package: lattice
-Loading required package: ggplot2</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShETXdSKVxuYGBgIn0= -->
-<pre class="r"><code>library(DMwR)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBncmlkXG4ifQ== -->
-<pre><code>Loading required package: grid</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnbG1uZXQpXG5gYGAifQ== -->
-<pre class="r"><code>library(glmnet)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBNYXRyaXhcbkxvYWRpbmcgcmVxdWlyZWQgcGFja2FnZTogZm9yZWFjaFxuZm9yZWFjaDogc2ltcGxlLCBzY2FsYWJsZSBwYXJhbGxlbCBwcm9ncmFtbWluZyBmcm9tIFJldm9sdXRpb24gQW5hbHl0aWNzXG5Vc2UgUmV2b2x1dGlvbiBSIGZvciBzY2FsYWJpbGl0eSwgZmF1bHQgdG9sZXJhbmNlIGFuZCBtb3JlLlxuaHR0cDovL3d3dy5yZXZvbHV0aW9uYW5hbHl0aWNzLmNvbVxuTG9hZGVkIGdsbW5ldCAyLjAtMTBcbiJ9 -->
-<pre><code>Loading required package: Matrix
-Loading required package: foreach
-foreach: simple, scalable parallel programming from Revolution Analytics
-Use Revolution R for scalability, fault tolerance and more.
-http://www.revolutionanalytics.com
-Loaded glmnet 2.0-10</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShmb3JlaWduKVxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
-<pre class="r"><code>library(foreign)
-library(dplyr)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixZHBseXLjpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOnN0YXRz46S847iyOlxuXG4gICAgZmlsdGVyLCBsYWdcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOmJhc2XjpLzjuLI6XG5cbiAgICBpbnRlcnNlY3QsIHNldGRpZmYsIHNldGVxdWFsLCB1bmlvblxuIn0= -->
-<pre><code>
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;dplyr&lt;U+393C&gt;&lt;U+3E32&gt;
+<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBncGxvdHNcblxuQXR0YWNoaW5nIHBhY2thZ2U6IOOkvOO4sWdwbG90c+OkvOO4slxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOnN0YXRz46S847iyOlxuXG4gICAgbG93ZXNzXG5cblxuQXR0YWNoaW5nIHBhY2thZ2U6IOOkvOO4sVJPQ1LjpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g46S847ixcGFja2FnZTptbHLjpLzjuLI6XG5cbiAgICBwZXJmb3JtYW5jZVxuIn0= -->
+<pre><code>Loading required package: gplots
 
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:stats&lt;U+393C&gt;&lt;U+3E32&gt;:
+Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;gplots&lt;U+393C&gt;&lt;U+3E32&gt;
 
-    filter, lag
+The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:stats&lt;U+393C&gt;&lt;U+3E32&gt;:
 
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:base&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    intersect, setdiff, setequal, union</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeShwUk9DKVxuYGBgIn0= -->
-<pre class="r"><code>library(ggplot2)
-library(pROC)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiVHlwZSAnY2l0YXRpb24oXCJwUk9DXCIpJyBmb3IgYSBjaXRhdGlvbi5cblxuQXR0YWNoaW5nIHBhY2thZ2U6IOOkvOO4sXBST0PjpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g46S847ixcGFja2FnZTpnbG1uZXTjpLzjuLI6XG5cbiAgICBhdWNcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOnN0YXRz46S847iyOlxuXG4gICAgY292LCBzbW9vdGgsIHZhclxuIn0= -->
-<pre><code>Type 'citation(&quot;pROC&quot;)' for a citation.
-
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;pROC&lt;U+393C&gt;&lt;U+3E32&gt;
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:glmnet&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    auc
-
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:stats&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    cov, smooth, var</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShlMTA3MSlcbmBgYCJ9 -->
-<pre class="r"><code>require(e1071)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBlMTA3MVxuIn0= -->
-<pre><code>Loading required package: e1071</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShDNTApXG5saWJyYXJ5KHJwYXJ0KVxubGlicmFyeShNTG1ldHJpY3MpXG5gYGAifQ== -->
-<pre class="r"><code>library(C50)
-library(rpart)
-library(MLmetrics)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixTUxtZXRyaWNz46S847iyXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6Y2FyZXTjpLzjuLI6XG5cbiAgICBSTVNFXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6YmFzZeOkvOO4sjpcblxuICAgIFJlY2FsbFxuIn0= -->
-<pre><code>
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;MLmetrics&lt;U+393C&gt;&lt;U+3E32&gt;
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:caret&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    RMSE
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:base&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    Recall</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShrZXJubGFiKVxuYGBgIn0= -->
-<pre class="r"><code>library(kernlab)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixa2VybmxhYuOkvOO4slxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOmdncGxvdDLjpLzjuLI6XG5cbiAgICBhbHBoYVxuIn0= -->
-<pre><code>
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;kernlab&lt;U+393C&gt;&lt;U+3E32&gt;
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:ggplot2&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    alpha</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyYW5kb21Gb3Jlc3QpXG5gYGAifQ== -->
-<pre class="r"><code>library(randomForest)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoicmFuZG9tRm9yZXN0IDQuNi0xMlxuVHlwZSByZk5ld3MoKSB0byBzZWUgbmV3IGZlYXR1cmVzL2NoYW5nZXMvYnVnIGZpeGVzLlxuXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixcmFuZG9tRm9yZXN046S847iyXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6ZHBseXLjpLzjuLI6XG5cbiAgICBjb21iaW5lXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6Z2dwbG90MuOkvOO4sjpcblxuICAgIG1hcmdpblxuIn0= -->
-<pre><code>randomForest 4.6-12
-Type rfNews() to see new features/changes/bug fixes.
-
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;randomForest&lt;U+393C&gt;&lt;U+3E32&gt;
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:dplyr&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    combine
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:ggplot2&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    margin</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShtbHIpXG5gYGAifQ== -->
-<pre class="r"><code>library(mlr)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBQYXJhbUhlbHBlcnNcblxuQXR0YWNoaW5nIHBhY2thZ2U6IOOkvOO4sW1scuOkvOO4slxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOmUxMDcx46S847iyOlxuXG4gICAgaW1wdXRlXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0IGlzIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6Y2FyZXTjpLzjuLI6XG5cbiAgICB0cmFpblxuIn0= -->
-<pre><code>Loading required package: ParamHelpers
-
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;mlr&lt;U+393C&gt;&lt;U+3E32&gt;
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:e1071&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    impute
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:caret&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    train</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShycGFydClcbmxpYnJhcnkoZGF0YS50YWJsZSlcbmBgYCJ9 -->
-<pre class="r"><code>library(rpart)
-library(data.table)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiZGF0YS50YWJsZSAxLjEwLjRcbiAgVGhlIGZhc3Rlc3Qgd2F5IHRvIGxlYXJuIChieSBkYXRhLnRhYmxlIGF1dGhvcnMpOiBodHRwczovL3d3dy5kYXRhY2FtcC5jb20vY291cnNlcy9kYXRhLWFuYWx5c2lzLXRoZS1kYXRhLXRhYmxlLXdheVxuICBEb2N1bWVudGF0aW9uOiA/ZGF0YS50YWJsZSwgZXhhbXBsZShkYXRhLnRhYmxlKSBhbmQgYnJvd3NlVmlnbmV0dGVzKFwiZGF0YS50YWJsZVwiKVxuICBSZWxlYXNlIG5vdGVzLCB2aWRlb3MgYW5kIHNsaWRlczogaHR0cDovL3ItZGF0YXRhYmxlLmNvbVxuXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixZGF0YS50YWJsZeOkvOO4slxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6ZHBseXLjpLzjuLI6XG5cbiAgICBiZXR3ZWVuLCBmaXJzdCwgbGFzdFxuIn0= -->
-<pre><code>data.table 1.10.4
-  The fastest way to learn (by data.table authors): https://www.datacamp.com/courses/data-analysis-the-data-table-way
-  Documentation: ?data.table, example(data.table) and browseVignettes(&quot;data.table&quot;)
-  Release notes, videos and slides: http://r-datatable.com
-
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;data.table&lt;U+393C&gt;&lt;U+3E32&gt;
-
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:dplyr&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    between, first, last</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoMm8pXG5gYGAifQ== -->
-<pre class="r"><code>library(h2o)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG5cbllvdXIgbmV4dCBzdGVwIGlzIHRvIHN0YXJ0IEgyTzpcbiAgICA+IGgyby5pbml0KClcblxuRm9yIEgyTyBwYWNrYWdlIGRvY3VtZW50YXRpb24sIGFzayBmb3IgaGVscDpcbiAgICA+ID8/aDJvXG5cbkFmdGVyIHN0YXJ0aW5nIEgyTywgeW91IGNhbiB1c2UgdGhlIFdlYiBVSSBhdCBodHRwOi8vbG9jYWxob3N0OjU0MzIxXG5Gb3IgbW9yZSBpbmZvcm1hdGlvbiB2aXNpdCBodHRwOi8vZG9jcy5oMm8uYWlcblxuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuXG5cbkF0dGFjaGluZyBwYWNrYWdlOiDjpLzjuLFoMm/jpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOmRhdGEudGFibGXjpLzjuLI6XG5cbiAgICBob3VyLCBtb250aCwgd2VlaywgeWVhclxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOnBST0PjpLzjuLI6XG5cbiAgICB2YXJcblxuVGhlIGZvbGxvd2luZyBvYmplY3RzIGFyZSBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOnN0YXRz46S847iyOlxuXG4gICAgY29yLCBzZCwgdmFyXG5cblRoZSBmb2xsb3dpbmcgb2JqZWN0cyBhcmUgbWFza2VkIGZyb20g46S847ixcGFja2FnZTpiYXNl46S847iyOlxuXG4gICAgJSolLCAlaW4lLCAmJiwgfHwsIGFwcGx5LCBhcy5mYWN0b3IsIGFzLm51bWVyaWMsIGNvbG5hbWVzLCBjb2xuYW1lczwtLCBpZmVsc2UsXG4gICAgaXMuY2hhcmFjdGVyLCBpcy5mYWN0b3IsIGlzLm51bWVyaWMsIGxvZywgbG9nMTAsIGxvZzFwLCBsb2cyLCByb3VuZCwgc2lnbmlmLCB0cnVuY1xuIn0= -->
-<pre><code>
-----------------------------------------------------------------------
-
-Your next step is to start H2O:
-    &gt; h2o.init()
-
-For H2O package documentation, ask for help:
-    &gt; ??h2o
-
-After starting H2O, you can use the Web UI at http://localhost:54321
-For more information visit http://docs.h2o.ai
-
-----------------------------------------------------------------------
+    lowess
 
 
-Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;h2o&lt;U+393C&gt;&lt;U+3E32&gt;
+Attaching package: &lt;U+393C&gt;&lt;U+3E31&gt;ROCR&lt;U+393C&gt;&lt;U+3E32&gt;
 
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:data.table&lt;U+393C&gt;&lt;U+3E32&gt;:
+The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:mlr&lt;U+393C&gt;&lt;U+3E32&gt;:
 
-    hour, month, week, year
-
-The following object is masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:pROC&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    var
-
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:stats&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    cor, sd, var
-
-The following objects are masked from &lt;U+393C&gt;&lt;U+3E31&gt;package:base&lt;U+393C&gt;&lt;U+3E32&gt;:
-
-    %*%, %in%, &amp;&amp;, ||, apply, as.factor, as.numeric, colnames, colnames&lt;-, ifelse,
-    is.character, is.factor, is.numeric, log, log10, log1p, log2, round, signif, trunc</code></pre>
+    performance</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -465,33 +306,781 @@ prop.table(table(SmotedPcaTrain$TARGET))
 <p>knn</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua25ubW9kZWwxPWtubjMoVEFSR0VUIH4gLiAsIHRyYWlucGNhZmluYWwsIGsgPSA5KVxucHJlZHNfayA8LSBwcmVkaWN0KGtubm1vZGVsMSwgVmFscGNhZmluYWwpXG5wcmVkc2tubiA8LSBpZmVsc2UocHJlZHNfa1ssIDFdID4gcHJlZHNfa1ssIDJdLCAwLCAxKVxucm9jX29iaiA8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBwcmVkc2tubilcbmF1Yyhyb2Nfb2JqKVxuYGBgIn0= -->
-<pre class="r"><code>knnmodel1=knn3(TARGET ~ . , trainpcafinal, k = 9)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaz1jKDE6MzApXG5rbm5BdWMxPWMoKVxua25uQXVjMj1jKClcbmZvcihpIGluIGspXG57XG5rbm5tb2RlbDE9a25uMyhUQVJHRVQgfiAuICwgdHJhaW5wY2FmaW5hbCwgayA9IGkpXG5wcmVkc19rIDwtIHByZWRpY3Qoa25ubW9kZWwxLCBWYWxwY2FmaW5hbClcbnByZWRza25uIDwtIGlmZWxzZShwcmVkc19rWywgMV0gPiBwcmVkc19rWywgMl0sIDAsIDEpXG5yb2Nfb2JqIDwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHByZWRza25uKVxua25uQXVjMVtpXT1hdWMocm9jX29iailcbn1cbmtubkF1YzFcbmBgYCJ9 -->
+<pre class="r"><code>k=c(1:30)
+knnAuc1=c()
+knnAuc2=c()
+for(i in k)
+{
+knnmodel1=knn3(TARGET ~ . , trainpcafinal, k = i)
 preds_k &lt;- predict(knnmodel1, Valpcafinal)
 predsknn &lt;- ifelse(preds_k[, 1] &gt; preds_k[, 2], 0, 1)
 roc_obj &lt;- roc(Valpcafinal$TARGET, predsknn)
-auc(roc_obj)</code></pre>
+knnAuc1[i]=auc(roc_obj)
+}
+knnAuc1</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNTc1NlxuIn0= -->
-<pre><code>Area under the curve: 0.5756</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwLjk5NzI2MzcgMC45NTAyODY5IDAuNjg5MDkwNSAwLjcxNjU2MTUgMC42NDE0NTE5IDAuNjUwMzcwOSAwLjYwMjEzNDAgMC42MjU0MDg4IDAuNTc1NTYwNCAwLjYwMDgyMTZcblsxMV0gMC41NzE3NzUwIDAuNTg5NDY1NCAwLjU1NzQ5NTAgMC41NjUxNzc1IDAuNTM2OTkyNCAwLjU0NjczNzEgMC41MzY2OTMyIDAuNTQ1NTAwNiAwLjUxODkyNzAgMC41MzcxNzk5XG5bMjFdIDAuNTIzNjQ5OCAwLjUzMzk1NjkgMC41MjY1NzM2IDAuNTMwMTcxNSAwLjUxOTg2NDQgMC41MjYwMTEyIDAuNTExMzU2MiAwLjUxNzMxNTUgMC41MTQyODAwIDAuNTE5ODY0NFxuIn0= -->
+<pre><code> [1] 0.9972637 0.9502869 0.6890905 0.7165615 0.6414519 0.6503709 0.6021340 0.6254088 0.5755604 0.6008216
+[11] 0.5717750 0.5894654 0.5574950 0.5651775 0.5369924 0.5467371 0.5366932 0.5455006 0.5189270 0.5371799
+[21] 0.5236498 0.5339569 0.5265736 0.5301715 0.5198644 0.5260112 0.5113562 0.5173155 0.5142800 0.5198644</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua25ubW9kZWwxPWtubjMoVEFSR0VUIH4gLiAsIFNtb3RlZFBjYVRyYWluLCBrID0gOSlcbnByZWRzX2sgPC0gcHJlZGljdChrbm5tb2RlbDEsIFZhbHBjYWZpbmFsKVxucHJlZHNrbm4gPC0gaWZlbHNlKHByZWRzX2tbLCAxXSA+IHByZWRzX2tbLCAyXSwgMCwgMSlcbnJvY19vYmogPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgcHJlZHNrbm4pXG5hdWMocm9jX29iailcbmBgYCJ9 -->
-<pre class="r"><code>knnmodel1=knn3(TARGET ~ . , SmotedPcaTrain, k = 9)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZm9yKGkgaW4gaylcbntcbmtubm1vZGVsMT1rbm4zKFRBUkdFVCB+IC4gLCBTbW90ZWRQY2FUcmFpbiwgayA9IGkpXG5wcmVkc19rIDwtIHByZWRpY3Qoa25ubW9kZWwxLCBWYWxwY2FmaW5hbClcbnByZWRza25uIDwtIGlmZWxzZShwcmVkc19rWywgMV0gPiBwcmVkc19rWywgMl0sIDAsIDEpXG5yb2Nfb2JqIDwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHByZWRza25uKVxua25uQXVjMltpXT1hdWMocm9jX29iailcbn1cbmtubkF1YzJcbmBgYCJ9 -->
+<pre class="r"><code>for(i in k)
+{
+knnmodel1=knn3(TARGET ~ . , SmotedPcaTrain, k = i)
 preds_k &lt;- predict(knnmodel1, Valpcafinal)
 predsknn &lt;- ifelse(preds_k[, 1] &gt; preds_k[, 2], 0, 1)
 roc_obj &lt;- roc(Valpcafinal$TARGET, predsknn)
-auc(roc_obj)</code></pre>
+knnAuc2[i]=auc(roc_obj)
+}
+knnAuc2</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNzY0M1xuIn0= -->
-<pre><code>Area under the curve: 0.7643</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAwLjg4MDIwMjUgMC43ODc4MjA1IDAuNzk3NjIxNSAwLjc4NzQwOTcgMC43Nzc0NTM5IDAuNzcwMDU4NCAwLjc2Nzk2ODQgMC43NTQ1NDE4IDAuNzY0MzM0NiAwLjc2Mzk1MTVcblsxMV0gMC43NTYzMTMxIDAuNzQ5MTg0OSAwLjc1MDQ2NTQgMC43NTc4ODA1IDAuNzU4MjIzNyAwLjc1MDg3MjIgMC43NDU2NjY4IDAuNzM4ODc3NyAwLjczNDE5OTAgMC43MjgyMzU2XG5bMjFdIDAuNzMyNjYzMyAwLjczMzAzNDIgMC43MzM4OTk4IDAuNzM2MzMzMCAwLjczMzc4ODIgMC43MjgwMTIzIDAuNzI5MDY1NCAwLjcyOTEzNzEgMC43MzIyNTI1IDAuNzI3Nzg4OVxuIn0= -->
+<pre><code> [1] 0.8802025 0.7878205 0.7976215 0.7874097 0.7774539 0.7700584 0.7679684 0.7545418 0.7643346 0.7639515
+[11] 0.7563131 0.7491849 0.7504654 0.7578805 0.7582237 0.7508722 0.7456668 0.7388777 0.7341990 0.7282356
+[21] 0.7326633 0.7330342 0.7338998 0.7363330 0.7337882 0.7280123 0.7290654 0.7291371 0.7322525 0.7277889</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaz1rW2MoMzozMCldXG5rbm5BdWMxPWtubkF1YzFbYygzOjMwKV1cbmtubkF1YzI9a25uQXVjMltjKDM6MzApXVxua25uZGY9ZGF0YS5mcmFtZShrPWssTm9uU21vdGVkPWtubkF1YzEsU21vdGVkPWtubkF1YzIpXG5nZ3Bsb3QoZGF0YT1rbm5kZixhZXMoeD1rLHk9Tm9uU21vdGVkKSkrZ2VvbV9iYXIoc3RhdD1cImlkZW50aXR5XCIsIGZpbGw9XCJzdGVlbGJsdWVcIikreWxhYihcIk5vbiBTbW90ZWQgQVVDXCIpK3hsYWIoXCJWYWx1ZSBvZiBLXCIpXG5gYGAifQ== -->
+<pre class="r"><code>k=k[c(3:30)]
+knnAuc1=knnAuc1[c(3:30)]
+knnAuc2=knnAuc2[c(3:30)]
+knndf=data.frame(k=k,NonSmoted=knnAuc1,Smoted=knnAuc2)
+ggplot(data=knndf,aes(x=k,y=NonSmoted))+geom_bar(stat=&quot;identity&quot;, fill=&quot;steelblue&quot;)+ylab(&quot;Non Smoted AUC&quot;)+xlab(&quot;Value of K&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-plot-begin eyJjb25kaXRpb25zIjpbXSwiaGVpZ2h0Ijo0MzIuNjMyOSwic2l6ZV9iZWhhdmlvciI6MCwid2lkdGgiOjcwMH0= -->
+<p><img src="data:image/png;base64,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" /></p>
+<!-- rnb-plot-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGE9a25uZGYsYWVzKHg9ayx5PVNtb3RlZCkpK2dlb21fYmFyKHN0YXQ9XCJpZGVudGl0eVwiLCBmaWxsPVwic3RlZWxibHVlXCIpK3lsYWIoXCJTbW90ZWQgQVVDXCIpK3hsYWIoXCJWYWx1ZSBvZiBLXCIpXG5gYGAifQ== -->
+<pre class="r"><code>ggplot(data=knndf,aes(x=k,y=Smoted))+geom_bar(stat=&quot;identity&quot;, fill=&quot;steelblue&quot;)+ylab(&quot;Smoted AUC&quot;)+xlab(&quot;Value of K&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-plot-begin eyJjb25kaXRpb25zIjpbXSwiaGVpZ2h0Ijo0MzIuNjMyOSwic2l6ZV9iZWhhdmlvciI6MCwid2lkdGgiOjcwMH0= -->
+<p><img src="data:image/png;base64,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" /></p>
+<!-- rnb-plot-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>SVM Vanilla Kernel</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ZtTW9kZWwxPWtzdm0oVEFSR0VUfi4sdHJhaW5wY2FmaW5hbCxrZXJuZWw9XCJ2YW5pbGxhZG90XCIscHJvYi5tb2RlbD0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>svmModel1=ksvm(TARGET~.,trainpcafinal,kernel=&quot;vanilladot&quot;,prob.model= TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFNldHRpbmcgZGVmYXVsdCBrZXJuZWwgcGFyYW1ldGVycyAgXG4ifQ== -->
+<pre><code> Setting default kernel parameters  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZHNzdm0xIDwtIHByZWRpY3Qoc3ZtTW9kZWwxLCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczE9cHJlZGljdChzdm1Nb2RlbDEsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHMxPWlmZWxzZShwcmVkcHJvYnMxWywgMV0gPiBwcmVkcHJvYnMxWywgMl0sIDAsIDEpXG5zdm1Sb2NPYmoxPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczEpXG5zdm1BdWMxPWF1Yyhzdm1Sb2NPYmoxKVxuc3ZtQXVjMVxuYGBgIn0= -->
+<pre class="r"><code>predssvm1 &lt;- predict(svmModel1, Valpcafinal)
+predprobs1=predict(svmModel1, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds1=ifelse(predprobs1[, 1] &gt; predprobs1[, 2], 0, 1)
+svmRocObj1&lt;- roc(Valpcafinal$TARGET, svmfinalpreds1)
+svmAuc1=auc(svmRocObj1)
+svmAuc1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNVxuIn0= -->
+<pre><code>Area under the curve: 0.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTEsIFZhbHBjYWZpbmFsJFRBUkdFVClcbnN2bU1vZGVsMj1rc3ZtKFRBUkdFVH4uLFNtb3RlZFBjYVRyYWluLGtlcm5lbD1cInZhbmlsbGFkb3RcIixwcm9iLm1vZGVsPSBUUlVFKVxuYGBgIn0= -->
+<pre class="r"><code>#confusionMatrix(predssvm1, Valpcafinal$TARGET)
+svmModel2=ksvm(TARGET~.,SmotedPcaTrain,kernel=&quot;vanilladot&quot;,prob.model= TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFNldHRpbmcgZGVmYXVsdCBrZXJuZWwgcGFyYW1ldGVycyAgXG4ifQ== -->
+<pre><code> Setting default kernel parameters  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZHNzdm0yIDwtIHByZWRpY3Qoc3ZtTW9kZWwyLCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczI9cHJlZGljdChzdm1Nb2RlbDIsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHMyPWlmZWxzZShwcmVkcHJvYnMyWywgMV0gPiBwcmVkcHJvYnMyWywgMl0sIDAsIDEpXG5zdm1Sb2NPYmoyPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczIpXG5zdm1BdWMyPWF1Yyhzdm1Sb2NPYmoyKVxuc3ZtQXVjMlxuYGBgIn0= -->
+<pre class="r"><code>predssvm2 &lt;- predict(svmModel2, Valpcafinal)
+predprobs2=predict(svmModel2, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds2=ifelse(predprobs2[, 1] &gt; predprobs2[, 2], 0, 1)
+svmRocObj2&lt;- roc(Valpcafinal$TARGET, svmfinalpreds2)
+svmAuc2=auc(svmRocObj2)
+svmAuc2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNjk5NlxuIn0= -->
+<pre><code>Area under the curve: 0.6996</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTIsIFZhbHBjYWZpbmFsJFRBUkdFVClcbmBgYCJ9 -->
+<pre class="r"><code>#confusionMatrix(predssvm2, Valpcafinal$TARGET)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>SVM tanhdot kernel</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ZtTW9kZWwzPWtzdm0oVEFSR0VUfi4sdHJhaW5wY2FmaW5hbCxrZXJuZWw9XCJ0YW5oZG90XCIscHJvYi5tb2RlbD0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>svmModel3=ksvm(TARGET~.,trainpcafinal,kernel=&quot;tanhdot&quot;,prob.model= TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFNldHRpbmcgZGVmYXVsdCBrZXJuZWwgcGFyYW1ldGVycyAgXG4ifQ== -->
+<pre><code> Setting default kernel parameters  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZHNzdm0zIDwtIHByZWRpY3Qoc3ZtTW9kZWwzLCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczM9cHJlZGljdChzdm1Nb2RlbDMsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHMzPWlmZWxzZShwcmVkcHJvYnMzWywgMV0gPiBwcmVkcHJvYnMzWywgMl0sIDAsIDEpXG5zdm1Sb2NPYmozPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczMpXG5zdm1BdWMzPWF1Yyhzdm1Sb2NPYmozKVxuc3ZtQXVjM1xuYGBgIn0= -->
+<pre class="r"><code>predssvm3 &lt;- predict(svmModel3, Valpcafinal)
+predprobs3=predict(svmModel3, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds3=ifelse(predprobs3[, 1] &gt; predprobs3[, 2], 0, 1)
+svmRocObj3&lt;- roc(Valpcafinal$TARGET, svmfinalpreds3)
+svmAuc3=auc(svmRocObj3)
+svmAuc3</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNVxuIn0= -->
+<pre><code>Area under the curve: 0.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTMsIFZhbHBjYWZpbmFsJFRBUkdFVClcbnN2bU1vZGVsND1rc3ZtKFRBUkdFVH4uLFNtb3RlZFBjYVRyYWluLGtlcm5lbD1cInRhbmhkb3RcIixwcm9iLm1vZGVsPSBUUlVFKVxuYGBgIn0= -->
+<pre class="r"><code>#confusionMatrix(predssvm3, Valpcafinal$TARGET)
+svmModel4=ksvm(TARGET~.,SmotedPcaTrain,kernel=&quot;tanhdot&quot;,prob.model= TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFNldHRpbmcgZGVmYXVsdCBrZXJuZWwgcGFyYW1ldGVycyAgXG4ifQ== -->
+<pre><code> Setting default kernel parameters  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZHNzdm00IDwtIHByZWRpY3Qoc3ZtTW9kZWw0LCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczQ9cHJlZGljdChzdm1Nb2RlbDQsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHM0PWlmZWxzZShwcmVkcHJvYnM0WywgMV0gPiBwcmVkcHJvYnM0WywgMl0sIDAsIDEpXG5zdm1Sb2NPYmo0PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczQpXG5zdm1BdWM0PWF1Yyhzdm1Sb2NPYmo0KVxuc3ZtQXVjNFxuYGBgIn0= -->
+<pre class="r"><code>predssvm4 &lt;- predict(svmModel4, Valpcafinal)
+predprobs4=predict(svmModel4, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds4=ifelse(predprobs4[, 1] &gt; predprobs4[, 2], 0, 1)
+svmRocObj4&lt;- roc(Valpcafinal$TARGET, svmfinalpreds4)
+svmAuc4=auc(svmRocObj4)
+svmAuc4</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNTg0NVxuIn0= -->
+<pre><code>Area under the curve: 0.5845</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTQsIFZhbHBjYWZpbmFsJFRBUkdFVClcbmBgYCJ9 -->
+<pre class="r"><code>#confusionMatrix(predssvm4, Valpcafinal$TARGET)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>SVM rbfdot kernel</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ZtTW9kZWw1PWtzdm0oVEFSR0VUfi4sdHJhaW5wY2FmaW5hbCxrZXJuZWw9XCJyYmZkb3RcIixwcm9iLm1vZGVsPSBUUlVFKVxucHJlZHNzdm01IDwtIHByZWRpY3Qoc3ZtTW9kZWw1LCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczU9cHJlZGljdChzdm1Nb2RlbDUsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHM1PWlmZWxzZShwcmVkcHJvYnM1WywgMV0gPiBwcmVkcHJvYnM1WywgMl0sIDAsIDEpXG5zdm1Sb2NPYmo1PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczUpXG5zdm1BdWM1PWF1Yyhzdm1Sb2NPYmo1KVxuc3ZtQXVjNVxuYGBgIn0= -->
+<pre class="r"><code>svmModel5=ksvm(TARGET~.,trainpcafinal,kernel=&quot;rbfdot&quot;,prob.model= TRUE)
+predssvm5 &lt;- predict(svmModel5, Valpcafinal)
+predprobs5=predict(svmModel5, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds5=ifelse(predprobs5[, 1] &gt; predprobs5[, 2], 0, 1)
+svmRocObj5&lt;- roc(Valpcafinal$TARGET, svmfinalpreds5)
+svmAuc5=auc(svmRocObj5)
+svmAuc5</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNVxuIn0= -->
+<pre><code>Area under the curve: 0.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTUsIFZhbHBjYWZpbmFsJFRBUkdFVClcbnN2bU1vZGVsNj1rc3ZtKFRBUkdFVH4uLFNtb3RlZFBjYVRyYWluLGtlcm5lbD1cInJiZmRvdFwiLHByb2IubW9kZWw9IFRSVUUpXG5wcmVkc3N2bTYgPC0gcHJlZGljdChzdm1Nb2RlbDYsIFZhbHBjYWZpbmFsKVxucHJlZHByb2JzNj1wcmVkaWN0KHN2bU1vZGVsNiwgVmFscGNhZmluYWwsdHlwZSA9IFwicHJvYlwiKVxuc3ZtZmluYWxwcmVkczY9aWZlbHNlKHByZWRwcm9iczZbLCAxXSA+IHByZWRwcm9iczZbLCAyXSwgMCwgMSlcbnN2bVJvY09iajY8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBzdm1maW5hbHByZWRzNilcbnN2bUF1YzY9YXVjKHN2bVJvY09iajYpXG5zdm1BdWM2XG5gYGAifQ== -->
+<pre class="r"><code>#confusionMatrix(predssvm5, Valpcafinal$TARGET)
+svmModel6=ksvm(TARGET~.,SmotedPcaTrain,kernel=&quot;rbfdot&quot;,prob.model= TRUE)
+predssvm6 &lt;- predict(svmModel6, Valpcafinal)
+predprobs6=predict(svmModel6, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds6=ifelse(predprobs6[, 1] &gt; predprobs6[, 2], 0, 1)
+svmRocObj6&lt;- roc(Valpcafinal$TARGET, svmfinalpreds6)
+svmAuc6=auc(svmRocObj6)
+svmAuc6</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuODAyMVxuIn0= -->
+<pre><code>Area under the curve: 0.8021</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTYsIFZhbHBjYWZpbmFsJFRBUkdFVClcbmBgYCJ9 -->
+<pre class="r"><code>#confusionMatrix(predssvm6, Valpcafinal$TARGET)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>SVM polydot</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3ZtTW9kZWw3PWtzdm0oVEFSR0VUfi4sdHJhaW5wY2FmaW5hbCxrZXJuZWw9XCJwb2x5ZG90XCIscHJvYi5tb2RlbD0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>svmModel7=ksvm(TARGET~.,trainpcafinal,kernel=&quot;polydot&quot;,prob.model= TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFNldHRpbmcgZGVmYXVsdCBrZXJuZWwgcGFyYW1ldGVycyAgXG4ifQ== -->
+<pre><code> Setting default kernel parameters  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZHNzdm03IDwtIHByZWRpY3Qoc3ZtTW9kZWw3LCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczc9cHJlZGljdChzdm1Nb2RlbDcsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHM3PWlmZWxzZShwcmVkcHJvYnM3WywgMV0gPiBwcmVkcHJvYnM3WywgMl0sIDAsIDEpXG5zdm1Sb2NPYmo3PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczcpXG5zdm1BdWM3PWF1Yyhzdm1Sb2NPYmo3KVxuc3ZtQXVjN1xuYGBgIn0= -->
+<pre class="r"><code>predssvm7 &lt;- predict(svmModel7, Valpcafinal)
+predprobs7=predict(svmModel7, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds7=ifelse(predprobs7[, 1] &gt; predprobs7[, 2], 0, 1)
+svmRocObj7&lt;- roc(Valpcafinal$TARGET, svmfinalpreds7)
+svmAuc7=auc(svmRocObj7)
+svmAuc7</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNVxuIn0= -->
+<pre><code>Area under the curve: 0.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTcsIFZhbHBjYWZpbmFsJFRBUkdFVClcbnN2bU1vZGVsOD1rc3ZtKFRBUkdFVH4uLFNtb3RlZFBjYVRyYWluLGtlcm5lbD1cInBvbHlkb3RcIixwcm9iLm1vZGVsPSBUUlVFKVxuYGBgIn0= -->
+<pre class="r"><code>#confusionMatrix(predssvm7, Valpcafinal$TARGET)
+svmModel8=ksvm(TARGET~.,SmotedPcaTrain,kernel=&quot;polydot&quot;,prob.model= TRUE)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFNldHRpbmcgZGVmYXVsdCBrZXJuZWwgcGFyYW1ldGVycyAgXG4ifQ== -->
+<pre><code> Setting default kernel parameters  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZHNzdm04IDwtIHByZWRpY3Qoc3ZtTW9kZWw4LCBWYWxwY2FmaW5hbClcbnByZWRwcm9iczg9cHJlZGljdChzdm1Nb2RlbDgsIFZhbHBjYWZpbmFsLHR5cGUgPSBcInByb2JcIilcbnN2bWZpbmFscHJlZHM4PWlmZWxzZShwcmVkcHJvYnM4WywgMV0gPiBwcmVkcHJvYnM4WywgMl0sIDAsIDEpXG5zdm1Sb2NPYmo4PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczgpXG5zdm1BdWM4PWF1Yyhzdm1Sb2NPYmo4KVxuc3ZtQXVjOFxuYGBgIn0= -->
+<pre class="r"><code>predssvm8 &lt;- predict(svmModel8, Valpcafinal)
+predprobs8=predict(svmModel8, Valpcafinal,type = &quot;prob&quot;)
+svmfinalpreds8=ifelse(predprobs8[, 1] &gt; predprobs8[, 2], 0, 1)
+svmRocObj8&lt;- roc(Valpcafinal$TARGET, svmfinalpreds8)
+svmAuc8=auc(svmRocObj8)
+svmAuc8</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNzAwMlxuIn0= -->
+<pre><code>Area under the curve: 0.7002</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTgsIFZhbHBjYWZpbmFsJFRBUkdFVClcbmBgYCJ9 -->
+<pre class="r"><code>#confusionMatrix(predssvm8, Valpcafinal$TARGET)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Decision Trees</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRHRNb2RlbDE9cnBhcnQoVEFSR0VUfi4sdHJhaW5wY2FmaW5hbClcbkRUMVByZWRzPXByZWRpY3QoRHRNb2RlbDEsVmFscGNhZmluYWxbLHNldGRpZmYobmFtZXMoVmFscGNhZmluYWwpLFwiVGFyZ2V0XCIpXSlcbnByZWRzX3RyZWUxIDwtIGlmZWxzZShEVDFQcmVkc1ssIDFdID4gRFQxUHJlZHNbLCAyXSwgMCwgMSlcbnRyZWVyb2NvYmoxIDwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHByZWRzX3RyZWUxKVxuRFRhdWMxPWF1Yyh0cmVlcm9jb2JqMSlcbkRUYXVjMVxuYGBgIn0= -->
+<pre class="r"><code>DtModel1=rpart(TARGET~.,trainpcafinal)
+DT1Preds=predict(DtModel1,Valpcafinal[,setdiff(names(Valpcafinal),&quot;Target&quot;)])
+preds_tree1 &lt;- ifelse(DT1Preds[, 1] &gt; DT1Preds[, 2], 0, 1)
+treerocobj1 &lt;- roc(Valpcafinal$TARGET, preds_tree1)
+DTauc1=auc(treerocobj1)
+DTauc1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNVxuIn0= -->
+<pre><code>Area under the curve: 0.5</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuRHRNb2RlbDI9cnBhcnQoVEFSR0VUfi4sU21vdGVkUGNhVHJhaW4pXG5EVDJQcmVkcz1wcmVkaWN0KER0TW9kZWwyLFZhbHBjYWZpbmFsWyxzZXRkaWZmKG5hbWVzKFZhbHBjYWZpbmFsKSxcIlRhcmdldFwiKV0pXG5wcmVkc190cmVlMiA8LSBpZmVsc2UoRFQyUHJlZHNbLCAxXSA+IERUMlByZWRzWywgMl0sIDAsIDEpXG50cmVlcm9jb2JqMiA8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBwcmVkc190cmVlMilcbkRUYXVjMj1hdWModHJlZXJvY29iajIpXG5EVGF1YzJcbmBgYCJ9 -->
+<pre class="r"><code>DtModel2=rpart(TARGET~.,SmotedPcaTrain)
+DT2Preds=predict(DtModel2,Valpcafinal[,setdiff(names(Valpcafinal),&quot;Target&quot;)])
+preds_tree2 &lt;- ifelse(DT2Preds[, 1] &gt; DT2Preds[, 2], 0, 1)
+treerocobj2 &lt;- roc(Valpcafinal$TARGET, preds_tree2)
+DTauc2=auc(treerocobj2)
+DTauc2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuNzMzM1xuIn0= -->
+<pre><code>Area under the curve: 0.7333</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Random Forests</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUmZNb2RlbDE9cmFuZG9tRm9yZXN0KFRBUkdFVH4gLiAsIHRyYWlucGNhZmluYWwpXG5wcmVkc3JmMSA8LSBwcmVkaWN0KFJmTW9kZWwxLCBWYWxwY2FmaW5hbClcbnByb2JwcmVkc1JmMT1wcmVkaWN0KFJmTW9kZWwxLCBWYWxwY2FmaW5hbCx0eXBlID0gXCJwcm9iXCIpXG5SZnByZWRzZmluYWwxPWlmZWxzZShwcm9icHJlZHNSZjFbLCAxXSA+IHByb2JwcmVkc1JmMVssIDJdLCAwLCAxKVxuUkZSb2NPYmoxPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgUmZwcmVkc2ZpbmFsMSlcblJGQXVjMT1hdWMoUkZSb2NPYmoxKVxuUkZBdWMxXG5gYGAifQ== -->
+<pre class="r"><code>RfModel1=randomForest(TARGET~ . , trainpcafinal)
+predsrf1 &lt;- predict(RfModel1, Valpcafinal)
+probpredsRf1=predict(RfModel1, Valpcafinal,type = &quot;prob&quot;)
+Rfpredsfinal1=ifelse(probpredsRf1[, 1] &gt; probpredsRf1[, 2], 0, 1)
+RFRocObj1&lt;- roc(Valpcafinal$TARGET, Rfpredsfinal1)
+RFAuc1=auc(RFRocObj1)
+RFAuc1</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuOTk3NVxuIn0= -->
+<pre><code>Area under the curve: 0.9975</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3JmMSwgVmFscGNhZmluYWwkVEFSR0VUKVxuUmZNb2RlbDI9cmFuZG9tRm9yZXN0KFRBUkdFVH4gLiAsIFNtb3RlZFBjYVRyYWluKVxucHJlZHNyZjIgPC0gcHJlZGljdChSZk1vZGVsMiwgVmFscGNhZmluYWwpXG5wcm9icHJlZHNSZjI9cHJlZGljdChSZk1vZGVsMiwgVmFscGNhZmluYWwsdHlwZSA9IFwicHJvYlwiKVxuUmZwcmVkc2ZpbmFsMj1pZmVsc2UocHJvYnByZWRzUmYyWywgMV0gPiBwcm9icHJlZHNSZjJbLCAyXSwgMCwgMSlcblJGUm9jT2JqMjwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIFJmcHJlZHNmaW5hbDIpXG5SRkF1YzI9YXVjKFJGUm9jT2JqMilcblJGQXVjMlxuYGBgIn0= -->
+<pre class="r"><code>#confusionMatrix(predsrf1, Valpcafinal$TARGET)
+RfModel2=randomForest(TARGET~ . , SmotedPcaTrain)
+predsrf2 &lt;- predict(RfModel2, Valpcafinal)
+probpredsRf2=predict(RfModel2, Valpcafinal,type = &quot;prob&quot;)
+Rfpredsfinal2=ifelse(probpredsRf2[, 1] &gt; probpredsRf2[, 2], 0, 1)
+RFRocObj2&lt;- roc(Valpcafinal$TARGET, Rfpredsfinal2)
+RFAuc2=auc(RFRocObj2)
+RFAuc2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQXJlYSB1bmRlciB0aGUgY3VydmU6IDAuOTAzMVxuIn0= -->
+<pre><code>Area under the curve: 0.9031</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3JmMiwgVmFscGNhZmluYWwkVEFSR0VUKVxuYGBgIn0= -->
+<pre class="r"><code>#confusionMatrix(predsrf2, Valpcafinal$TARGET)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Random Forests parameter tuning</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhaW5UYXNrMT1tYWtlQ2xhc3NpZlRhc2soZGF0YT10cmFpbnBjYWZpbmFsLHRhcmdldCA9IFwiVEFSR0VUXCIpXG50cmFpblRhc2syPW1ha2VDbGFzc2lmVGFzayhkYXRhPVNtb3RlZFBjYVRyYWluLHRhcmdldCA9IFwiVEFSR0VUXCIpXG5WYWxUYXNrMT1tYWtlQ2xhc3NpZlRhc2soZGF0YT1WYWxwY2FmaW5hbCx0YXJnZXQgPSBcIlRBUkdFVFwiKVxuVmFsVGFzazI9bWFrZUNsYXNzaWZUYXNrKGRhdGE9VmFscGNhZmluYWwsdGFyZ2V0ID0gXCJUQVJHRVRcIilcbmdldFBhcmFtU2V0KFwiY2xhc3NpZi5yYW5kb21Gb3Jlc3RcIilcbmBgYCJ9 -->
+<pre class="r"><code>trainTask1=makeClassifTask(data=trainpcafinal,target = &quot;TARGET&quot;)
+trainTask2=makeClassifTask(data=SmotedPcaTrain,target = &quot;TARGET&quot;)
+ValTask1=makeClassifTask(data=Valpcafinal,target = &quot;TARGET&quot;)
+ValTask2=makeClassifTask(data=Valpcafinal,target = &quot;TARGET&quot;)
+getParamSet(&quot;classif.randomForest&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgICAgICAgVHlwZSAgbGVuICAgRGVmICAgQ29uc3RyIFJlcSBUdW5hYmxlIFRyYWZvXG5udHJlZSAgICAgICAgICAgICBpbnRlZ2VyICAgIC0gICA1MDAgMSB0byBJbmYgICAtICAgIFRSVUUgICAgIC1cbm10cnkgICAgICAgICAgICAgIGludGVnZXIgICAgLSAgICAgLSAxIHRvIEluZiAgIC0gICAgVFJVRSAgICAgLVxucmVwbGFjZSAgICAgICAgICAgbG9naWNhbCAgICAtICBUUlVFICAgICAgICAtICAgLSAgICBUUlVFICAgICAtXG5jbGFzc3d0ICAgICBudW1lcmljdmVjdG9yIDxOQT4gICAgIC0gMCB0byBJbmYgICAtICAgIFRSVUUgICAgIC1cbmN1dG9mZiAgICAgIG51bWVyaWN2ZWN0b3IgPE5BPiAgICAgLSAgIDAgdG8gMSAgIC0gICAgVFJVRSAgICAgLVxuc3RyYXRhICAgICAgICAgICAgdW50eXBlZCAgICAtICAgICAtICAgICAgICAtICAgLSAgIEZBTFNFICAgICAtXG5zYW1wc2l6ZSAgICBpbnRlZ2VydmVjdG9yIDxOQT4gICAgIC0gMSB0byBJbmYgICAtICAgIFRSVUUgICAgIC1cbm5vZGVzaXplICAgICAgICAgIGludGVnZXIgICAgLSAgICAgMSAxIHRvIEluZiAgIC0gICAgVFJVRSAgICAgLVxubWF4bm9kZXMgICAgICAgICAgaW50ZWdlciAgICAtICAgICAtIDEgdG8gSW5mICAgLSAgICBUUlVFICAgICAtXG5pbXBvcnRhbmNlICAgICAgICBsb2dpY2FsICAgIC0gRkFMU0UgICAgICAgIC0gICAtICAgIFRSVUUgICAgIC1cbmxvY2FsSW1wICAgICAgICAgIGxvZ2ljYWwgICAgLSBGQUxTRSAgICAgICAgLSAgIC0gICAgVFJVRSAgICAgLVxucHJveGltaXR5ICAgICAgICAgbG9naWNhbCAgICAtIEZBTFNFICAgICAgICAtICAgLSAgIEZBTFNFICAgICAtXG5vb2IucHJveCAgICAgICAgICBsb2dpY2FsICAgIC0gICAgIC0gICAgICAgIC0gICBZICAgRkFMU0UgICAgIC1cbm5vcm0udm90ZXMgICAgICAgIGxvZ2ljYWwgICAgLSAgVFJVRSAgICAgICAgLSAgIC0gICBGQUxTRSAgICAgLVxuZG8udHJhY2UgICAgICAgICAgbG9naWNhbCAgICAtIEZBTFNFICAgICAgICAtICAgLSAgIEZBTFNFICAgICAtXG5rZWVwLmZvcmVzdCAgICAgICBsb2dpY2FsICAgIC0gIFRSVUUgICAgICAgIC0gICAtICAgRkFMU0UgICAgIC1cbmtlZXAuaW5iYWcgICAgICAgIGxvZ2ljYWwgICAgLSBGQUxTRSAgICAgICAgLSAgIC0gICBGQUxTRSAgICAgLVxuIn0= -->
+<pre><code>                     Type  len   Def   Constr Req Tunable Trafo
+ntree             integer    -   500 1 to Inf   -    TRUE     -
+mtry              integer    -     - 1 to Inf   -    TRUE     -
+replace           logical    -  TRUE        -   -    TRUE     -
+classwt     numericvector &lt;NA&gt;     - 0 to Inf   -    TRUE     -
+cutoff      numericvector &lt;NA&gt;     -   0 to 1   -    TRUE     -
+strata            untyped    -     -        -   -   FALSE     -
+sampsize    integervector &lt;NA&gt;     - 1 to Inf   -    TRUE     -
+nodesize          integer    -     1 1 to Inf   -    TRUE     -
+maxnodes          integer    -     - 1 to Inf   -    TRUE     -
+importance        logical    - FALSE        -   -    TRUE     -
+localImp          logical    - FALSE        -   -    TRUE     -
+proximity         logical    - FALSE        -   -   FALSE     -
+oob.prox          logical    -     -        -   Y   FALSE     -
+norm.votes        logical    -  TRUE        -   -   FALSE     -
+do.trace          logical    - FALSE        -   -   FALSE     -
+keep.forest       logical    -  TRUE        -   -   FALSE     -
+keep.inbag        logical    - FALSE        -   -   FALSE     -</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmY9bWFrZUxlYXJuZXIoXCJjbGFzc2lmLnJhbmRvbUZvcmVzdFwiLCBwcmVkaWN0LnR5cGUgPSBcInJlc3BvbnNlXCIsIHBhci52YWxzID0gbGlzdChudHJlZSA9IDIwMCwgbXRyeSA9IDMpKVxucmYkcGFyLnZhbHMgPSBsaXN0KGltcG9ydGFuY2UgPSBUUlVFKVxucmZfcGFyYW0gPSBtYWtlUGFyYW1TZXQoXG5tYWtlSW50ZWdlclBhcmFtKFwibnRyZWVcIixsb3dlciA9IDUwLCB1cHBlciA9IDUwMCksXG5tYWtlSW50ZWdlclBhcmFtKFwibXRyeVwiLCBsb3dlciA9IDMsIHVwcGVyID0gMTApLFxubWFrZUludGVnZXJQYXJhbShcIm5vZGVzaXplXCIsIGxvd2VyID0gMTAsIHVwcGVyID0gNTApXG4pXG5yYW5jb250cm9sID0gbWFrZVR1bmVDb250cm9sUmFuZG9tKG1heGl0ID0gNTBMKVxucmFuY29udHJvbDI9bWFrZVR1bmVDb250cm9sR3JpZChyZXNvbHV0aW9uPSAxMEwpXG5zZXRfY3YgPSBtYWtlUmVzYW1wbGVEZXNjKFwiQ1ZcIixpdGVycyA9IDVMKVxucmZfdHVuZTEgPSB0dW5lUGFyYW1zKGxlYXJuZXIgPSByZiwgcmVzYW1wbGluZyA9IHNldF9jdiwgdGFzayA9IHRyYWluVGFzazEsIHBhci5zZXQgPSByZl9wYXJhbSwgY29udHJvbCA9IHJhbmNvbnRyb2wsIG1lYXN1cmVzID0ga2FwcGEpXG5gYGAifQ== -->
+<pre class="r"><code>rf=makeLearner(&quot;classif.randomForest&quot;, predict.type = &quot;response&quot;, par.vals = list(ntree = 200, mtry = 3))
+rf$par.vals = list(importance = TRUE)
+rf_param = makeParamSet(
+makeIntegerParam(&quot;ntree&quot;,lower = 50, upper = 500),
+makeIntegerParam(&quot;mtry&quot;, lower = 3, upper = 10),
+makeIntegerParam(&quot;nodesize&quot;, lower = 10, upper = 50)
+)
+rancontrol = makeTuneControlRandom(maxit = 50L)
+rancontrol2=makeTuneControlGrid(resolution= 10L)
+set_cv = makeResampleDesc(&quot;CV&quot;,iters = 5L)
+rf_tune1 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.set = rf_param, control = rancontrol, measures = kappa)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiW1R1bmVdIFN0YXJ0ZWQgdHVuaW5nIGxlYXJuZXIgY2xhc3NpZi5yYW5kb21Gb3Jlc3QgZm9yIHBhcmFtZXRlciBzZXQ6XG4gICAgICAgICAgICBUeXBlIGxlbiBEZWYgICAgQ29uc3RyIFJlcSBUdW5hYmxlIFRyYWZvXG5udHJlZSAgICBpbnRlZ2VyICAgLSAgIC0gNTAgdG8gNTAwICAgLSAgICBUUlVFICAgICAtXG5tdHJ5ICAgICBpbnRlZ2VyICAgLSAgIC0gICAzIHRvIDEwICAgLSAgICBUUlVFICAgICAtXG5ub2Rlc2l6ZSBpbnRlZ2VyICAgLSAgIC0gIDEwIHRvIDUwICAgLSAgICBUUlVFICAgICAtXG5XaXRoIGNvbnRyb2wgY2xhc3M6IFR1bmVDb250cm9sUmFuZG9tXG5JbXB1dGF0aW9uIHZhbHVlOiAxXG5bVHVuZS14XSAxOiBudHJlZT00Njg7IG10cnk9MTA7IG5vZGVzaXplPTE1XG5bVHVuZS15XSAxOiBrYXBwYS50ZXN0Lm1lYW49MC4xMzY7IHRpbWU6IDIuMiBtaW5cbltUdW5lLXhdIDI6IG50cmVlPTY4OyBtdHJ5PTg7IG5vZGVzaXplPTI5XG5bVHVuZS15XSAyOiBrYXBwYS50ZXN0Lm1lYW49MC4xMTQ7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDM6IG50cmVlPTQyNjsgbXRyeT0xMDsgbm9kZXNpemU9MTdcbltUdW5lLXldIDM6IGthcHBhLnRlc3QubWVhbj0wLjEzNDsgdGltZTogMi4wIG1pblxuW1R1bmUteF0gNDogbnRyZWU9NDI1OyBtdHJ5PTg7IG5vZGVzaXplPTQyXG5bVHVuZS15XSA0OiBrYXBwYS50ZXN0Lm1lYW49MC4wNjg4OyB0aW1lOiAxLjkgbWluXG5bVHVuZS14XSA1OiBudHJlZT00MDc7IG10cnk9NDsgbm9kZXNpemU9MjZcbltUdW5lLXldIDU6IGthcHBhLnRlc3QubWVhbj0wLjA5NTM7IHRpbWU6IDEuNyBtaW5cbltUdW5lLXhdIDY6IG50cmVlPTI2NDsgbXRyeT01OyBub2Rlc2l6ZT0yOVxuW1R1bmUteV0gNjoga2FwcGEudGVzdC5tZWFuPTAuMDk4OTsgdGltZTogMS4xIG1pblxuW1R1bmUteF0gNzogbnRyZWU9MjQ5OyBtdHJ5PTM7IG5vZGVzaXplPTMyXG5bVHVuZS15XSA3OiBrYXBwYS50ZXN0Lm1lYW49MC4wODkxOyB0aW1lOiAxLjAgbWluXG5bVHVuZS14XSA4OiBudHJlZT0zNzk7IG10cnk9OTsgbm9kZXNpemU9NDRcbltUdW5lLXldIDg6IGthcHBhLnRlc3QubWVhbj0wLjA3OTc7IHRpbWU6IDEuNyBtaW5cbltUdW5lLXhdIDk6IG50cmVlPTM4NDsgbXRyeT01OyBub2Rlc2l6ZT0xNVxuW1R1bmUteV0gOToga2FwcGEudGVzdC5tZWFuPTAuMTIzOyB0aW1lOiAxLjYgbWluXG5bVHVuZS14XSAxMDogbnRyZWU9MjU1OyBtdHJ5PTQ7IG5vZGVzaXplPTE4XG5bVHVuZS15XSAxMDoga2FwcGEudGVzdC5tZWFuPTAuMTE5OyB0aW1lOiAxLjEgbWluXG5bVHVuZS14XSAxMTogbnRyZWU9MTA1OyBtdHJ5PTc7IG5vZGVzaXplPTQ5XG5bVHVuZS15XSAxMToga2FwcGEudGVzdC5tZWFuPTAuMDU4OyB0aW1lOiAwLjQgbWluXG5bVHVuZS14XSAxMjogbnRyZWU9MzQ1OyBtdHJ5PTc7IG5vZGVzaXplPTM2XG5bVHVuZS15XSAxMjoga2FwcGEudGVzdC5tZWFuPTAuMDkwNzsgdGltZTogMS41IG1pblxuW1R1bmUteF0gMTM6IG50cmVlPTI3NzsgbXRyeT03OyBub2Rlc2l6ZT0xNlxuW1R1bmUteV0gMTM6IGthcHBhLnRlc3QubWVhbj0wLjEzMTsgdGltZTogMS4zIG1pblxuW1R1bmUteF0gMTQ6IG50cmVlPTM4MTsgbXRyeT05OyBub2Rlc2l6ZT0zNVxuW1R1bmUteV0gMTQ6IGthcHBhLnRlc3QubWVhbj0wLjA5NDsgdGltZTogMS43IG1pblxuW1R1bmUteF0gMTU6IG50cmVlPTM0NDsgbXRyeT0zOyBub2Rlc2l6ZT0zM1xuW1R1bmUteV0gMTU6IGthcHBhLnRlc3QubWVhbj0wLjA3Mzk7IHRpbWU6IDEuNCBtaW5cbltUdW5lLXhdIDE2OiBudHJlZT0xMTY7IG10cnk9Nzsgbm9kZXNpemU9MzBcbltUdW5lLXldIDE2OiBrYXBwYS50ZXN0Lm1lYW49MC4wODg5OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSAxNzogbnRyZWU9NzU7IG10cnk9Mzsgbm9kZXNpemU9MTFcbltUdW5lLXldIDE3OiBrYXBwYS50ZXN0Lm1lYW49MC4xNTM7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDE4OiBudHJlZT00NTk7IG10cnk9Njsgbm9kZXNpemU9MzhcbltUdW5lLXldIDE4OiBrYXBwYS50ZXN0Lm1lYW49MC4wODExOyB0aW1lOiAxLjkgbWluXG5bVHVuZS14XSAxOTogbnRyZWU9MjQ3OyBtdHJ5PTc7IG5vZGVzaXplPTM2XG5bVHVuZS15XSAxOToga2FwcGEudGVzdC5tZWFuPTAuMDk5OTsgdGltZTogMS4xIG1pblxuW1R1bmUteF0gMjA6IG50cmVlPTQyNTsgbXRyeT03OyBub2Rlc2l6ZT0zNFxuW1R1bmUteV0gMjA6IGthcHBhLnRlc3QubWVhbj0wLjA4NjE7IHRpbWU6IDEuOCBtaW5cbltUdW5lLXhdIDIxOiBudHJlZT0xNDI7IG10cnk9OTsgbm9kZXNpemU9MzFcbltUdW5lLXldIDIxOiBrYXBwYS50ZXN0Lm1lYW49MC4wOTIzOyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSAyMjogbnRyZWU9MzQyOyBtdHJ5PTQ7IG5vZGVzaXplPTMzXG5bVHVuZS15XSAyMjoga2FwcGEudGVzdC5tZWFuPTAuMDg1MTsgdGltZTogMS40IG1pblxuW1R1bmUteF0gMjM6IG50cmVlPTIzODsgbXRyeT02OyBub2Rlc2l6ZT00NlxuW1R1bmUteV0gMjM6IGthcHBhLnRlc3QubWVhbj0wLjA3MTM7IHRpbWU6IDEuMCBtaW5cbltUdW5lLXhdIDI0OiBudHJlZT0yODE7IG10cnk9ODsgbm9kZXNpemU9MTZcbltUdW5lLXldIDI0OiBrYXBwYS50ZXN0Lm1lYW49MC4xNDsgdGltZTogMS41IG1pblxuW1R1bmUteF0gMjU6IG50cmVlPTIyNjsgbXRyeT04OyBub2Rlc2l6ZT0xOVxuW1R1bmUteV0gMjU6IGthcHBhLnRlc3QubWVhbj0wLjEzNTsgdGltZTogMS4yIG1pblxuW1R1bmUteF0gMjY6IG50cmVlPTI3MTsgbXRyeT0xMDsgbm9kZXNpemU9MThcbltUdW5lLXldIDI2OiBrYXBwYS50ZXN0Lm1lYW49MC4xMjk7IHRpbWU6IDEuNCBtaW5cbltUdW5lLXhdIDI3OiBudHJlZT05MzsgbXRyeT04OyBub2Rlc2l6ZT0xMlxuW1R1bmUteV0gMjc6IGthcHBhLnRlc3QubWVhbj0wLjE0OTsgdGltZTogMC41IG1pblxuW1R1bmUteF0gMjg6IG50cmVlPTI2MDsgbXRyeT05OyBub2Rlc2l6ZT0xNVxuW1R1bmUteV0gMjg6IGthcHBhLnRlc3QubWVhbj0wLjE1MjsgdGltZTogMS4zIG1pblxuW1R1bmUteF0gMjk6IG50cmVlPTM5MzsgbXRyeT0zOyBub2Rlc2l6ZT0zOFxuW1R1bmUteV0gMjk6IGthcHBhLnRlc3QubWVhbj0wLjA2MTc7IHRpbWU6IDEuNiBtaW5cbltUdW5lLXhdIDMwOiBudHJlZT0xMjg7IG10cnk9MTA7IG5vZGVzaXplPTIzXG5bVHVuZS15XSAzMDoga2FwcGEudGVzdC5tZWFuPTAuMTI7IHRpbWU6IDAuNiBtaW5cbltUdW5lLXhdIDMxOiBudHJlZT0yMjY7IG10cnk9NTsgbm9kZXNpemU9MTRcbltUdW5lLXldIDMxOiBrYXBwYS50ZXN0Lm1lYW49MC4xMzE7IHRpbWU6IDEuMCBtaW5cbltUdW5lLXhdIDMyOiBudHJlZT00MjA7IG10cnk9NTsgbm9kZXNpemU9NDdcbltUdW5lLXldIDMyOiBrYXBwYS50ZXN0Lm1lYW49MC4wNTczOyB0aW1lOiAxLjcgbWluXG5bVHVuZS14XSAzMzogbnRyZWU9MjcxOyBtdHJ5PTQ7IG5vZGVzaXplPTQzXG5bVHVuZS15XSAzMzoga2FwcGEudGVzdC5tZWFuPTAuMDY5NDsgdGltZTogMS4xIG1pblxuW1R1bmUteF0gMzQ6IG50cmVlPTM0NjsgbXRyeT04OyBub2Rlc2l6ZT0yMFxuW1R1bmUteV0gMzQ6IGthcHBhLnRlc3QubWVhbj0wLjEyOTsgdGltZTogMS42IG1pblxuW1R1bmUteF0gMzU6IG50cmVlPTM3ODsgbXRyeT0zOyBub2Rlc2l6ZT00MVxuW1R1bmUteV0gMzU6IGthcHBhLnRlc3QubWVhbj0wLjA2MDU7IHRpbWU6IDEuNSBtaW5cbltUdW5lLXhdIDM2OiBudHJlZT00MjI7IG10cnk9OTsgbm9kZXNpemU9MjVcbltUdW5lLXldIDM2OiBrYXBwYS50ZXN0Lm1lYW49MC4xMTsgdGltZTogMi4wIG1pblxuW1R1bmUteF0gMzc6IG50cmVlPTMzNjsgbXRyeT02OyBub2Rlc2l6ZT0zNFxuW1R1bmUteV0gMzc6IGthcHBhLnRlc3QubWVhbj0wLjA4ODk7IHRpbWU6IDEuNSBtaW5cbltUdW5lLXhdIDM4OiBudHJlZT0zNzg7IG10cnk9Nzsgbm9kZXNpemU9NDhcbltUdW5lLXldIDM4OiBrYXBwYS50ZXN0Lm1lYW49MC4wNTI5OyB0aW1lOiAxLjYgbWluXG5bVHVuZS14XSAzOTogbnRyZWU9NDk5OyBtdHJ5PTM7IG5vZGVzaXplPTQ2XG5bVHVuZS15XSAzOToga2FwcGEudGVzdC5tZWFuPTAuMDQ4MzsgdGltZTogMi4wIG1pblxuW1R1bmUteF0gNDA6IG50cmVlPTI3MjsgbXRyeT0zOyBub2Rlc2l6ZT0xM1xuW1R1bmUteV0gNDA6IGthcHBhLnRlc3QubWVhbj0wLjEyODsgdGltZTogMS4xIG1pblxuW1R1bmUteF0gNDE6IG50cmVlPTMyNDsgbXRyeT00OyBub2Rlc2l6ZT0xOVxuW1R1bmUteV0gNDE6IGthcHBhLnRlc3QubWVhbj0wLjEyOyB0aW1lOiAxLjMgbWluXG5bVHVuZS14XSA0MjogbnRyZWU9MTk4OyBtdHJ5PTg7IG5vZGVzaXplPTQ3XG5bVHVuZS15XSA0Mjoga2FwcGEudGVzdC5tZWFuPTAuMDY3OyB0aW1lOiAwLjkgbWluXG5bVHVuZS14XSA0MzogbnRyZWU9NTE7IG10cnk9NTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDQzOiBrYXBwYS50ZXN0Lm1lYW49MC4xNDk7IHRpbWU6IDAuMiBtaW5cbltUdW5lLXhdIDQ0OiBudHJlZT0xMDQ7IG10cnk9ODsgbm9kZXNpemU9NDdcbltUdW5lLXldIDQ0OiBrYXBwYS50ZXN0Lm1lYW49MC4wNzY4OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSA0NTogbnRyZWU9NDI2OyBtdHJ5PTc7IG5vZGVzaXplPTQwXG5bVHVuZS15XSA0NToga2FwcGEudGVzdC5tZWFuPTAuMDgwOTsgdGltZTogMS44IG1pblxuW1R1bmUteF0gNDY6IG50cmVlPTIzMjsgbXRyeT00OyBub2Rlc2l6ZT00OFxuW1R1bmUteV0gNDY6IGthcHBhLnRlc3QubWVhbj0wLjA1NDc7IHRpbWU6IDAuOSBtaW5cbltUdW5lLXhdIDQ3OiBudHJlZT00NjI7IG10cnk9OTsgbm9kZXNpemU9MjZcbltUdW5lLXldIDQ3OiBrYXBwYS50ZXN0Lm1lYW49MC4xMDg7IHRpbWU6IDIuMSBtaW5cbltUdW5lLXhdIDQ4OiBudHJlZT00MzI7IG10cnk9MTA7IG5vZGVzaXplPTQ0XG5bVHVuZS15XSA0ODoga2FwcGEudGVzdC5tZWFuPTAuMDg1ODsgdGltZTogMi4wIG1pblxuW1R1bmUteF0gNDk6IG50cmVlPTg2OyBtdHJ5PTQ7IG5vZGVzaXplPTQwXG5bVHVuZS15XSA0OToga2FwcGEudGVzdC5tZWFuPTAuMDY4ODsgdGltZTogMC40IG1pblxuW1R1bmUteF0gNTA6IG50cmVlPTM3MDsgbXRyeT0zOyBub2Rlc2l6ZT0zOFxuW1R1bmUteV0gNTA6IGthcHBhLnRlc3QubWVhbj0wLjA1Njc7IHRpbWU6IDEuNSBtaW5cbltUdW5lXSBSZXN1bHQ6IG50cmVlPTc1OyBtdHJ5PTM7IG5vZGVzaXplPTExIDoga2FwcGEudGVzdC5tZWFuPTAuMTUzXG4ifQ== -->
+<pre><code>[Tune] Started tuning learner classif.randomForest for parameter set:
+            Type len Def    Constr Req Tunable Trafo
+ntree    integer   -   - 50 to 500   -    TRUE     -
+mtry     integer   -   -   3 to 10   -    TRUE     -
+nodesize integer   -   -  10 to 50   -    TRUE     -
+With control class: TuneControlRandom
+Imputation value: 1
+[Tune-x] 1: ntree=468; mtry=10; nodesize=15
+[Tune-y] 1: kappa.test.mean=0.136; time: 2.2 min
+[Tune-x] 2: ntree=68; mtry=8; nodesize=29
+[Tune-y] 2: kappa.test.mean=0.114; time: 0.3 min
+[Tune-x] 3: ntree=426; mtry=10; nodesize=17
+[Tune-y] 3: kappa.test.mean=0.134; time: 2.0 min
+[Tune-x] 4: ntree=425; mtry=8; nodesize=42
+[Tune-y] 4: kappa.test.mean=0.0688; time: 1.9 min
+[Tune-x] 5: ntree=407; mtry=4; nodesize=26
+[Tune-y] 5: kappa.test.mean=0.0953; time: 1.7 min
+[Tune-x] 6: ntree=264; mtry=5; nodesize=29
+[Tune-y] 6: kappa.test.mean=0.0989; time: 1.1 min
+[Tune-x] 7: ntree=249; mtry=3; nodesize=32
+[Tune-y] 7: kappa.test.mean=0.0891; time: 1.0 min
+[Tune-x] 8: ntree=379; mtry=9; nodesize=44
+[Tune-y] 8: kappa.test.mean=0.0797; time: 1.7 min
+[Tune-x] 9: ntree=384; mtry=5; nodesize=15
+[Tune-y] 9: kappa.test.mean=0.123; time: 1.6 min
+[Tune-x] 10: ntree=255; mtry=4; nodesize=18
+[Tune-y] 10: kappa.test.mean=0.119; time: 1.1 min
+[Tune-x] 11: ntree=105; mtry=7; nodesize=49
+[Tune-y] 11: kappa.test.mean=0.058; time: 0.4 min
+[Tune-x] 12: ntree=345; mtry=7; nodesize=36
+[Tune-y] 12: kappa.test.mean=0.0907; time: 1.5 min
+[Tune-x] 13: ntree=277; mtry=7; nodesize=16
+[Tune-y] 13: kappa.test.mean=0.131; time: 1.3 min
+[Tune-x] 14: ntree=381; mtry=9; nodesize=35
+[Tune-y] 14: kappa.test.mean=0.094; time: 1.7 min
+[Tune-x] 15: ntree=344; mtry=3; nodesize=33
+[Tune-y] 15: kappa.test.mean=0.0739; time: 1.4 min
+[Tune-x] 16: ntree=116; mtry=7; nodesize=30
+[Tune-y] 16: kappa.test.mean=0.0889; time: 0.5 min
+[Tune-x] 17: ntree=75; mtry=3; nodesize=11
+[Tune-y] 17: kappa.test.mean=0.153; time: 0.3 min
+[Tune-x] 18: ntree=459; mtry=6; nodesize=38
+[Tune-y] 18: kappa.test.mean=0.0811; time: 1.9 min
+[Tune-x] 19: ntree=247; mtry=7; nodesize=36
+[Tune-y] 19: kappa.test.mean=0.0999; time: 1.1 min
+[Tune-x] 20: ntree=425; mtry=7; nodesize=34
+[Tune-y] 20: kappa.test.mean=0.0861; time: 1.8 min
+[Tune-x] 21: ntree=142; mtry=9; nodesize=31
+[Tune-y] 21: kappa.test.mean=0.0923; time: 0.6 min
+[Tune-x] 22: ntree=342; mtry=4; nodesize=33
+[Tune-y] 22: kappa.test.mean=0.0851; time: 1.4 min
+[Tune-x] 23: ntree=238; mtry=6; nodesize=46
+[Tune-y] 23: kappa.test.mean=0.0713; time: 1.0 min
+[Tune-x] 24: ntree=281; mtry=8; nodesize=16
+[Tune-y] 24: kappa.test.mean=0.14; time: 1.5 min
+[Tune-x] 25: ntree=226; mtry=8; nodesize=19
+[Tune-y] 25: kappa.test.mean=0.135; time: 1.2 min
+[Tune-x] 26: ntree=271; mtry=10; nodesize=18
+[Tune-y] 26: kappa.test.mean=0.129; time: 1.4 min
+[Tune-x] 27: ntree=93; mtry=8; nodesize=12
+[Tune-y] 27: kappa.test.mean=0.149; time: 0.5 min
+[Tune-x] 28: ntree=260; mtry=9; nodesize=15
+[Tune-y] 28: kappa.test.mean=0.152; time: 1.3 min
+[Tune-x] 29: ntree=393; mtry=3; nodesize=38
+[Tune-y] 29: kappa.test.mean=0.0617; time: 1.6 min
+[Tune-x] 30: ntree=128; mtry=10; nodesize=23
+[Tune-y] 30: kappa.test.mean=0.12; time: 0.6 min
+[Tune-x] 31: ntree=226; mtry=5; nodesize=14
+[Tune-y] 31: kappa.test.mean=0.131; time: 1.0 min
+[Tune-x] 32: ntree=420; mtry=5; nodesize=47
+[Tune-y] 32: kappa.test.mean=0.0573; time: 1.7 min
+[Tune-x] 33: ntree=271; mtry=4; nodesize=43
+[Tune-y] 33: kappa.test.mean=0.0694; time: 1.1 min
+[Tune-x] 34: ntree=346; mtry=8; nodesize=20
+[Tune-y] 34: kappa.test.mean=0.129; time: 1.6 min
+[Tune-x] 35: ntree=378; mtry=3; nodesize=41
+[Tune-y] 35: kappa.test.mean=0.0605; time: 1.5 min
+[Tune-x] 36: ntree=422; mtry=9; nodesize=25
+[Tune-y] 36: kappa.test.mean=0.11; time: 2.0 min
+[Tune-x] 37: ntree=336; mtry=6; nodesize=34
+[Tune-y] 37: kappa.test.mean=0.0889; time: 1.5 min
+[Tune-x] 38: ntree=378; mtry=7; nodesize=48
+[Tune-y] 38: kappa.test.mean=0.0529; time: 1.6 min
+[Tune-x] 39: ntree=499; mtry=3; nodesize=46
+[Tune-y] 39: kappa.test.mean=0.0483; time: 2.0 min
+[Tune-x] 40: ntree=272; mtry=3; nodesize=13
+[Tune-y] 40: kappa.test.mean=0.128; time: 1.1 min
+[Tune-x] 41: ntree=324; mtry=4; nodesize=19
+[Tune-y] 41: kappa.test.mean=0.12; time: 1.3 min
+[Tune-x] 42: ntree=198; mtry=8; nodesize=47
+[Tune-y] 42: kappa.test.mean=0.067; time: 0.9 min
+[Tune-x] 43: ntree=51; mtry=5; nodesize=10
+[Tune-y] 43: kappa.test.mean=0.149; time: 0.2 min
+[Tune-x] 44: ntree=104; mtry=8; nodesize=47
+[Tune-y] 44: kappa.test.mean=0.0768; time: 0.5 min
+[Tune-x] 45: ntree=426; mtry=7; nodesize=40
+[Tune-y] 45: kappa.test.mean=0.0809; time: 1.8 min
+[Tune-x] 46: ntree=232; mtry=4; nodesize=48
+[Tune-y] 46: kappa.test.mean=0.0547; time: 0.9 min
+[Tune-x] 47: ntree=462; mtry=9; nodesize=26
+[Tune-y] 47: kappa.test.mean=0.108; time: 2.1 min
+[Tune-x] 48: ntree=432; mtry=10; nodesize=44
+[Tune-y] 48: kappa.test.mean=0.0858; time: 2.0 min
+[Tune-x] 49: ntree=86; mtry=4; nodesize=40
+[Tune-y] 49: kappa.test.mean=0.0688; time: 0.4 min
+[Tune-x] 50: ntree=370; mtry=3; nodesize=38
+[Tune-y] 50: kappa.test.mean=0.0567; time: 1.5 min
+[Tune] Result: ntree=75; mtry=3; nodesize=11 : kappa.test.mean=0.153</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmZfdHVuZTIgPSB0dW5lUGFyYW1zKGxlYXJuZXIgPSByZiwgcmVzYW1wbGluZyA9IHNldF9jdiwgdGFzayA9IHRyYWluVGFzazIsIHBhci5zZXQgPSByZl9wYXJhbSwgY29udHJvbCA9IHJhbmNvbnRyb2wsIG1lYXN1cmVzID0ga2FwcGEpXG5gYGAifQ== -->
+<pre class="r"><code>rf_tune2 = tuneParams(learner = rf, resampling = set_cv, task = trainTask2, par.set = rf_param, control = rancontrol, measures = kappa)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiW1R1bmVdIFN0YXJ0ZWQgdHVuaW5nIGxlYXJuZXIgY2xhc3NpZi5yYW5kb21Gb3Jlc3QgZm9yIHBhcmFtZXRlciBzZXQ6XG4gICAgICAgICAgICBUeXBlIGxlbiBEZWYgICAgQ29uc3RyIFJlcSBUdW5hYmxlIFRyYWZvXG5udHJlZSAgICBpbnRlZ2VyICAgLSAgIC0gNTAgdG8gNTAwICAgLSAgICBUUlVFICAgICAtXG5tdHJ5ICAgICBpbnRlZ2VyICAgLSAgIC0gICAzIHRvIDEwICAgLSAgICBUUlVFICAgICAtXG5ub2Rlc2l6ZSBpbnRlZ2VyICAgLSAgIC0gIDEwIHRvIDUwICAgLSAgICBUUlVFICAgICAtXG5XaXRoIGNvbnRyb2wgY2xhc3M6IFR1bmVDb250cm9sUmFuZG9tXG5JbXB1dGF0aW9uIHZhbHVlOiAxXG5bVHVuZS14XSAxOiBudHJlZT00OTM7IG10cnk9ODsgbm9kZXNpemU9NDlcbltUdW5lLXldIDE6IGthcHBhLnRlc3QubWVhbj0wLjUyMzsgdGltZTogMC42IG1pblxuW1R1bmUteF0gMjogbnRyZWU9MTU5OyBtdHJ5PTc7IG5vZGVzaXplPTIwXG5bVHVuZS15XSAyOiBrYXBwYS50ZXN0Lm1lYW49MC41NjE7IHRpbWU6IDAuMiBtaW5cbltUdW5lLXhdIDM6IG50cmVlPTE5OTsgbXRyeT01OyBub2Rlc2l6ZT0xN1xuW1R1bmUteV0gMzoga2FwcGEudGVzdC5tZWFuPTAuNTYzOyB0aW1lOiAwLjMgbWluXG5bVHVuZS14XSA0OiBudHJlZT00NjU7IG10cnk9Njsgbm9kZXNpemU9MzVcbltUdW5lLXldIDQ6IGthcHBhLnRlc3QubWVhbj0wLjU0MzsgdGltZTogMC42IG1pblxuW1R1bmUteF0gNTogbnRyZWU9MjkzOyBtdHJ5PTk7IG5vZGVzaXplPTQ1XG5bVHVuZS15XSA1OiBrYXBwYS50ZXN0Lm1lYW49MC41MjQ7IHRpbWU6IDAuNCBtaW5cbltUdW5lLXhdIDY6IG50cmVlPTQ4NDsgbXRyeT00OyBub2Rlc2l6ZT01MFxuW1R1bmUteV0gNjoga2FwcGEudGVzdC5tZWFuPTAuNTE0OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSA3OiBudHJlZT0yMDI7IG10cnk9NDsgbm9kZXNpemU9NDZcbltUdW5lLXldIDc6IGthcHBhLnRlc3QubWVhbj0wLjUxMTsgdGltZTogMC4yIG1pblxuW1R1bmUteF0gODogbnRyZWU9MzE2OyBtdHJ5PTEwOyBub2Rlc2l6ZT00NlxuW1R1bmUteV0gODoga2FwcGEudGVzdC5tZWFuPTAuNTI5OyB0aW1lOiAwLjQgbWluXG5bVHVuZS14XSA5OiBudHJlZT0zMjc7IG10cnk9NDsgbm9kZXNpemU9MjVcbltUdW5lLXldIDk6IGthcHBhLnRlc3QubWVhbj0wLjU0ODsgdGltZTogMC40IG1pblxuW1R1bmUteF0gMTA6IG50cmVlPTQ1MTsgbXRyeT05OyBub2Rlc2l6ZT0zMVxuW1R1bmUteV0gMTA6IGthcHBhLnRlc3QubWVhbj0wLjU0MjsgdGltZTogMC42IG1pblxuW1R1bmUteF0gMTE6IG50cmVlPTQ3MjsgbXRyeT02OyBub2Rlc2l6ZT0zN1xuW1R1bmUteV0gMTE6IGthcHBhLnRlc3QubWVhbj0wLjUzOyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSAxMjogbnRyZWU9NDI4OyBtdHJ5PTc7IG5vZGVzaXplPTIwXG5bVHVuZS15XSAxMjoga2FwcGEudGVzdC5tZWFuPTAuNTU0OyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSAxMzogbnRyZWU9MTQ0OyBtdHJ5PTQ7IG5vZGVzaXplPTEzXG5bVHVuZS15XSAxMzoga2FwcGEudGVzdC5tZWFuPTAuNTc0OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSAxNDogbnRyZWU9MzMxOyBtdHJ5PTk7IG5vZGVzaXplPTMwXG5bVHVuZS15XSAxNDoga2FwcGEudGVzdC5tZWFuPTAuNTQ1OyB0aW1lOiAwLjQgbWluXG5bVHVuZS14XSAxNTogbnRyZWU9NDQ4OyBtdHJ5PTk7IG5vZGVzaXplPTI1XG5bVHVuZS15XSAxNToga2FwcGEudGVzdC5tZWFuPTAuNTQyOyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSAxNjogbnRyZWU9MTE1OyBtdHJ5PTU7IG5vZGVzaXplPTIwXG5bVHVuZS15XSAxNjoga2FwcGEudGVzdC5tZWFuPTAuNTU7IHRpbWU6IDAuMiBtaW5cbltUdW5lLXhdIDE3OiBudHJlZT00NTE7IG10cnk9Njsgbm9kZXNpemU9NDhcbltUdW5lLXldIDE3OiBrYXBwYS50ZXN0Lm1lYW49MC41MTk7IHRpbWU6IDAuNSBtaW5cbltUdW5lLXhdIDE4OiBudHJlZT0yMTM7IG10cnk9Nzsgbm9kZXNpemU9MTNcbltUdW5lLXldIDE4OiBrYXBwYS50ZXN0Lm1lYW49MC41NzQ7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDE5OiBudHJlZT00NTg7IG10cnk9NTsgbm9kZXNpemU9MTZcbltUdW5lLXldIDE5OiBrYXBwYS50ZXN0Lm1lYW49MC41NjI7IHRpbWU6IDAuNiBtaW5cbltUdW5lLXhdIDIwOiBudHJlZT0zMTQ7IG10cnk9ODsgbm9kZXNpemU9NTBcbltUdW5lLXldIDIwOiBrYXBwYS50ZXN0Lm1lYW49MC41MTY7IHRpbWU6IDAuNCBtaW5cbltUdW5lLXhdIDIxOiBudHJlZT0zMjQ7IG10cnk9MTA7IG5vZGVzaXplPTE2XG5bVHVuZS15XSAyMToga2FwcGEudGVzdC5tZWFuPTAuNTY5OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSAyMjogbnRyZWU9Mzc3OyBtdHJ5PTk7IG5vZGVzaXplPTM0XG5bVHVuZS15XSAyMjoga2FwcGEudGVzdC5tZWFuPTAuNTM5OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSAyMzogbnRyZWU9MzY1OyBtdHJ5PTk7IG5vZGVzaXplPTE2XG5bVHVuZS15XSAyMzoga2FwcGEudGVzdC5tZWFuPTAuNTY4OyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSAyNDogbnRyZWU9MjE4OyBtdHJ5PTU7IG5vZGVzaXplPTQ0XG5bVHVuZS15XSAyNDoga2FwcGEudGVzdC5tZWFuPTAuNTM7IHRpbWU6IDAuMiBtaW5cbltUdW5lLXhdIDI1OiBudHJlZT0yNDg7IG10cnk9NDsgbm9kZXNpemU9NDNcbltUdW5lLXldIDI1OiBrYXBwYS50ZXN0Lm1lYW49MC41MjM7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDI2OiBudHJlZT0yMzA7IG10cnk9OTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDI2OiBrYXBwYS50ZXN0Lm1lYW49MC41ODg7IHRpbWU6IDAuNCBtaW5cbltUdW5lLXhdIDI3OiBudHJlZT0xNTY7IG10cnk9MTA7IG5vZGVzaXplPTE0XG5bVHVuZS15XSAyNzoga2FwcGEudGVzdC5tZWFuPTAuNTc4OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSAyODogbnRyZWU9Mzc2OyBtdHJ5PTU7IG5vZGVzaXplPTQ0XG5bVHVuZS15XSAyODoga2FwcGEudGVzdC5tZWFuPTAuNTI1OyB0aW1lOiAwLjQgbWluXG5bVHVuZS14XSAyOTogbnRyZWU9MTAwOyBtdHJ5PTEwOyBub2Rlc2l6ZT00NFxuW1R1bmUteV0gMjk6IGthcHBhLnRlc3QubWVhbj0wLjUyNzsgdGltZTogMC4xIG1pblxuW1R1bmUteF0gMzA6IG50cmVlPTE3MTsgbXRyeT02OyBub2Rlc2l6ZT0zOVxuW1R1bmUteV0gMzA6IGthcHBhLnRlc3QubWVhbj0wLjUzODsgdGltZTogMC4yIG1pblxuW1R1bmUteF0gMzE6IG50cmVlPTEyOTsgbXRyeT03OyBub2Rlc2l6ZT0xNlxuW1R1bmUteV0gMzE6IGthcHBhLnRlc3QubWVhbj0wLjU3MTsgdGltZTogMC4yIG1pblxuW1R1bmUteF0gMzI6IG50cmVlPTI5NjsgbXRyeT01OyBub2Rlc2l6ZT0xOFxuW1R1bmUteV0gMzI6IGthcHBhLnRlc3QubWVhbj0wLjU1ODsgdGltZTogMC40IG1pblxuW1R1bmUteF0gMzM6IG50cmVlPTEyMjsgbXRyeT01OyBub2Rlc2l6ZT0xNFxuW1R1bmUteV0gMzM6IGthcHBhLnRlc3QubWVhbj0wLjU3OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSAzNDogbnRyZWU9NDk3OyBtdHJ5PTY7IG5vZGVzaXplPTE5XG5bVHVuZS15XSAzNDoga2FwcGEudGVzdC5tZWFuPTAuNTY3OyB0aW1lOiAwLjcgbWluXG5bVHVuZS14XSAzNTogbnRyZWU9ODk7IG10cnk9Nzsgbm9kZXNpemU9NDJcbltUdW5lLXldIDM1OiBrYXBwYS50ZXN0Lm1lYW49MC41Mjg7IHRpbWU6IDAuMSBtaW5cbltUdW5lLXhdIDM2OiBudHJlZT0yNzY7IG10cnk9OTsgbm9kZXNpemU9MjBcbltUdW5lLXldIDM2OiBrYXBwYS50ZXN0Lm1lYW49MC41NTk7IHRpbWU6IDAuNCBtaW5cbltUdW5lLXhdIDM3OiBudHJlZT0yOTk7IG10cnk9NTsgbm9kZXNpemU9NTBcbltUdW5lLXldIDM3OiBrYXBwYS50ZXN0Lm1lYW49MC41MTg7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDM4OiBudHJlZT00NTA7IG10cnk9NDsgbm9kZXNpemU9MTJcbltUdW5lLXldIDM4OiBrYXBwYS50ZXN0Lm1lYW49MC41ODQ7IHRpbWU6IDAuNiBtaW5cbltUdW5lLXhdIDM5OiBudHJlZT00MTI7IG10cnk9Njsgbm9kZXNpemU9MzVcbltUdW5lLXldIDM5OiBrYXBwYS50ZXN0Lm1lYW49MC41MzY7IHRpbWU6IDAuNSBtaW5cbltUdW5lLXhdIDQwOiBudHJlZT0xMTI7IG10cnk9NTsgbm9kZXNpemU9MzdcbltUdW5lLXldIDQwOiBrYXBwYS50ZXN0Lm1lYW49MC41MzE7IHRpbWU6IDAuMSBtaW5cbltUdW5lLXhdIDQxOiBudHJlZT00NTI7IG10cnk9Nzsgbm9kZXNpemU9MzVcbltUdW5lLXldIDQxOiBrYXBwYS50ZXN0Lm1lYW49MC41MzE7IHRpbWU6IDAuNiBtaW5cbltUdW5lLXhdIDQyOiBudHJlZT0yOTI7IG10cnk9Mzsgbm9kZXNpemU9NDFcbltUdW5lLXldIDQyOiBrYXBwYS50ZXN0Lm1lYW49MC41MTc7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDQzOiBudHJlZT00MDg7IG10cnk9NDsgbm9kZXNpemU9MzVcbltUdW5lLXldIDQzOiBrYXBwYS50ZXN0Lm1lYW49MC41MzM7IHRpbWU6IDAuNSBtaW5cbltUdW5lLXhdIDQ0OiBudHJlZT00MTI7IG10cnk9OTsgbm9kZXNpemU9MzRcbltUdW5lLXldIDQ0OiBrYXBwYS50ZXN0Lm1lYW49MC41Mzk7IHRpbWU6IDAuNSBtaW5cbltUdW5lLXhdIDQ1OiBudHJlZT04NjsgbXRyeT03OyBub2Rlc2l6ZT00NFxuW1R1bmUteV0gNDU6IGthcHBhLnRlc3QubWVhbj0wLjUxODsgdGltZTogMC4xIG1pblxuW1R1bmUteF0gNDY6IG50cmVlPTMxNjsgbXRyeT05OyBub2Rlc2l6ZT01MFxuW1R1bmUteV0gNDY6IGthcHBhLnRlc3QubWVhbj0wLjUyMjsgdGltZTogMC40IG1pblxuW1R1bmUteF0gNDc6IG50cmVlPTE2OTsgbXRyeT0xMDsgbm9kZXNpemU9MThcbltUdW5lLXldIDQ3OiBrYXBwYS50ZXN0Lm1lYW49MC41NzU7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDQ4OiBudHJlZT0zODA7IG10cnk9ODsgbm9kZXNpemU9MzBcbltUdW5lLXldIDQ4OiBrYXBwYS50ZXN0Lm1lYW49MC41NDE7IHRpbWU6IDAuNSBtaW5cbltUdW5lLXhdIDQ5OiBudHJlZT05ODsgbXRyeT01OyBub2Rlc2l6ZT00NFxuW1R1bmUteV0gNDk6IGthcHBhLnRlc3QubWVhbj0wLjUyNDsgdGltZTogMC4xIG1pblxuW1R1bmUteF0gNTA6IG50cmVlPTQxNDsgbXRyeT0xMDsgbm9kZXNpemU9NDFcbltUdW5lLXldIDUwOiBrYXBwYS50ZXN0Lm1lYW49MC41MzE7IHRpbWU6IDAuNSBtaW5cbltUdW5lXSBSZXN1bHQ6IG50cmVlPTIzMDsgbXRyeT05OyBub2Rlc2l6ZT0xMCA6IGthcHBhLnRlc3QubWVhbj0wLjU4OFxuIn0= -->
+<pre><code>[Tune] Started tuning learner classif.randomForest for parameter set:
+            Type len Def    Constr Req Tunable Trafo
+ntree    integer   -   - 50 to 500   -    TRUE     -
+mtry     integer   -   -   3 to 10   -    TRUE     -
+nodesize integer   -   -  10 to 50   -    TRUE     -
+With control class: TuneControlRandom
+Imputation value: 1
+[Tune-x] 1: ntree=493; mtry=8; nodesize=49
+[Tune-y] 1: kappa.test.mean=0.523; time: 0.6 min
+[Tune-x] 2: ntree=159; mtry=7; nodesize=20
+[Tune-y] 2: kappa.test.mean=0.561; time: 0.2 min
+[Tune-x] 3: ntree=199; mtry=5; nodesize=17
+[Tune-y] 3: kappa.test.mean=0.563; time: 0.3 min
+[Tune-x] 4: ntree=465; mtry=6; nodesize=35
+[Tune-y] 4: kappa.test.mean=0.543; time: 0.6 min
+[Tune-x] 5: ntree=293; mtry=9; nodesize=45
+[Tune-y] 5: kappa.test.mean=0.524; time: 0.4 min
+[Tune-x] 6: ntree=484; mtry=4; nodesize=50
+[Tune-y] 6: kappa.test.mean=0.514; time: 0.5 min
+[Tune-x] 7: ntree=202; mtry=4; nodesize=46
+[Tune-y] 7: kappa.test.mean=0.511; time: 0.2 min
+[Tune-x] 8: ntree=316; mtry=10; nodesize=46
+[Tune-y] 8: kappa.test.mean=0.529; time: 0.4 min
+[Tune-x] 9: ntree=327; mtry=4; nodesize=25
+[Tune-y] 9: kappa.test.mean=0.548; time: 0.4 min
+[Tune-x] 10: ntree=451; mtry=9; nodesize=31
+[Tune-y] 10: kappa.test.mean=0.542; time: 0.6 min
+[Tune-x] 11: ntree=472; mtry=6; nodesize=37
+[Tune-y] 11: kappa.test.mean=0.53; time: 0.6 min
+[Tune-x] 12: ntree=428; mtry=7; nodesize=20
+[Tune-y] 12: kappa.test.mean=0.554; time: 0.6 min
+[Tune-x] 13: ntree=144; mtry=4; nodesize=13
+[Tune-y] 13: kappa.test.mean=0.574; time: 0.2 min
+[Tune-x] 14: ntree=331; mtry=9; nodesize=30
+[Tune-y] 14: kappa.test.mean=0.545; time: 0.4 min
+[Tune-x] 15: ntree=448; mtry=9; nodesize=25
+[Tune-y] 15: kappa.test.mean=0.542; time: 0.6 min
+[Tune-x] 16: ntree=115; mtry=5; nodesize=20
+[Tune-y] 16: kappa.test.mean=0.55; time: 0.2 min
+[Tune-x] 17: ntree=451; mtry=6; nodesize=48
+[Tune-y] 17: kappa.test.mean=0.519; time: 0.5 min
+[Tune-x] 18: ntree=213; mtry=7; nodesize=13
+[Tune-y] 18: kappa.test.mean=0.574; time: 0.3 min
+[Tune-x] 19: ntree=458; mtry=5; nodesize=16
+[Tune-y] 19: kappa.test.mean=0.562; time: 0.6 min
+[Tune-x] 20: ntree=314; mtry=8; nodesize=50
+[Tune-y] 20: kappa.test.mean=0.516; time: 0.4 min
+[Tune-x] 21: ntree=324; mtry=10; nodesize=16
+[Tune-y] 21: kappa.test.mean=0.569; time: 0.5 min
+[Tune-x] 22: ntree=377; mtry=9; nodesize=34
+[Tune-y] 22: kappa.test.mean=0.539; time: 0.5 min
+[Tune-x] 23: ntree=365; mtry=9; nodesize=16
+[Tune-y] 23: kappa.test.mean=0.568; time: 0.6 min
+[Tune-x] 24: ntree=218; mtry=5; nodesize=44
+[Tune-y] 24: kappa.test.mean=0.53; time: 0.2 min
+[Tune-x] 25: ntree=248; mtry=4; nodesize=43
+[Tune-y] 25: kappa.test.mean=0.523; time: 0.3 min
+[Tune-x] 26: ntree=230; mtry=9; nodesize=10
+[Tune-y] 26: kappa.test.mean=0.588; time: 0.4 min
+[Tune-x] 27: ntree=156; mtry=10; nodesize=14
+[Tune-y] 27: kappa.test.mean=0.578; time: 0.2 min
+[Tune-x] 28: ntree=376; mtry=5; nodesize=44
+[Tune-y] 28: kappa.test.mean=0.525; time: 0.4 min
+[Tune-x] 29: ntree=100; mtry=10; nodesize=44
+[Tune-y] 29: kappa.test.mean=0.527; time: 0.1 min
+[Tune-x] 30: ntree=171; mtry=6; nodesize=39
+[Tune-y] 30: kappa.test.mean=0.538; time: 0.2 min
+[Tune-x] 31: ntree=129; mtry=7; nodesize=16
+[Tune-y] 31: kappa.test.mean=0.571; time: 0.2 min
+[Tune-x] 32: ntree=296; mtry=5; nodesize=18
+[Tune-y] 32: kappa.test.mean=0.558; time: 0.4 min
+[Tune-x] 33: ntree=122; mtry=5; nodesize=14
+[Tune-y] 33: kappa.test.mean=0.57; time: 0.2 min
+[Tune-x] 34: ntree=497; mtry=6; nodesize=19
+[Tune-y] 34: kappa.test.mean=0.567; time: 0.7 min
+[Tune-x] 35: ntree=89; mtry=7; nodesize=42
+[Tune-y] 35: kappa.test.mean=0.528; time: 0.1 min
+[Tune-x] 36: ntree=276; mtry=9; nodesize=20
+[Tune-y] 36: kappa.test.mean=0.559; time: 0.4 min
+[Tune-x] 37: ntree=299; mtry=5; nodesize=50
+[Tune-y] 37: kappa.test.mean=0.518; time: 0.3 min
+[Tune-x] 38: ntree=450; mtry=4; nodesize=12
+[Tune-y] 38: kappa.test.mean=0.584; time: 0.6 min
+[Tune-x] 39: ntree=412; mtry=6; nodesize=35
+[Tune-y] 39: kappa.test.mean=0.536; time: 0.5 min
+[Tune-x] 40: ntree=112; mtry=5; nodesize=37
+[Tune-y] 40: kappa.test.mean=0.531; time: 0.1 min
+[Tune-x] 41: ntree=452; mtry=7; nodesize=35
+[Tune-y] 41: kappa.test.mean=0.531; time: 0.6 min
+[Tune-x] 42: ntree=292; mtry=3; nodesize=41
+[Tune-y] 42: kappa.test.mean=0.517; time: 0.3 min
+[Tune-x] 43: ntree=408; mtry=4; nodesize=35
+[Tune-y] 43: kappa.test.mean=0.533; time: 0.5 min
+[Tune-x] 44: ntree=412; mtry=9; nodesize=34
+[Tune-y] 44: kappa.test.mean=0.539; time: 0.5 min
+[Tune-x] 45: ntree=86; mtry=7; nodesize=44
+[Tune-y] 45: kappa.test.mean=0.518; time: 0.1 min
+[Tune-x] 46: ntree=316; mtry=9; nodesize=50
+[Tune-y] 46: kappa.test.mean=0.522; time: 0.4 min
+[Tune-x] 47: ntree=169; mtry=10; nodesize=18
+[Tune-y] 47: kappa.test.mean=0.575; time: 0.3 min
+[Tune-x] 48: ntree=380; mtry=8; nodesize=30
+[Tune-y] 48: kappa.test.mean=0.541; time: 0.5 min
+[Tune-x] 49: ntree=98; mtry=5; nodesize=44
+[Tune-y] 49: kappa.test.mean=0.524; time: 0.1 min
+[Tune-x] 50: ntree=414; mtry=10; nodesize=41
+[Tune-y] 50: kappa.test.mean=0.531; time: 0.5 min
+[Tune] Result: ntree=230; mtry=9; nodesize=10 : kappa.test.mean=0.588</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmZfdHVuZTMgPSB0dW5lUGFyYW1zKGxlYXJuZXIgPSByZiwgcmVzYW1wbGluZyA9IHNldF9jdiwgdGFzayA9IHRyYWluVGFzazEsIHBhci5zZXQgPSByZl9wYXJhbSwgY29udHJvbCA9IHJhbmNvbnRyb2wyLCBtZWFzdXJlcyA9IGthcHBhKVxuYGBgIn0= -->
+<pre class="r"><code>rf_tune3 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.set = rf_param, control = rancontrol2, measures = kappa)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiW1R1bmVdIFN0YXJ0ZWQgdHVuaW5nIGxlYXJuZXIgY2xhc3NpZi5yYW5kb21Gb3Jlc3QgZm9yIHBhcmFtZXRlciBzZXQ6XG4gICAgICAgICAgICBUeXBlIGxlbiBEZWYgICAgQ29uc3RyIFJlcSBUdW5hYmxlIFRyYWZvXG5udHJlZSAgICBpbnRlZ2VyICAgLSAgIC0gNTAgdG8gNTAwICAgLSAgICBUUlVFICAgICAtXG5tdHJ5ICAgICBpbnRlZ2VyICAgLSAgIC0gICAzIHRvIDEwICAgLSAgICBUUlVFICAgICAtXG5ub2Rlc2l6ZSBpbnRlZ2VyICAgLSAgIC0gIDEwIHRvIDUwICAgLSAgICBUUlVFICAgICAtXG5XaXRoIGNvbnRyb2wgY2xhc3M6IFR1bmVDb250cm9sR3JpZFxuSW1wdXRhdGlvbiB2YWx1ZTogMVxuW1R1bmUteF0gMTogbnRyZWU9NTA7IG10cnk9Mzsgbm9kZXNpemU9MTBcbltUdW5lLXldIDE6IGthcHBhLnRlc3QubWVhbj0wLjE0OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSAyOiBudHJlZT0xMDA7IG10cnk9Mzsgbm9kZXNpemU9MTBcbltUdW5lLXldIDI6IGthcHBhLnRlc3QubWVhbj0wLjEyODsgdGltZTogMC40IG1pblxuW1R1bmUteF0gMzogbnRyZWU9MTUwOyBtdHJ5PTM7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAzOiBrYXBwYS50ZXN0Lm1lYW49MC4xMzI7IHRpbWU6IDAuNiBtaW5cbltUdW5lLXhdIDQ6IG50cmVlPTIwMDsgbXRyeT0zOyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNDoga2FwcGEudGVzdC5tZWFuPTAuMTMyOyB0aW1lOiAwLjggbWluXG5bVHVuZS14XSA1OiBudHJlZT0yNTA7IG10cnk9Mzsgbm9kZXNpemU9MTBcbltUdW5lLXldIDU6IGthcHBhLnRlc3QubWVhbj0wLjEzNTsgdGltZTogMS4wIG1pblxuW1R1bmUteF0gNjogbnRyZWU9MzAwOyBtdHJ5PTM7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzM7IHRpbWU6IDEuMyBtaW5cbltUdW5lLXhdIDc6IG50cmVlPTM1MDsgbXRyeT0zOyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNzoga2FwcGEudGVzdC5tZWFuPTAuMTI2OyB0aW1lOiAxLjUgbWluXG5bVHVuZS14XSA4OiBudHJlZT00MDA7IG10cnk9Mzsgbm9kZXNpemU9MTBcbltUdW5lLXldIDg6IGthcHBhLnRlc3QubWVhbj0wLjE0OyB0aW1lOiAxLjcgbWluXG5bVHVuZS14XSA5OiBudHJlZT00NTA7IG10cnk9Mzsgbm9kZXNpemU9MTBcbltUdW5lLXldIDk6IGthcHBhLnRlc3QubWVhbj0wLjE0MjsgdGltZTogMS45IG1pblxuW1R1bmUteF0gMTA6IG50cmVlPTUwMDsgbXRyeT0zOyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMTA6IGthcHBhLnRlc3QubWVhbj0wLjE0MjsgdGltZTogMi4xIG1pblxuW1R1bmUteF0gMTE6IG50cmVlPTUwOyBtdHJ5PTQ7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAxMToga2FwcGEudGVzdC5tZWFuPTAuMTI7IHRpbWU6IDAuMiBtaW5cbltUdW5lLXhdIDEyOiBudHJlZT0xMDA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDEyOiBrYXBwYS50ZXN0Lm1lYW49MC4xMzc7IHRpbWU6IDAuNCBtaW5cbltUdW5lLXhdIDEzOiBudHJlZT0xNTA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDEzOiBrYXBwYS50ZXN0Lm1lYW49MC4xMzg7IHRpbWU6IDAuNiBtaW5cbltUdW5lLXhdIDE0OiBudHJlZT0yMDA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDE0OiBrYXBwYS50ZXN0Lm1lYW49MC4xNDE7IHRpbWU6IDAuOSBtaW5cbltUdW5lLXhdIDE1OiBudHJlZT0yNTA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDE1OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzQ7IHRpbWU6IDEuMSBtaW5cbltUdW5lLXhdIDE2OiBudHJlZT0zMDA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDE2OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzM7IHRpbWU6IDEuMyBtaW5cbltUdW5lLXhdIDE3OiBudHJlZT0zNTA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDE3OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzk7IHRpbWU6IDEuNSBtaW5cbltUdW5lLXhdIDE4OiBudHJlZT00MDA7IG10cnk9NDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDE4OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzsgdGltZTogMS43IG1pblxuW1R1bmUteF0gMTk6IG50cmVlPTQ1MDsgbXRyeT00OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMTk6IGthcHBhLnRlc3QubWVhbj0wLjE0NDsgdGltZTogMS45IG1pblxuW1R1bmUteF0gMjA6IG50cmVlPTUwMDsgbXRyeT00OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMjA6IGthcHBhLnRlc3QubWVhbj0wLjEzODsgdGltZTogMi4xIG1pblxuW1R1bmUteF0gMjE6IG50cmVlPTUwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyMToga2FwcGEudGVzdC5tZWFuPTAuMTM2OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSAyMjogbnRyZWU9MTAwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyMjoga2FwcGEudGVzdC5tZWFuPTAuMTM4OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSAyMzogbnRyZWU9MTUwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyMzoga2FwcGEudGVzdC5tZWFuPTAuMTQzOyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSAyNDogbnRyZWU9MjAwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyNDoga2FwcGEudGVzdC5tZWFuPTAuMTI4OyB0aW1lOiAwLjkgbWluXG5bVHVuZS14XSAyNTogbnRyZWU9MjUwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyNToga2FwcGEudGVzdC5tZWFuPTAuMTM5OyB0aW1lOiAxLjEgbWluXG5bVHVuZS14XSAyNjogbnRyZWU9MzAwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyNjoga2FwcGEudGVzdC5tZWFuPTAuMTMxOyB0aW1lOiAxLjMgbWluXG5bVHVuZS14XSAyNzogbnRyZWU9MzUwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyNzoga2FwcGEudGVzdC5tZWFuPTAuMTI0OyB0aW1lOiAxLjUgbWluXG5bVHVuZS14XSAyODogbnRyZWU9NDAwOyBtdHJ5PTU7IG5vZGVzaXplPTEwXG5bVHVuZS15XSAyODoga2FwcGEudGVzdC5tZWFuPTAuMTQ7IHRpbWU6IDEuNyBtaW5cbltUdW5lLXhdIDI5OiBudHJlZT00NTA7IG10cnk9NTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDI5OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzc7IHRpbWU6IDEuOSBtaW5cbltUdW5lLXhdIDMwOiBudHJlZT01MDA7IG10cnk9NTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDMwOiBrYXBwYS50ZXN0Lm1lYW49MC4xNDE7IHRpbWU6IDIuMiBtaW5cbltUdW5lLXhdIDMxOiBudHJlZT01MDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzE6IGthcHBhLnRlc3QubWVhbj0wLjE0MTsgdGltZTogMC4yIG1pblxuW1R1bmUteF0gMzI6IG50cmVlPTEwMDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzI6IGthcHBhLnRlc3QubWVhbj0wLjE0NjsgdGltZTogMC40IG1pblxuW1R1bmUteF0gMzM6IG50cmVlPTE1MDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzM6IGthcHBhLnRlc3QubWVhbj0wLjE0NjsgdGltZTogMC43IG1pblxuW1R1bmUteF0gMzQ6IG50cmVlPTIwMDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzQ6IGthcHBhLnRlc3QubWVhbj0wLjE1MTsgdGltZTogMC45IG1pblxuW1R1bmUteF0gMzU6IG50cmVlPTI1MDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzU6IGthcHBhLnRlc3QubWVhbj0wLjE0MTsgdGltZTogMS4xIG1pblxuW1R1bmUteF0gMzY6IG50cmVlPTMwMDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzY6IGthcHBhLnRlc3QubWVhbj0wLjE0NDsgdGltZTogMS4zIG1pblxuW1R1bmUteF0gMzc6IG50cmVlPTM1MDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzc6IGthcHBhLnRlc3QubWVhbj0wLjE0NzsgdGltZTogMS41IG1pblxuW1R1bmUteF0gMzg6IG50cmVlPTQwMDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzg6IGthcHBhLnRlc3QubWVhbj0wLjEzMjsgdGltZTogMS43IG1pblxuW1R1bmUteF0gMzk6IG50cmVlPTQ1MDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gMzk6IGthcHBhLnRlc3QubWVhbj0wLjEzOTsgdGltZTogMi4wIG1pblxuW1R1bmUteF0gNDA6IG50cmVlPTUwMDsgbXRyeT02OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNDA6IGthcHBhLnRlc3QubWVhbj0wLjEzNjsgdGltZTogMi4yIG1pblxuW1R1bmUteF0gNDE6IG50cmVlPTUwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0MToga2FwcGEudGVzdC5tZWFuPTAuMTQ4OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSA0MjogbnRyZWU9MTAwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0Mjoga2FwcGEudGVzdC5tZWFuPTAuMTQzOyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSA0MzogbnRyZWU9MTUwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0Mzoga2FwcGEudGVzdC5tZWFuPTAuMTUxOyB0aW1lOiAwLjcgbWluXG5bVHVuZS14XSA0NDogbnRyZWU9MjAwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0NDoga2FwcGEudGVzdC5tZWFuPTAuMTQzOyB0aW1lOiAwLjkgbWluXG5bVHVuZS14XSA0NTogbnRyZWU9MjUwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0NToga2FwcGEudGVzdC5tZWFuPTAuMTQ1OyB0aW1lOiAxLjEgbWluXG5bVHVuZS14XSA0NjogbnRyZWU9MzAwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0Njoga2FwcGEudGVzdC5tZWFuPTAuMTM2OyB0aW1lOiAxLjMgbWluXG5bVHVuZS14XSA0NzogbnRyZWU9MzUwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0Nzoga2FwcGEudGVzdC5tZWFuPTAuMTQ1OyB0aW1lOiAxLjYgbWluXG5bVHVuZS14XSA0ODogbnRyZWU9NDAwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0ODoga2FwcGEudGVzdC5tZWFuPTAuMTQ0OyB0aW1lOiAxLjggbWluXG5bVHVuZS14XSA0OTogbnRyZWU9NDUwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA0OToga2FwcGEudGVzdC5tZWFuPTAuMTM2OyB0aW1lOiAyLjAgbWluXG5bVHVuZS14XSA1MDogbnRyZWU9NTAwOyBtdHJ5PTc7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA1MDoga2FwcGEudGVzdC5tZWFuPTAuMTM5OyB0aW1lOiAyLjIgbWluXG5bVHVuZS14XSA1MTogbnRyZWU9NTA7IG10cnk9ODsgbm9kZXNpemU9MTBcbltUdW5lLXldIDUxOiBrYXBwYS50ZXN0Lm1lYW49MC4xNDM7IHRpbWU6IDAuMiBtaW5cbltUdW5lLXhdIDUyOiBudHJlZT0xMDA7IG10cnk9ODsgbm9kZXNpemU9MTBcbltUdW5lLXldIDUyOiBrYXBwYS50ZXN0Lm1lYW49MC4xNTI7IHRpbWU6IDAuNSBtaW5cbltUdW5lLXhdIDUzOiBudHJlZT0xNTA7IG10cnk9ODsgbm9kZXNpemU9MTBcbltUdW5lLXldIDUzOiBrYXBwYS50ZXN0Lm1lYW49MC4xNTg7IHRpbWU6IDAuNyBtaW5cbltUdW5lLXhdIDU0OiBudHJlZT0yMDA7IG10cnk9ODsgbm9kZXNpemU9MTBcbltUdW5lLXldIDU0OiBrYXBwYS50ZXN0Lm1lYW49MC4xNTsgdGltZTogMC45IG1pblxuW1R1bmUteF0gNTU6IG50cmVlPTI1MDsgbXRyeT04OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNTU6IGthcHBhLnRlc3QubWVhbj0wLjEzOTsgdGltZTogMS4xIG1pblxuW1R1bmUteF0gNTY6IG50cmVlPTMwMDsgbXRyeT04OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNTY6IGthcHBhLnRlc3QubWVhbj0wLjEzMjsgdGltZTogMS40IG1pblxuW1R1bmUteF0gNTc6IG50cmVlPTM1MDsgbXRyeT04OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNTc6IGthcHBhLnRlc3QubWVhbj0wLjEzMjsgdGltZTogMS42IG1pblxuW1R1bmUteF0gNTg6IG50cmVlPTQwMDsgbXRyeT04OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNTg6IGthcHBhLnRlc3QubWVhbj0wLjE0NDsgdGltZTogMS44IG1pblxuW1R1bmUteF0gNTk6IG50cmVlPTQ1MDsgbXRyeT04OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNTk6IGthcHBhLnRlc3QubWVhbj0wLjEzOTsgdGltZTogMi4wIG1pblxuW1R1bmUteF0gNjA6IG50cmVlPTUwMDsgbXRyeT04OyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNjA6IGthcHBhLnRlc3QubWVhbj0wLjE0NDsgdGltZTogMi4zIG1pblxuW1R1bmUteF0gNjE6IG50cmVlPTUwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2MToga2FwcGEudGVzdC5tZWFuPTAuMTQyOyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSA2MjogbnRyZWU9MTAwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2Mjoga2FwcGEudGVzdC5tZWFuPTAuMTQ3OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSA2MzogbnRyZWU9MTUwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2Mzoga2FwcGEudGVzdC5tZWFuPTAuMTUyOyB0aW1lOiAwLjcgbWluXG5bVHVuZS14XSA2NDogbnRyZWU9MjAwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2NDoga2FwcGEudGVzdC5tZWFuPTAuMTU0OyB0aW1lOiAwLjkgbWluXG5bVHVuZS14XSA2NTogbnRyZWU9MjUwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2NToga2FwcGEudGVzdC5tZWFuPTAuMTQ5OyB0aW1lOiAxLjIgbWluXG5bVHVuZS14XSA2NjogbnRyZWU9MzAwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2Njoga2FwcGEudGVzdC5tZWFuPTAuMTM3OyB0aW1lOiAxLjQgbWluXG5bVHVuZS14XSA2NzogbnRyZWU9MzUwOyBtdHJ5PTk7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA2Nzoga2FwcGEudGVzdC5tZWFuPTAuMTQ7IHRpbWU6IDEuNiBtaW5cbltUdW5lLXhdIDY4OiBudHJlZT00MDA7IG10cnk9OTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDY4OiBrYXBwYS50ZXN0Lm1lYW49MC4xNDQ7IHRpbWU6IDEuOSBtaW5cbltUdW5lLXhdIDY5OiBudHJlZT00NTA7IG10cnk9OTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDY5OiBrYXBwYS50ZXN0Lm1lYW49MC4xNDI7IHRpbWU6IDIuMSBtaW5cbltUdW5lLXhdIDcwOiBudHJlZT01MDA7IG10cnk9OTsgbm9kZXNpemU9MTBcbltUdW5lLXldIDcwOiBrYXBwYS50ZXN0Lm1lYW49MC4xNDU7IHRpbWU6IDIuNiBtaW5cbltUdW5lLXhdIDcxOiBudHJlZT01MDsgbXRyeT0xMDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDcxOiBrYXBwYS50ZXN0Lm1lYW49MC4xMzg7IHRpbWU6IDAuMyBtaW5cbltUdW5lLXhdIDcyOiBudHJlZT0xMDA7IG10cnk9MTA7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA3Mjoga2FwcGEudGVzdC5tZWFuPTAuMTM2OyB0aW1lOiAwLjUgbWluXG5bVHVuZS14XSA3MzogbnRyZWU9MTUwOyBtdHJ5PTEwOyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNzM6IGthcHBhLnRlc3QubWVhbj0wLjEyOTsgdGltZTogMC44IG1pblxuW1R1bmUteF0gNzQ6IG50cmVlPTIwMDsgbXRyeT0xMDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDc0OiBrYXBwYS50ZXN0Lm1lYW49MC4xNDI7IHRpbWU6IDEuMCBtaW5cbltUdW5lLXhdIDc1OiBudHJlZT0yNTA7IG10cnk9MTA7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA3NToga2FwcGEudGVzdC5tZWFuPTAuMTQ7IHRpbWU6IDEuMyBtaW5cbltUdW5lLXhdIDc2OiBudHJlZT0zMDA7IG10cnk9MTA7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA3Njoga2FwcGEudGVzdC5tZWFuPTAuMTQxOyB0aW1lOiAxLjQgbWluXG5bVHVuZS14XSA3NzogbnRyZWU9MzUwOyBtdHJ5PTEwOyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gNzc6IGthcHBhLnRlc3QubWVhbj0wLjEzOTsgdGltZTogMS44IG1pblxuW1R1bmUteF0gNzg6IG50cmVlPTQwMDsgbXRyeT0xMDsgbm9kZXNpemU9MTBcbltUdW5lLXldIDc4OiBrYXBwYS50ZXN0Lm1lYW49MC4xMzU7IHRpbWU6IDIuMSBtaW5cbltUdW5lLXhdIDc5OiBudHJlZT00NTA7IG10cnk9MTA7IG5vZGVzaXplPTEwXG5bVHVuZS15XSA3OToga2FwcGEudGVzdC5tZWFuPTAuMTUyOyB0aW1lOiAyLjMgbWluXG5bVHVuZS14XSA4MDogbnRyZWU9NTAwOyBtdHJ5PTEwOyBub2Rlc2l6ZT0xMFxuW1R1bmUteV0gODA6IGthcHBhLnRlc3QubWVhbj0wLjE0MTsgdGltZTogMi42IG1pblxuW1R1bmUteF0gODE6IG50cmVlPTUwOyBtdHJ5PTM7IG5vZGVzaXplPTE0XG5bVHVuZS15XSA4MToga2FwcGEudGVzdC5tZWFuPTAuMTM3OyB0aW1lOiAwLjIgbWluXG5bVHVuZS14XSA4MjogbnRyZWU9MTAwOyBtdHJ5PTM7IG5vZGVzaXplPTE0XG5bVHVuZS15XSA4Mjoga2FwcGEudGVzdC5tZWFuPTAuMTI5OyB0aW1lOiAwLjQgbWluXG5bVHVuZS14XSA4MzogbnRyZWU9MTUwOyBtdHJ5PTM7IG5vZGVzaXplPTE0XG5bVHVuZS15XSA4Mzoga2FwcGEudGVzdC5tZWFuPTAuMTM1OyB0aW1lOiAwLjYgbWluXG5bVHVuZS14XSA4NDogbnRyZWU9MjAwOyBtdHJ5PTM7IG5vZGVzaXplPTE0XG4ifQ== -->
+<pre><code>[Tune] Started tuning learner classif.randomForest for parameter set:
+            Type len Def    Constr Req Tunable Trafo
+ntree    integer   -   - 50 to 500   -    TRUE     -
+mtry     integer   -   -   3 to 10   -    TRUE     -
+nodesize integer   -   -  10 to 50   -    TRUE     -
+With control class: TuneControlGrid
+Imputation value: 1
+[Tune-x] 1: ntree=50; mtry=3; nodesize=10
+[Tune-y] 1: kappa.test.mean=0.14; time: 0.2 min
+[Tune-x] 2: ntree=100; mtry=3; nodesize=10
+[Tune-y] 2: kappa.test.mean=0.128; time: 0.4 min
+[Tune-x] 3: ntree=150; mtry=3; nodesize=10
+[Tune-y] 3: kappa.test.mean=0.132; time: 0.6 min
+[Tune-x] 4: ntree=200; mtry=3; nodesize=10
+[Tune-y] 4: kappa.test.mean=0.132; time: 0.8 min
+[Tune-x] 5: ntree=250; mtry=3; nodesize=10
+[Tune-y] 5: kappa.test.mean=0.135; time: 1.0 min
+[Tune-x] 6: ntree=300; mtry=3; nodesize=10
+[Tune-y] 6: kappa.test.mean=0.133; time: 1.3 min
+[Tune-x] 7: ntree=350; mtry=3; nodesize=10
+[Tune-y] 7: kappa.test.mean=0.126; time: 1.5 min
+[Tune-x] 8: ntree=400; mtry=3; nodesize=10
+[Tune-y] 8: kappa.test.mean=0.14; time: 1.7 min
+[Tune-x] 9: ntree=450; mtry=3; nodesize=10
+[Tune-y] 9: kappa.test.mean=0.142; time: 1.9 min
+[Tune-x] 10: ntree=500; mtry=3; nodesize=10
+[Tune-y] 10: kappa.test.mean=0.142; time: 2.1 min
+[Tune-x] 11: ntree=50; mtry=4; nodesize=10
+[Tune-y] 11: kappa.test.mean=0.12; time: 0.2 min
+[Tune-x] 12: ntree=100; mtry=4; nodesize=10
+[Tune-y] 12: kappa.test.mean=0.137; time: 0.4 min
+[Tune-x] 13: ntree=150; mtry=4; nodesize=10
+[Tune-y] 13: kappa.test.mean=0.138; time: 0.6 min
+[Tune-x] 14: ntree=200; mtry=4; nodesize=10
+[Tune-y] 14: kappa.test.mean=0.141; time: 0.9 min
+[Tune-x] 15: ntree=250; mtry=4; nodesize=10
+[Tune-y] 15: kappa.test.mean=0.134; time: 1.1 min
+[Tune-x] 16: ntree=300; mtry=4; nodesize=10
+[Tune-y] 16: kappa.test.mean=0.133; time: 1.3 min
+[Tune-x] 17: ntree=350; mtry=4; nodesize=10
+[Tune-y] 17: kappa.test.mean=0.139; time: 1.5 min
+[Tune-x] 18: ntree=400; mtry=4; nodesize=10
+[Tune-y] 18: kappa.test.mean=0.13; time: 1.7 min
+[Tune-x] 19: ntree=450; mtry=4; nodesize=10
+[Tune-y] 19: kappa.test.mean=0.144; time: 1.9 min
+[Tune-x] 20: ntree=500; mtry=4; nodesize=10
+[Tune-y] 20: kappa.test.mean=0.138; time: 2.1 min
+[Tune-x] 21: ntree=50; mtry=5; nodesize=10
+[Tune-y] 21: kappa.test.mean=0.136; time: 0.2 min
+[Tune-x] 22: ntree=100; mtry=5; nodesize=10
+[Tune-y] 22: kappa.test.mean=0.138; time: 0.5 min
+[Tune-x] 23: ntree=150; mtry=5; nodesize=10
+[Tune-y] 23: kappa.test.mean=0.143; time: 0.6 min
+[Tune-x] 24: ntree=200; mtry=5; nodesize=10
+[Tune-y] 24: kappa.test.mean=0.128; time: 0.9 min
+[Tune-x] 25: ntree=250; mtry=5; nodesize=10
+[Tune-y] 25: kappa.test.mean=0.139; time: 1.1 min
+[Tune-x] 26: ntree=300; mtry=5; nodesize=10
+[Tune-y] 26: kappa.test.mean=0.131; time: 1.3 min
+[Tune-x] 27: ntree=350; mtry=5; nodesize=10
+[Tune-y] 27: kappa.test.mean=0.124; time: 1.5 min
+[Tune-x] 28: ntree=400; mtry=5; nodesize=10
+[Tune-y] 28: kappa.test.mean=0.14; time: 1.7 min
+[Tune-x] 29: ntree=450; mtry=5; nodesize=10
+[Tune-y] 29: kappa.test.mean=0.137; time: 1.9 min
+[Tune-x] 30: ntree=500; mtry=5; nodesize=10
+[Tune-y] 30: kappa.test.mean=0.141; time: 2.2 min
+[Tune-x] 31: ntree=50; mtry=6; nodesize=10
+[Tune-y] 31: kappa.test.mean=0.141; time: 0.2 min
+[Tune-x] 32: ntree=100; mtry=6; nodesize=10
+[Tune-y] 32: kappa.test.mean=0.146; time: 0.4 min
+[Tune-x] 33: ntree=150; mtry=6; nodesize=10
+[Tune-y] 33: kappa.test.mean=0.146; time: 0.7 min
+[Tune-x] 34: ntree=200; mtry=6; nodesize=10
+[Tune-y] 34: kappa.test.mean=0.151; time: 0.9 min
+[Tune-x] 35: ntree=250; mtry=6; nodesize=10
+[Tune-y] 35: kappa.test.mean=0.141; time: 1.1 min
+[Tune-x] 36: ntree=300; mtry=6; nodesize=10
+[Tune-y] 36: kappa.test.mean=0.144; time: 1.3 min
+[Tune-x] 37: ntree=350; mtry=6; nodesize=10
+[Tune-y] 37: kappa.test.mean=0.147; time: 1.5 min
+[Tune-x] 38: ntree=400; mtry=6; nodesize=10
+[Tune-y] 38: kappa.test.mean=0.132; time: 1.7 min
+[Tune-x] 39: ntree=450; mtry=6; nodesize=10
+[Tune-y] 39: kappa.test.mean=0.139; time: 2.0 min
+[Tune-x] 40: ntree=500; mtry=6; nodesize=10
+[Tune-y] 40: kappa.test.mean=0.136; time: 2.2 min
+[Tune-x] 41: ntree=50; mtry=7; nodesize=10
+[Tune-y] 41: kappa.test.mean=0.148; time: 0.2 min
+[Tune-x] 42: ntree=100; mtry=7; nodesize=10
+[Tune-y] 42: kappa.test.mean=0.143; time: 0.5 min
+[Tune-x] 43: ntree=150; mtry=7; nodesize=10
+[Tune-y] 43: kappa.test.mean=0.151; time: 0.7 min
+[Tune-x] 44: ntree=200; mtry=7; nodesize=10
+[Tune-y] 44: kappa.test.mean=0.143; time: 0.9 min
+[Tune-x] 45: ntree=250; mtry=7; nodesize=10
+[Tune-y] 45: kappa.test.mean=0.145; time: 1.1 min
+[Tune-x] 46: ntree=300; mtry=7; nodesize=10
+[Tune-y] 46: kappa.test.mean=0.136; time: 1.3 min
+[Tune-x] 47: ntree=350; mtry=7; nodesize=10
+[Tune-y] 47: kappa.test.mean=0.145; time: 1.6 min
+[Tune-x] 48: ntree=400; mtry=7; nodesize=10
+[Tune-y] 48: kappa.test.mean=0.144; time: 1.8 min
+[Tune-x] 49: ntree=450; mtry=7; nodesize=10
+[Tune-y] 49: kappa.test.mean=0.136; time: 2.0 min
+[Tune-x] 50: ntree=500; mtry=7; nodesize=10
+[Tune-y] 50: kappa.test.mean=0.139; time: 2.2 min
+[Tune-x] 51: ntree=50; mtry=8; nodesize=10
+[Tune-y] 51: kappa.test.mean=0.143; time: 0.2 min
+[Tune-x] 52: ntree=100; mtry=8; nodesize=10
+[Tune-y] 52: kappa.test.mean=0.152; time: 0.5 min
+[Tune-x] 53: ntree=150; mtry=8; nodesize=10
+[Tune-y] 53: kappa.test.mean=0.158; time: 0.7 min
+[Tune-x] 54: ntree=200; mtry=8; nodesize=10
+[Tune-y] 54: kappa.test.mean=0.15; time: 0.9 min
+[Tune-x] 55: ntree=250; mtry=8; nodesize=10
+[Tune-y] 55: kappa.test.mean=0.139; time: 1.1 min
+[Tune-x] 56: ntree=300; mtry=8; nodesize=10
+[Tune-y] 56: kappa.test.mean=0.132; time: 1.4 min
+[Tune-x] 57: ntree=350; mtry=8; nodesize=10
+[Tune-y] 57: kappa.test.mean=0.132; time: 1.6 min
+[Tune-x] 58: ntree=400; mtry=8; nodesize=10
+[Tune-y] 58: kappa.test.mean=0.144; time: 1.8 min
+[Tune-x] 59: ntree=450; mtry=8; nodesize=10
+[Tune-y] 59: kappa.test.mean=0.139; time: 2.0 min
+[Tune-x] 60: ntree=500; mtry=8; nodesize=10
+[Tune-y] 60: kappa.test.mean=0.144; time: 2.3 min
+[Tune-x] 61: ntree=50; mtry=9; nodesize=10
+[Tune-y] 61: kappa.test.mean=0.142; time: 0.2 min
+[Tune-x] 62: ntree=100; mtry=9; nodesize=10
+[Tune-y] 62: kappa.test.mean=0.147; time: 0.5 min
+[Tune-x] 63: ntree=150; mtry=9; nodesize=10
+[Tune-y] 63: kappa.test.mean=0.152; time: 0.7 min
+[Tune-x] 64: ntree=200; mtry=9; nodesize=10
+[Tune-y] 64: kappa.test.mean=0.154; time: 0.9 min
+[Tune-x] 65: ntree=250; mtry=9; nodesize=10
+[Tune-y] 65: kappa.test.mean=0.149; time: 1.2 min
+[Tune-x] 66: ntree=300; mtry=9; nodesize=10
+[Tune-y] 66: kappa.test.mean=0.137; time: 1.4 min
+[Tune-x] 67: ntree=350; mtry=9; nodesize=10
+[Tune-y] 67: kappa.test.mean=0.14; time: 1.6 min
+[Tune-x] 68: ntree=400; mtry=9; nodesize=10
+[Tune-y] 68: kappa.test.mean=0.144; time: 1.9 min
+[Tune-x] 69: ntree=450; mtry=9; nodesize=10
+[Tune-y] 69: kappa.test.mean=0.142; time: 2.1 min
+[Tune-x] 70: ntree=500; mtry=9; nodesize=10
+[Tune-y] 70: kappa.test.mean=0.145; time: 2.6 min
+[Tune-x] 71: ntree=50; mtry=10; nodesize=10
+[Tune-y] 71: kappa.test.mean=0.138; time: 0.3 min
+[Tune-x] 72: ntree=100; mtry=10; nodesize=10
+[Tune-y] 72: kappa.test.mean=0.136; time: 0.5 min
+[Tune-x] 73: ntree=150; mtry=10; nodesize=10
+[Tune-y] 73: kappa.test.mean=0.129; time: 0.8 min
+[Tune-x] 74: ntree=200; mtry=10; nodesize=10
+[Tune-y] 74: kappa.test.mean=0.142; time: 1.0 min
+[Tune-x] 75: ntree=250; mtry=10; nodesize=10
+[Tune-y] 75: kappa.test.mean=0.14; time: 1.3 min
+[Tune-x] 76: ntree=300; mtry=10; nodesize=10
+[Tune-y] 76: kappa.test.mean=0.141; time: 1.4 min
+[Tune-x] 77: ntree=350; mtry=10; nodesize=10
+[Tune-y] 77: kappa.test.mean=0.139; time: 1.8 min
+[Tune-x] 78: ntree=400; mtry=10; nodesize=10
+[Tune-y] 78: kappa.test.mean=0.135; time: 2.1 min
+[Tune-x] 79: ntree=450; mtry=10; nodesize=10
+[Tune-y] 79: kappa.test.mean=0.152; time: 2.3 min
+[Tune-x] 80: ntree=500; mtry=10; nodesize=10
+[Tune-y] 80: kappa.test.mean=0.141; time: 2.6 min
+[Tune-x] 81: ntree=50; mtry=3; nodesize=14
+[Tune-y] 81: kappa.test.mean=0.137; time: 0.2 min
+[Tune-x] 82: ntree=100; mtry=3; nodesize=14
+[Tune-y] 82: kappa.test.mean=0.129; time: 0.4 min
+[Tune-x] 83: ntree=150; mtry=3; nodesize=14
+[Tune-y] 83: kappa.test.mean=0.135; time: 0.6 min
+[Tune-x] 84: ntree=200; mtry=3; nodesize=14</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Getting Tuned Parameters of Random Forest Models</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5yZl90dW5lMSR5XG5yZl90dW5lMiR5XG5yZl90dW5lMyR5XG5yZl90dW5lNCR5XG5cbnJmX3R1bmUxJHhcbnJmX3R1bmUyJHhcbnJmX3R1bmUzJHhcbnJmX3R1bmU0JHhcblxuYGBgIn0= -->
+<pre class="r"><code>
+rf_tune1$y
+rf_tune2$y
+rf_tune3$y
+rf_tune4$y
+
+rf_tune1$x
+rf_tune2$x
+rf_tune3$x
+rf_tune4$x
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>SVM parameter tuning</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2V0UGFyYW1TZXQoXCJjbGFzc2lmLmtzdm1cIilcbmtzdm0gPSBtYWtlTGVhcm5lcihcImNsYXNzaWYua3N2bVwiLCBwcmVkaWN0LnR5cGUgPSBcInJlc3BvbnNlXCIpXG5wc3N2bSA9IG1ha2VQYXJhbVNldChtYWtlRGlzY3JldGVQYXJhbShcIkNcIiwgdmFsdWVzID0gMl5jKC04LC00LC0yLDApKSxtYWtlRGlzY3JldGVQYXJhbShcInNpZ21hXCIsIHZhbHVlcyA9IDJeYygtOCwtNCwwLDQpKSlcbmN0cmwgPSBtYWtlVHVuZUNvbnRyb2xHcmlkKClcbnNldF9jdiA9IG1ha2VSZXNhbXBsZURlc2MoXCJDVlwiLGl0ZXJzID0gNUwpXG5cbnN2bXR1bmUxPXR1bmVQYXJhbXMoa3N2bSwgdGFzayA9IHRyYWluVGFzazEsIHJlc2FtcGxpbmcgPSBzZXRfY3YsIHBhci5zZXQgPSBwc3N2bSwgY29udHJvbCA9IGN0cmwsbWVhc3VyZXMgPSBrYXBwYSlcblxuc3ZtdHVuZTI9dHVuZVBhcmFtcyhrc3ZtLCB0YXNrID0gdHJhaW5UYXNrMiwgcmVzYW1wbGluZyA9IHNldF9jdiwgcGFyLnNldCA9IHBzc3ZtLCBjb250cm9sID0gY3RybCxtZWFzdXJlcyA9IGthcHBhKVxuXG5gYGAifQ== -->
+<pre class="r"><code>getParamSet(&quot;classif.ksvm&quot;)
+ksvm = makeLearner(&quot;classif.ksvm&quot;, predict.type = &quot;response&quot;)
+pssvm = makeParamSet(makeDiscreteParam(&quot;C&quot;, values = 2^c(-8,-4,-2,0)),makeDiscreteParam(&quot;sigma&quot;, values = 2^c(-8,-4,0,4)))
+ctrl = makeTuneControlGrid()
+set_cv = makeResampleDesc(&quot;CV&quot;,iters = 5L)
+
+svmtune1=tuneParams(ksvm, task = trainTask1, resampling = set_cv, par.set = pssvm, control = ctrl,measures = kappa)
+
+svmtune2=tuneParams(ksvm, task = trainTask2, resampling = set_cv, par.set = pssvm, control = ctrl,measures = kappa)
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-plot-begin eyJjb25kaXRpb25zIjpbXSwiaGVpZ2h0Ijo0MzIuNjMyOSwic2l6ZV9iZWhhdmlvciI6MCwid2lkdGgiOjcwMH0= -->
-<p><img src="data:image/png;base64,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" /></p>
-<!-- rnb-plot-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -530,7 +1119,7 @@ auc(roc_obj)</code></pre>
 <p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KY2xlYXJpbmcgZW52aXJvbm1lbnQgYW5kIGNhbGxpbmcgbGlicmFyaWVzDQpgYGB7cn0NCnJtKGxpc3Q9bHMoKSkNCg0KbGlicmFyeShjYXJldCkNCmxpYnJhcnkoRE13UikNCmxpYnJhcnkoZ2xtbmV0KQ0KbGlicmFyeShmb3JlaWduKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkoZ2dwbG90MikNCmxpYnJhcnkocFJPQykNCnJlcXVpcmUoZTEwNzEpDQpsaWJyYXJ5KEM1MCkNCmxpYnJhcnkocnBhcnQpDQpsaWJyYXJ5KE1MbWV0cmljcykNCmxpYnJhcnkoa2VybmxhYikNCmxpYnJhcnkocmFuZG9tRm9yZXN0KQ0KbGlicmFyeShtbHIpDQpsaWJyYXJ5KHJwYXJ0KQ0KbGlicmFyeShkYXRhLnRhYmxlKQ0KbGlicmFyeShoMm8pDQpsaWJyYXJ5KGZhY3RvZXh0cmEpDQoNCmBgYA0KUmVhZGluZyBEYXRhIGFuZCBnZXR0aW5nIEluc2lnaHRzDQpgYGB7cn0NCk1hc3RlckRhdGE9cmVhZC5jc3YoIkRhdGEuY3N2IikNCkRhdGE9TWFzdGVyRGF0YQ0KRGF0YSRJRD1OVUxMDQpzdHIoRGF0YSkNCg0KRGF0YSRUQVJHRVQ9YXMuZmFjdG9yKERhdGEkVEFSR0VUKQ0Kc3VtKGlzLm5hKERhdGEpKQ0KDQpgYGANClNwbGl0dGluZyB0aGUgZGF0YSBpbnRvIHRyYWluLCB2YWxpZGF0aW9uICYgdGVzdCBkYXRhIHNldHMgYXMgd2Ugc2VlIHRoZXJlIGFyZSBubyBudWxsIHZhbHVlcw0KYGBge3J9DQpzZXQuc2VlZCg3KQ0KDQp0cmFpbnJvd3M9Y3JlYXRlRGF0YVBhcnRpdGlvbihEYXRhJFRBUkdFVCxwPTAuNyxsaXN0ID0gRikNCnRyYWluZGF0YT1EYXRhW3RyYWlucm93cyxdDQp0ZXN0ZGF0YT1EYXRhWy10cmFpbnJvd3MsXQ0KDQp2YWxyb3dzPWNyZWF0ZURhdGFQYXJ0aXRpb24odHJhaW5kYXRhJFRBUkdFVCxwPTAuNyxsaXN0PUYpDQp0cmFpbmRhdGE9dHJhaW5kYXRhW3ZhbHJvd3MsXQ0KdmFsZGF0YT10cmFpbmRhdGFbLXZhbHJvd3MsXQ0KDQpgYGANClByZSBwcm9jZXNzaW5nIHRoZSBkYXRhDQpgYGB7cn0NCg0KcHJlcHJvY3N0ZXA9cHJlUHJvY2Vzcyh0cmFpbmRhdGEsbWV0aG9kID0gYygiY2VudGVyIiwic2NhbGUiKSkNClByZVByb2N0cmFpbmRhdGE9cHJlZGljdChwcmVwcm9jc3RlcCx0cmFpbmRhdGEpDQpQcmVQcm9jdmFsZGF0YT1wcmVkaWN0KHByZXByb2NzdGVwLHZhbGRhdGEpDQpQcmVQcm9jdGVzdGRhdGE9cHJlZGljdChwcmVwcm9jc3RlcCx0ZXN0ZGF0YSkNCg0KYGBgDQpBcHBseWluZyBQQ0ENCmBgYHtyfQ0KDQpwY2FvdXQ9cHJjb21wKFByZVByb2N0cmFpbmRhdGFbc2V0ZGlmZihuYW1lcyhQcmVQcm9jdHJhaW5kYXRhKSwiVEFSR0VUIildKQ0Kc3VtbWFyeShwY2FvdXQpDQoNCnNjcmVlcGxvdChwY2FvdXQsbnBjcz1sZW5ndGgocGNhb3V0JHNkZXYpLHR5cGU9ImxpbmVzIix4bGltPWMoMCwzMCkpDQoNCmZ2aXpfc2NyZWVwbG90KHBjYW91dCwgbmNwPTMwKQ0KDQoNCmBgYA0KUHJlZGljdGluZyBUcmFpbiwgVGVzdCwgVmFsaWRhdGlvbiBkYXRhIHNldHMgd2l0aCB0aGUgb3V0cHV0IG9mIFBDQQ0KYGBge3J9DQoNCnRyYWlucGNhZmluYWw9YXMuZGF0YS5mcmFtZShwcmVkaWN0KHBjYW91dCxQcmVQcm9jdHJhaW5kYXRhWyxzZXRkaWZmKG5hbWVzKFByZVByb2N0cmFpbmRhdGEpLCJUYXJnZXQiKV0pKQ0KdHJhaW5wY2FmaW5hbD10cmFpbnBjYWZpbmFsWywxOjIwXQ0KdHJhaW5wY2FmaW5hbD1kYXRhLmZyYW1lKHRyYWlucGNhZmluYWwsUHJlUHJvY3RyYWluZGF0YSRUQVJHRVQpDQpjb2xuYW1lcyh0cmFpbnBjYWZpbmFsKVsyMV09IlRBUkdFVCINCg0KVmFscGNhZmluYWw9YXMuZGF0YS5mcmFtZShwcmVkaWN0KHBjYW91dCxQcmVQcm9jdmFsZGF0YVssc2V0ZGlmZihuYW1lcyhQcmVQcm9jdmFsZGF0YSksIlRhcmdldCIpXSkpDQpWYWxwY2FmaW5hbD1WYWxwY2FmaW5hbFssMToyMF0NClZhbHBjYWZpbmFsPWRhdGEuZnJhbWUoVmFscGNhZmluYWwsUHJlUHJvY3ZhbGRhdGEkVEFSR0VUKQ0KY29sbmFtZXMoVmFscGNhZmluYWwpWzIxXT0iVEFSR0VUIg0KDQp0ZXN0cGNhZmluYWw9YXMuZGF0YS5mcmFtZShwcmVkaWN0KHBjYW91dCxQcmVQcm9jdGVzdGRhdGFbLHNldGRpZmYobmFtZXMoUHJlUHJvY3Rlc3RkYXRhKSwiVGFyZ2V0IildKSkNCnRlc3RwY2FmaW5hbD10ZXN0cGNhZmluYWxbLDE6MjBdDQp0ZXN0cGNhZmluYWw9ZGF0YS5mcmFtZSh0ZXN0cGNhZmluYWwsUHJlUHJvY3Rlc3RkYXRhJFRBUkdFVCkNCmNvbG5hbWVzKHRlc3RwY2FmaW5hbClbMjFdPSJUQVJHRVQiDQoNCmBgYA0KY2hlY2tpbmcgY2xhc3MgaW1iYWxhbmNlIGZvciB0aGUgdHJhaW4gZGF0YQ0KYGBge3J9DQp0cmFpbmJhbD1wcm9wLnRhYmxlKHRhYmxlKHRyYWlucGNhZmluYWwkVEFSR0VUKSkNCnRyYWluYmFsDQoNCmdncGxvdCh0cmFpbnBjYWZpbmFsLGFlcyh4PVRBUkdFVCkpK2dlb21fYmFyKGFlcyh5ID0gKC4uY291bnQuLikqMTAwL3N1bSguLmNvdW50Li4pKSxzaG93LmxlZ2VuZCA9IFQpK3hsYWIoIlRhcmdldCIpK3lsYWIoIlBlcmNlbnRhZ2UiKStnZ3RpdGxlKCJDbGFzcyBCYWxhbmNlIGluIHRyYWluIGRhdGEiKQ0KDQoNCmBgYA0KSGFuZGxpbmcgdGhlIGNsYXNzIGltYmFsYW5jZSBpbiB0aGUgZGF0YS4gV2UgYXJlIGhhbmRsaW5nIHRoZSBjbGFzcyBpbWJhbGFuY2UgdXNpbmcgc21vdGUgZnJvbSBETXdSDQoNCmBgYHtyfQ0KDQpTbW90ZWRQY2FUcmFpbj1TTU9URShUQVJHRVR+Lix0cmFpbnBjYWZpbmFsLHBlcmMub3ZlciA9IDEwMCwgcGVyYy51bmRlcj0yMDApDQpwcm9wLnRhYmxlKHRhYmxlKFNtb3RlZFBjYVRyYWluJFRBUkdFVCkpDQoNCmBgYA0Ka25uDQpgYGB7cn0NCmtubm1vZGVsMT1rbm4zKFRBUkdFVCB+IC4gLCB0cmFpbnBjYWZpbmFsLCBrID0gOSkNCnByZWRzX2sgPC0gcHJlZGljdChrbm5tb2RlbDEsIFZhbHBjYWZpbmFsKQ0KcHJlZHNrbm4gPC0gaWZlbHNlKHByZWRzX2tbLCAxXSA+IHByZWRzX2tbLCAyXSwgMCwgMSkNCnJvY19vYmogPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgcHJlZHNrbm4pDQphdWMocm9jX29iaikNCg0Ka25ubW9kZWwxPWtubjMoVEFSR0VUIH4gLiAsIFNtb3RlZFBjYVRyYWluLCBrID0gOSkNCnByZWRzX2sgPC0gcHJlZGljdChrbm5tb2RlbDEsIFZhbHBjYWZpbmFsKQ0KcHJlZHNrbm4gPC0gaWZlbHNlKHByZWRzX2tbLCAxXSA+IHByZWRzX2tbLCAyXSwgMCwgMSkNCnJvY19vYmogPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgcHJlZHNrbm4pDQphdWMocm9jX29iaikNCg0KYGBgDQoNCmBgYHtyfQ0Kaz1jKDE6MzApDQprbm5BdWMxPWMoKQ0Ka25uQXVjMj1jKCkNCmZvcihpIGluIGspDQp7DQprbm5tb2RlbDE9a25uMyhUQVJHRVQgfiAuICwgdHJhaW5wY2FmaW5hbCwgayA9IGkpDQpwcmVkc19rIDwtIHByZWRpY3Qoa25ubW9kZWwxLCBWYWxwY2FmaW5hbCkNCnByZWRza25uIDwtIGlmZWxzZShwcmVkc19rWywgMV0gPiBwcmVkc19rWywgMl0sIDAsIDEpDQpyb2Nfb2JqIDwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHByZWRza25uKQ0Ka25uQXVjMVtpXT1hdWMocm9jX29iaikNCn0NCmtubkF1YzENCg0KZm9yKGkgaW4gaykNCnsNCmtubm1vZGVsMT1rbm4zKFRBUkdFVCB+IC4gLCBTbW90ZWRQY2FUcmFpbiwgayA9IGkpDQpwcmVkc19rIDwtIHByZWRpY3Qoa25ubW9kZWwxLCBWYWxwY2FmaW5hbCkNCnByZWRza25uIDwtIGlmZWxzZShwcmVkc19rWywgMV0gPiBwcmVkc19rWywgMl0sIDAsIDEpDQpyb2Nfb2JqIDwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHByZWRza25uKQ0Ka25uQXVjMltpXT1hdWMocm9jX29iaikNCn0NCmtubkF1YzINCg0Kaz1rW2MoMzozMCldDQprbm5BdWMxPWtubkF1YzFbYygzOjMwKV0NCmtubkF1YzI9a25uQXVjMltjKDM6MzApXQ0KDQpxcGxvdChrLGtubkF1YzEsZ2VvbSA9ICJsaW5lIikNCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouDQoNCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KY2xlYXJpbmcgZW52aXJvbm1lbnQgYW5kIGNhbGxpbmcgbGlicmFyaWVzDQpgYGB7cn0NCnJtKGxpc3Q9bHMoKSkNCg0KbGlicmFyeShjYXJldCkNCmxpYnJhcnkoRE13UikNCmxpYnJhcnkoZ2xtbmV0KQ0KbGlicmFyeShmb3JlaWduKQ0KbGlicmFyeShkcGx5cikNCmxpYnJhcnkoZ2dwbG90MikNCmxpYnJhcnkocFJPQykNCnJlcXVpcmUoZTEwNzEpDQpsaWJyYXJ5KEM1MCkNCmxpYnJhcnkocnBhcnQpDQpsaWJyYXJ5KE1MbWV0cmljcykNCmxpYnJhcnkoa2VybmxhYikNCmxpYnJhcnkocmFuZG9tRm9yZXN0KQ0KbGlicmFyeShtbHIpDQpsaWJyYXJ5KHJwYXJ0KQ0KbGlicmFyeShkYXRhLnRhYmxlKQ0KbGlicmFyeShoMm8pDQpsaWJyYXJ5KGZhY3RvZXh0cmEpDQpsaWJyYXJ5KFJPQ1IpDQoNCmBgYA0KUmVhZGluZyBEYXRhIGFuZCBnZXR0aW5nIEluc2lnaHRzDQpgYGB7cn0NCk1hc3RlckRhdGE9cmVhZC5jc3YoIkRhdGEuY3N2IikNCkRhdGE9TWFzdGVyRGF0YQ0KRGF0YSRJRD1OVUxMDQpzdHIoRGF0YSkNCg0KRGF0YSRUQVJHRVQ9YXMuZmFjdG9yKERhdGEkVEFSR0VUKQ0Kc3VtKGlzLm5hKERhdGEpKQ0KDQpgYGANClNwbGl0dGluZyB0aGUgZGF0YSBpbnRvIHRyYWluLCB2YWxpZGF0aW9uICYgdGVzdCBkYXRhIHNldHMgYXMgd2Ugc2VlIHRoZXJlIGFyZSBubyBudWxsIHZhbHVlcw0KYGBge3J9DQpzZXQuc2VlZCg3KQ0KDQp0cmFpbnJvd3M9Y3JlYXRlRGF0YVBhcnRpdGlvbihEYXRhJFRBUkdFVCxwPTAuNyxsaXN0ID0gRikNCnRyYWluZGF0YT1EYXRhW3RyYWlucm93cyxdDQp0ZXN0ZGF0YT1EYXRhWy10cmFpbnJvd3MsXQ0KDQp2YWxyb3dzPWNyZWF0ZURhdGFQYXJ0aXRpb24odHJhaW5kYXRhJFRBUkdFVCxwPTAuNyxsaXN0PUYpDQp0cmFpbmRhdGE9dHJhaW5kYXRhW3ZhbHJvd3MsXQ0KdmFsZGF0YT10cmFpbmRhdGFbLXZhbHJvd3MsXQ0KDQpgYGANClByZSBwcm9jZXNzaW5nIHRoZSBkYXRhDQpgYGB7cn0NCg0KcHJlcHJvY3N0ZXA9cHJlUHJvY2Vzcyh0cmFpbmRhdGEsbWV0aG9kID0gYygiY2VudGVyIiwic2NhbGUiKSkNClByZVByb2N0cmFpbmRhdGE9cHJlZGljdChwcmVwcm9jc3RlcCx0cmFpbmRhdGEpDQpQcmVQcm9jdmFsZGF0YT1wcmVkaWN0KHByZXByb2NzdGVwLHZhbGRhdGEpDQpQcmVQcm9jdGVzdGRhdGE9cHJlZGljdChwcmVwcm9jc3RlcCx0ZXN0ZGF0YSkNCg0KYGBgDQpBcHBseWluZyBQQ0ENCmBgYHtyfQ0KDQpwY2FvdXQ9cHJjb21wKFByZVByb2N0cmFpbmRhdGFbc2V0ZGlmZihuYW1lcyhQcmVQcm9jdHJhaW5kYXRhKSwiVEFSR0VUIildKQ0Kc3VtbWFyeShwY2FvdXQpDQoNCnNjcmVlcGxvdChwY2FvdXQsbnBjcz1sZW5ndGgocGNhb3V0JHNkZXYpLHR5cGU9ImxpbmVzIix4bGltPWMoMCwzMCkpDQoNCmZ2aXpfc2NyZWVwbG90KHBjYW91dCwgbmNwPTMwKQ0KDQoNCmBgYA0KUHJlZGljdGluZyBUcmFpbiwgVGVzdCwgVmFsaWRhdGlvbiBkYXRhIHNldHMgd2l0aCB0aGUgb3V0cHV0IG9mIFBDQQ0KYGBge3J9DQoNCnRyYWlucGNhZmluYWw9YXMuZGF0YS5mcmFtZShwcmVkaWN0KHBjYW91dCxQcmVQcm9jdHJhaW5kYXRhWyxzZXRkaWZmKG5hbWVzKFByZVByb2N0cmFpbmRhdGEpLCJUYXJnZXQiKV0pKQ0KdHJhaW5wY2FmaW5hbD10cmFpbnBjYWZpbmFsWywxOjIwXQ0KdHJhaW5wY2FmaW5hbD1kYXRhLmZyYW1lKHRyYWlucGNhZmluYWwsUHJlUHJvY3RyYWluZGF0YSRUQVJHRVQpDQpjb2xuYW1lcyh0cmFpbnBjYWZpbmFsKVsyMV09IlRBUkdFVCINCg0KVmFscGNhZmluYWw9YXMuZGF0YS5mcmFtZShwcmVkaWN0KHBjYW91dCxQcmVQcm9jdmFsZGF0YVssc2V0ZGlmZihuYW1lcyhQcmVQcm9jdmFsZGF0YSksIlRhcmdldCIpXSkpDQpWYWxwY2FmaW5hbD1WYWxwY2FmaW5hbFssMToyMF0NClZhbHBjYWZpbmFsPWRhdGEuZnJhbWUoVmFscGNhZmluYWwsUHJlUHJvY3ZhbGRhdGEkVEFSR0VUKQ0KY29sbmFtZXMoVmFscGNhZmluYWwpWzIxXT0iVEFSR0VUIg0KDQp0ZXN0cGNhZmluYWw9YXMuZGF0YS5mcmFtZShwcmVkaWN0KHBjYW91dCxQcmVQcm9jdGVzdGRhdGFbLHNldGRpZmYobmFtZXMoUHJlUHJvY3Rlc3RkYXRhKSwiVGFyZ2V0IildKSkNCnRlc3RwY2FmaW5hbD10ZXN0cGNhZmluYWxbLDE6MjBdDQp0ZXN0cGNhZmluYWw9ZGF0YS5mcmFtZSh0ZXN0cGNhZmluYWwsUHJlUHJvY3Rlc3RkYXRhJFRBUkdFVCkNCmNvbG5hbWVzKHRlc3RwY2FmaW5hbClbMjFdPSJUQVJHRVQiDQoNCmBgYA0KY2hlY2tpbmcgY2xhc3MgaW1iYWxhbmNlIGZvciB0aGUgdHJhaW4gZGF0YQ0KYGBge3J9DQp0cmFpbmJhbD1wcm9wLnRhYmxlKHRhYmxlKHRyYWlucGNhZmluYWwkVEFSR0VUKSkNCnRyYWluYmFsDQoNCmdncGxvdCh0cmFpbnBjYWZpbmFsLGFlcyh4PVRBUkdFVCkpK2dlb21fYmFyKGFlcyh5ID0gKC4uY291bnQuLikqMTAwL3N1bSguLmNvdW50Li4pKSxzaG93LmxlZ2VuZCA9IFQpK3hsYWIoIlRhcmdldCIpK3lsYWIoIlBlcmNlbnRhZ2UiKStnZ3RpdGxlKCJDbGFzcyBCYWxhbmNlIGluIHRyYWluIGRhdGEiKQ0KDQoNCmBgYA0KSGFuZGxpbmcgdGhlIGNsYXNzIGltYmFsYW5jZSBpbiB0aGUgZGF0YS4gV2UgYXJlIGhhbmRsaW5nIHRoZSBjbGFzcyBpbWJhbGFuY2UgdXNpbmcgc21vdGUgZnJvbSBETXdSDQoNCmBgYHtyfQ0KDQpTbW90ZWRQY2FUcmFpbj1TTU9URShUQVJHRVR+Lix0cmFpbnBjYWZpbmFsLHBlcmMub3ZlciA9IDEwMCwgcGVyYy51bmRlcj0yMDApDQpwcm9wLnRhYmxlKHRhYmxlKFNtb3RlZFBjYVRyYWluJFRBUkdFVCkpDQoNCmBgYA0Ka25uDQoNCmBgYHtyfQ0KDQprPWMoMTozMCkNCmtubkF1YzE9YygpDQprbm5BdWMyPWMoKQ0KZm9yKGkgaW4gaykNCnsNCmtubm1vZGVsMT1rbm4zKFRBUkdFVCB+IC4gLCB0cmFpbnBjYWZpbmFsLCBrID0gaSkNCnByZWRzX2sgPC0gcHJlZGljdChrbm5tb2RlbDEsIFZhbHBjYWZpbmFsKQ0KcHJlZHNrbm4gPC0gaWZlbHNlKHByZWRzX2tbLCAxXSA+IHByZWRzX2tbLCAyXSwgMCwgMSkNCnJvY19vYmogPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgcHJlZHNrbm4pDQprbm5BdWMxW2ldPWF1Yyhyb2Nfb2JqKQ0KfQ0Ka25uQXVjMQ0KDQpmb3IoaSBpbiBrKQ0Kew0Ka25ubW9kZWwxPWtubjMoVEFSR0VUIH4gLiAsIFNtb3RlZFBjYVRyYWluLCBrID0gaSkNCnByZWRzX2sgPC0gcHJlZGljdChrbm5tb2RlbDEsIFZhbHBjYWZpbmFsKQ0KcHJlZHNrbm4gPC0gaWZlbHNlKHByZWRzX2tbLCAxXSA+IHByZWRzX2tbLCAyXSwgMCwgMSkNCnJvY19vYmogPC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgcHJlZHNrbm4pDQprbm5BdWMyW2ldPWF1Yyhyb2Nfb2JqKQ0KfQ0Ka25uQXVjMg0KDQprPWtbYygzOjMwKV0NCmtubkF1YzE9a25uQXVjMVtjKDM6MzApXQ0Ka25uQXVjMj1rbm5BdWMyW2MoMzozMCldDQoNCmtubmRmPWRhdGEuZnJhbWUoaz1rLE5vblNtb3RlZD1rbm5BdWMxLFNtb3RlZD1rbm5BdWMyKQ0KDQpnZ3Bsb3QoZGF0YT1rbm5kZixhZXMoeD1rLHk9Tm9uU21vdGVkKSkrZ2VvbV9iYXIoc3RhdD0iaWRlbnRpdHkiLCBmaWxsPSJzdGVlbGJsdWUiKSt5bGFiKCJOb24gU21vdGVkIEFVQyIpK3hsYWIoIlZhbHVlIG9mIEsiKQ0KDQpnZ3Bsb3QoZGF0YT1rbm5kZixhZXMoeD1rLHk9U21vdGVkKSkrZ2VvbV9iYXIoc3RhdD0iaWRlbnRpdHkiLCBmaWxsPSJzdGVlbGJsdWUiKSt5bGFiKCJTbW90ZWQgQVVDIikreGxhYigiVmFsdWUgb2YgSyIpDQoNCmBgYA0KU1ZNIFZhbmlsbGEgS2VybmVsDQpgYGB7cn0NCnN2bU1vZGVsMT1rc3ZtKFRBUkdFVH4uLHRyYWlucGNhZmluYWwsa2VybmVsPSJ2YW5pbGxhZG90Iixwcm9iLm1vZGVsPSBUUlVFKQ0KcHJlZHNzdm0xIDwtIHByZWRpY3Qoc3ZtTW9kZWwxLCBWYWxwY2FmaW5hbCkNCnByZWRwcm9iczE9cHJlZGljdChzdm1Nb2RlbDEsIFZhbHBjYWZpbmFsLHR5cGUgPSAicHJvYiIpDQpzdm1maW5hbHByZWRzMT1pZmVsc2UocHJlZHByb2JzMVssIDFdID4gcHJlZHByb2JzMVssIDJdLCAwLCAxKQ0Kc3ZtUm9jT2JqMTwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHN2bWZpbmFscHJlZHMxKQ0Kc3ZtQXVjMT1hdWMoc3ZtUm9jT2JqMSkNCnN2bUF1YzENCiNjb25mdXNpb25NYXRyaXgocHJlZHNzdm0xLCBWYWxwY2FmaW5hbCRUQVJHRVQpDQoNCnN2bU1vZGVsMj1rc3ZtKFRBUkdFVH4uLFNtb3RlZFBjYVRyYWluLGtlcm5lbD0idmFuaWxsYWRvdCIscHJvYi5tb2RlbD0gVFJVRSkNCnByZWRzc3ZtMiA8LSBwcmVkaWN0KHN2bU1vZGVsMiwgVmFscGNhZmluYWwpDQpwcmVkcHJvYnMyPXByZWRpY3Qoc3ZtTW9kZWwyLCBWYWxwY2FmaW5hbCx0eXBlID0gInByb2IiKQ0Kc3ZtZmluYWxwcmVkczI9aWZlbHNlKHByZWRwcm9iczJbLCAxXSA+IHByZWRwcm9iczJbLCAyXSwgMCwgMSkNCnN2bVJvY09iajI8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBzdm1maW5hbHByZWRzMikNCnN2bUF1YzI9YXVjKHN2bVJvY09iajIpDQpzdm1BdWMyDQojY29uZnVzaW9uTWF0cml4KHByZWRzc3ZtMiwgVmFscGNhZmluYWwkVEFSR0VUKQ0KDQpgYGANClNWTSB0YW5oZG90IGtlcm5lbA0KYGBge3J9DQpzdm1Nb2RlbDM9a3N2bShUQVJHRVR+Lix0cmFpbnBjYWZpbmFsLGtlcm5lbD0idGFuaGRvdCIscHJvYi5tb2RlbD0gVFJVRSkNCnByZWRzc3ZtMyA8LSBwcmVkaWN0KHN2bU1vZGVsMywgVmFscGNhZmluYWwpDQpwcmVkcHJvYnMzPXByZWRpY3Qoc3ZtTW9kZWwzLCBWYWxwY2FmaW5hbCx0eXBlID0gInByb2IiKQ0Kc3ZtZmluYWxwcmVkczM9aWZlbHNlKHByZWRwcm9iczNbLCAxXSA+IHByZWRwcm9iczNbLCAyXSwgMCwgMSkNCnN2bVJvY09iajM8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBzdm1maW5hbHByZWRzMykNCnN2bUF1YzM9YXVjKHN2bVJvY09iajMpDQpzdm1BdWMzDQojY29uZnVzaW9uTWF0cml4KHByZWRzc3ZtMywgVmFscGNhZmluYWwkVEFSR0VUKQ0KDQpzdm1Nb2RlbDQ9a3N2bShUQVJHRVR+LixTbW90ZWRQY2FUcmFpbixrZXJuZWw9InRhbmhkb3QiLHByb2IubW9kZWw9IFRSVUUpDQpwcmVkc3N2bTQgPC0gcHJlZGljdChzdm1Nb2RlbDQsIFZhbHBjYWZpbmFsKQ0KcHJlZHByb2JzND1wcmVkaWN0KHN2bU1vZGVsNCwgVmFscGNhZmluYWwsdHlwZSA9ICJwcm9iIikNCnN2bWZpbmFscHJlZHM0PWlmZWxzZShwcmVkcHJvYnM0WywgMV0gPiBwcmVkcHJvYnM0WywgMl0sIDAsIDEpDQpzdm1Sb2NPYmo0PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczQpDQpzdm1BdWM0PWF1Yyhzdm1Sb2NPYmo0KQ0Kc3ZtQXVjNA0KI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTQsIFZhbHBjYWZpbmFsJFRBUkdFVCkNCg0KDQpgYGANCg0KU1ZNIHJiZmRvdCBrZXJuZWwNCg0KYGBge3J9DQoNCnN2bU1vZGVsNT1rc3ZtKFRBUkdFVH4uLHRyYWlucGNhZmluYWwsa2VybmVsPSJyYmZkb3QiLHByb2IubW9kZWw9IFRSVUUpDQpwcmVkc3N2bTUgPC0gcHJlZGljdChzdm1Nb2RlbDUsIFZhbHBjYWZpbmFsKQ0KcHJlZHByb2JzNT1wcmVkaWN0KHN2bU1vZGVsNSwgVmFscGNhZmluYWwsdHlwZSA9ICJwcm9iIikNCnN2bWZpbmFscHJlZHM1PWlmZWxzZShwcmVkcHJvYnM1WywgMV0gPiBwcmVkcHJvYnM1WywgMl0sIDAsIDEpDQpzdm1Sb2NPYmo1PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczUpDQpzdm1BdWM1PWF1Yyhzdm1Sb2NPYmo1KQ0Kc3ZtQXVjNQ0KI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTUsIFZhbHBjYWZpbmFsJFRBUkdFVCkNCg0Kc3ZtTW9kZWw2PWtzdm0oVEFSR0VUfi4sU21vdGVkUGNhVHJhaW4sa2VybmVsPSJyYmZkb3QiLHByb2IubW9kZWw9IFRSVUUpDQpwcmVkc3N2bTYgPC0gcHJlZGljdChzdm1Nb2RlbDYsIFZhbHBjYWZpbmFsKQ0KcHJlZHByb2JzNj1wcmVkaWN0KHN2bU1vZGVsNiwgVmFscGNhZmluYWwsdHlwZSA9ICJwcm9iIikNCnN2bWZpbmFscHJlZHM2PWlmZWxzZShwcmVkcHJvYnM2WywgMV0gPiBwcmVkcHJvYnM2WywgMl0sIDAsIDEpDQpzdm1Sb2NPYmo2PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczYpDQpzdm1BdWM2PWF1Yyhzdm1Sb2NPYmo2KQ0Kc3ZtQXVjNg0KI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTYsIFZhbHBjYWZpbmFsJFRBUkdFVCkNCg0KYGBgDQpTVk0gcG9seWRvdA0KYGBge3J9DQpzdm1Nb2RlbDc9a3N2bShUQVJHRVR+Lix0cmFpbnBjYWZpbmFsLGtlcm5lbD0icG9seWRvdCIscHJvYi5tb2RlbD0gVFJVRSkNCnByZWRzc3ZtNyA8LSBwcmVkaWN0KHN2bU1vZGVsNywgVmFscGNhZmluYWwpDQpwcmVkcHJvYnM3PXByZWRpY3Qoc3ZtTW9kZWw3LCBWYWxwY2FmaW5hbCx0eXBlID0gInByb2IiKQ0Kc3ZtZmluYWxwcmVkczc9aWZlbHNlKHByZWRwcm9iczdbLCAxXSA+IHByZWRwcm9iczdbLCAyXSwgMCwgMSkNCnN2bVJvY09iajc8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBzdm1maW5hbHByZWRzNykNCnN2bUF1Yzc9YXVjKHN2bVJvY09iajcpDQpzdm1BdWM3DQojY29uZnVzaW9uTWF0cml4KHByZWRzc3ZtNywgVmFscGNhZmluYWwkVEFSR0VUKQ0KDQpzdm1Nb2RlbDg9a3N2bShUQVJHRVR+LixTbW90ZWRQY2FUcmFpbixrZXJuZWw9InBvbHlkb3QiLHByb2IubW9kZWw9IFRSVUUpDQpwcmVkc3N2bTggPC0gcHJlZGljdChzdm1Nb2RlbDgsIFZhbHBjYWZpbmFsKQ0KcHJlZHByb2JzOD1wcmVkaWN0KHN2bU1vZGVsOCwgVmFscGNhZmluYWwsdHlwZSA9ICJwcm9iIikNCnN2bWZpbmFscHJlZHM4PWlmZWxzZShwcmVkcHJvYnM4WywgMV0gPiBwcmVkcHJvYnM4WywgMl0sIDAsIDEpDQpzdm1Sb2NPYmo4PC0gcm9jKFZhbHBjYWZpbmFsJFRBUkdFVCwgc3ZtZmluYWxwcmVkczgpDQpzdm1BdWM4PWF1Yyhzdm1Sb2NPYmo4KQ0Kc3ZtQXVjOA0KI2NvbmZ1c2lvbk1hdHJpeChwcmVkc3N2bTgsIFZhbHBjYWZpbmFsJFRBUkdFVCkNCg0KYGBgDQpEZWNpc2lvbiBUcmVlcw0KYGBge3J9DQpEdE1vZGVsMT1ycGFydChUQVJHRVR+Lix0cmFpbnBjYWZpbmFsKQ0KRFQxUHJlZHM9cHJlZGljdChEdE1vZGVsMSxWYWxwY2FmaW5hbFssc2V0ZGlmZihuYW1lcyhWYWxwY2FmaW5hbCksIlRhcmdldCIpXSkNCnByZWRzX3RyZWUxIDwtIGlmZWxzZShEVDFQcmVkc1ssIDFdID4gRFQxUHJlZHNbLCAyXSwgMCwgMSkNCnRyZWVyb2NvYmoxIDwtIHJvYyhWYWxwY2FmaW5hbCRUQVJHRVQsIHByZWRzX3RyZWUxKQ0KRFRhdWMxPWF1Yyh0cmVlcm9jb2JqMSkNCkRUYXVjMQ0KDQpEdE1vZGVsMj1ycGFydChUQVJHRVR+LixTbW90ZWRQY2FUcmFpbikNCkRUMlByZWRzPXByZWRpY3QoRHRNb2RlbDIsVmFscGNhZmluYWxbLHNldGRpZmYobmFtZXMoVmFscGNhZmluYWwpLCJUYXJnZXQiKV0pDQpwcmVkc190cmVlMiA8LSBpZmVsc2UoRFQyUHJlZHNbLCAxXSA+IERUMlByZWRzWywgMl0sIDAsIDEpDQp0cmVlcm9jb2JqMiA8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBwcmVkc190cmVlMikNCkRUYXVjMj1hdWModHJlZXJvY29iajIpDQpEVGF1YzINCg0KYGBgDQpSYW5kb20gRm9yZXN0cw0KYGBge3J9DQoNClJmTW9kZWwxPXJhbmRvbUZvcmVzdChUQVJHRVR+IC4gLCB0cmFpbnBjYWZpbmFsKQ0KcHJlZHNyZjEgPC0gcHJlZGljdChSZk1vZGVsMSwgVmFscGNhZmluYWwpDQpwcm9icHJlZHNSZjE9cHJlZGljdChSZk1vZGVsMSwgVmFscGNhZmluYWwsdHlwZSA9ICJwcm9iIikNClJmcHJlZHNmaW5hbDE9aWZlbHNlKHByb2JwcmVkc1JmMVssIDFdID4gcHJvYnByZWRzUmYxWywgMl0sIDAsIDEpDQpSRlJvY09iajE8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBSZnByZWRzZmluYWwxKQ0KUkZBdWMxPWF1YyhSRlJvY09iajEpDQpSRkF1YzENCiNjb25mdXNpb25NYXRyaXgocHJlZHNyZjEsIFZhbHBjYWZpbmFsJFRBUkdFVCkNCg0KUmZNb2RlbDI9cmFuZG9tRm9yZXN0KFRBUkdFVH4gLiAsIFNtb3RlZFBjYVRyYWluKQ0KcHJlZHNyZjIgPC0gcHJlZGljdChSZk1vZGVsMiwgVmFscGNhZmluYWwpDQpwcm9icHJlZHNSZjI9cHJlZGljdChSZk1vZGVsMiwgVmFscGNhZmluYWwsdHlwZSA9ICJwcm9iIikNClJmcHJlZHNmaW5hbDI9aWZlbHNlKHByb2JwcmVkc1JmMlssIDFdID4gcHJvYnByZWRzUmYyWywgMl0sIDAsIDEpDQpSRlJvY09iajI8LSByb2MoVmFscGNhZmluYWwkVEFSR0VULCBSZnByZWRzZmluYWwyKQ0KUkZBdWMyPWF1YyhSRlJvY09iajIpDQpSRkF1YzINCiNjb25mdXNpb25NYXRyaXgocHJlZHNyZjIsIFZhbHBjYWZpbmFsJFRBUkdFVCkNCg0KYGBgDQpSYW5kb20gRm9yZXN0cyBwYXJhbWV0ZXIgdHVuaW5nDQpgYGB7cn0NCnRyYWluVGFzazE9bWFrZUNsYXNzaWZUYXNrKGRhdGE9dHJhaW5wY2FmaW5hbCx0YXJnZXQgPSAiVEFSR0VUIikNCnRyYWluVGFzazI9bWFrZUNsYXNzaWZUYXNrKGRhdGE9U21vdGVkUGNhVHJhaW4sdGFyZ2V0ID0gIlRBUkdFVCIpDQoNClZhbFRhc2sxPW1ha2VDbGFzc2lmVGFzayhkYXRhPVZhbHBjYWZpbmFsLHRhcmdldCA9ICJUQVJHRVQiKQ0KVmFsVGFzazI9bWFrZUNsYXNzaWZUYXNrKGRhdGE9VmFscGNhZmluYWwsdGFyZ2V0ID0gIlRBUkdFVCIpDQoNCmdldFBhcmFtU2V0KCJjbGFzc2lmLnJhbmRvbUZvcmVzdCIpDQpyZj1tYWtlTGVhcm5lcigiY2xhc3NpZi5yYW5kb21Gb3Jlc3QiLCBwcmVkaWN0LnR5cGUgPSAicmVzcG9uc2UiLCBwYXIudmFscyA9IGxpc3QobnRyZWUgPSAyMDAsIG10cnkgPSAzKSkNCg0KcmYkcGFyLnZhbHMgPSBsaXN0KGltcG9ydGFuY2UgPSBUUlVFKQ0KDQpyZl9wYXJhbSA9IG1ha2VQYXJhbVNldCgNCm1ha2VJbnRlZ2VyUGFyYW0oIm50cmVlIixsb3dlciA9IDUwLCB1cHBlciA9IDUwMCksDQptYWtlSW50ZWdlclBhcmFtKCJtdHJ5IiwgbG93ZXIgPSAzLCB1cHBlciA9IDEwKSwNCm1ha2VJbnRlZ2VyUGFyYW0oIm5vZGVzaXplIiwgbG93ZXIgPSAxMCwgdXBwZXIgPSA1MCkNCikNCg0KcmFuY29udHJvbCA9IG1ha2VUdW5lQ29udHJvbFJhbmRvbShtYXhpdCA9IDUwTCkNCnJhbmNvbnRyb2wyPW1ha2VUdW5lQ29udHJvbEdyaWQocmVzb2x1dGlvbj0gMTBMKQ0Kc2V0X2N2ID0gbWFrZVJlc2FtcGxlRGVzYygiQ1YiLGl0ZXJzID0gNUwpDQoNCnJmX3R1bmUxID0gdHVuZVBhcmFtcyhsZWFybmVyID0gcmYsIHJlc2FtcGxpbmcgPSBzZXRfY3YsIHRhc2sgPSB0cmFpblRhc2sxLCBwYXIuc2V0ID0gcmZfcGFyYW0sIGNvbnRyb2wgPSByYW5jb250cm9sLCBtZWFzdXJlcyA9IGthcHBhKQ0KDQpyZl90dW5lMiA9IHR1bmVQYXJhbXMobGVhcm5lciA9IHJmLCByZXNhbXBsaW5nID0gc2V0X2N2LCB0YXNrID0gdHJhaW5UYXNrMiwgcGFyLnNldCA9IHJmX3BhcmFtLCBjb250cm9sID0gcmFuY29udHJvbCwgbWVhc3VyZXMgPSBrYXBwYSkNCg0KcmZfdHVuZTMgPSB0dW5lUGFyYW1zKGxlYXJuZXIgPSByZiwgcmVzYW1wbGluZyA9IHNldF9jdiwgdGFzayA9IHRyYWluVGFzazEsIHBhci5zZXQgPSByZl9wYXJhbSwgY29udHJvbCA9IHJhbmNvbnRyb2wyLCBtZWFzdXJlcyA9IGthcHBhKQ0KDQpyZl90dW5lNCA9IHR1bmVQYXJhbXMobGVhcm5lciA9IHJmLCByZXNhbXBsaW5nID0gc2V0X2N2LCB0YXNrID0gdHJhaW5UYXNrMiwgcGFyLnNldCA9IHJmX3BhcmFtLCBjb250cm9sID0gcmFuY29udHJvbDIsIG1lYXN1cmVzID0ga2FwcGEpDQoNCg0KYGBgDQpHZXR0aW5nIFR1bmVkIFBhcmFtZXRlcnMgb2YgUmFuZG9tIEZvcmVzdCBNb2RlbHMNCmBgYHtyfQ0KDQpyZl90dW5lMSR5DQpyZl90dW5lMiR5DQpyZl90dW5lMyR5DQpyZl90dW5lNCR5DQoNCnJmX3R1bmUxJHgNCnJmX3R1bmUyJHgNCnJmX3R1bmUzJHgNCnJmX3R1bmU0JHgNCg0KYGBgDQpTVk0gcGFyYW1ldGVyIHR1bmluZw0KYGBge3J9DQpnZXRQYXJhbVNldCgiY2xhc3NpZi5rc3ZtIikNCmtzdm0gPSBtYWtlTGVhcm5lcigiY2xhc3NpZi5rc3ZtIiwgcHJlZGljdC50eXBlID0gInJlc3BvbnNlIikNCnBzc3ZtID0gbWFrZVBhcmFtU2V0KG1ha2VEaXNjcmV0ZVBhcmFtKCJDIiwgdmFsdWVzID0gMl5jKC04LC00LC0yLDApKSxtYWtlRGlzY3JldGVQYXJhbSgic2lnbWEiLCB2YWx1ZXMgPSAyXmMoLTgsLTQsMCw0KSkpDQpjdHJsID0gbWFrZVR1bmVDb250cm9sR3JpZCgpDQpzZXRfY3YgPSBtYWtlUmVzYW1wbGVEZXNjKCJDViIsaXRlcnMgPSA1TCkNCg0Kc3ZtdHVuZTE9dHVuZVBhcmFtcyhrc3ZtLCB0YXNrID0gdHJhaW5UYXNrMSwgcmVzYW1wbGluZyA9IHNldF9jdiwgcGFyLnNldCA9IHBzc3ZtLCBjb250cm9sID0gY3RybCxtZWFzdXJlcyA9IGthcHBhKQ0KDQpzdm10dW5lMj10dW5lUGFyYW1zKGtzdm0sIHRhc2sgPSB0cmFpblRhc2syLCByZXNhbXBsaW5nID0gc2V0X2N2LCBwYXIuc2V0ID0gcHNzdm0sIGNvbnRyb2wgPSBjdHJsLG1lYXN1cmVzID0ga2FwcGEpDQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCmBgYHtyfQ0KDQpgYGANCg0KYGBge3J9DQoNCmBgYA0KDQpgYGB7cn0NCg0KYGBgDQoNCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCg0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQo=</div>
 
 
 
