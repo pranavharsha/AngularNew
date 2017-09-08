@@ -305,24 +305,17 @@ rf_tune1 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.
 
 rf_tune2 = tuneParams(learner = rf, resampling = set_cv, task = trainTask2, par.set = rf_param, control = rancontrol, measures = kappa)
 
-rf_tune3 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.set = rf_param, control = rancontrol2, measures = kappa)
+#rf_tune3 = tuneParams(learner = rf, resampling = set_cv, task = trainTask1, par.set = rf_param, control = rancontrol2, measures = kappa)
 
-rf_tune4 = tuneParams(learner = rf, resampling = set_cv, task = trainTask2, par.set = rf_param, control = rancontrol2, measures = kappa)
+#rf_tune4 = tuneParams(learner = rf, resampling = set_cv, task = trainTask2, par.set = rf_param, control = rancontrol2, measures = kappa)
 
 
 ```
 Getting Tuned Parameters of Random Forest Models
 ```{r}
 
-rf_tune1$y
-rf_tune2$y
-rf_tune3$y
-rf_tune4$y
-
 rf_tune1$x
 rf_tune2$x
-rf_tune3$x
-rf_tune4$x
 
 ```
 SVM parameter tuning
@@ -338,24 +331,96 @@ svmtune1=tuneParams(ksvm, task = trainTask1, resampling = set_cv, par.set = pssv
 svmtune2=tuneParams(ksvm, task = trainTask2, resampling = set_cv, par.set = pssvm, control = ctrl,measures = kappa)
 
 ```
-
+SVM Tuned Params
 ```{r}
+
+svmtune1$x
+
+svmtune2$x
+
 
 ```
-
+RF Tuned Params Model
 ```{r}
+
+RfModel3=randomForest(TARGET~ . , trainpcafinal,ntree=75,mtry=3,nodesize=11)
+predsrf3 <- predict(RfModel3, Valpcafinal)
+probpredsRf3=predict(RfModel3, Valpcafinal,type = "prob")
+Rfpredsfinal3=ifelse(probpredsRf3[, 1] > probpredsRf3[, 2], 0, 1)
+RFRocObj3<- roc(Valpcafinal$TARGET, Rfpredsfinal3)
+RFAuc3=auc(RFRocObj3)
+RFAuc3
+#confusionMatrix(predsrf3, Valpcafinal$TARGET)
+
+RfModel4=randomForest(TARGET~ . , SmotedPcaTrain,ntree=230,mtry=9,nodesize=10)
+predsrf4 <- predict(RfModel4, Valpcafinal)
+probpredsRf4=predict(RfModel4, Valpcafinal,type = "prob")
+Rfpredsfinal4=ifelse(probpredsRf4[, 1] > probpredsRf4[, 2], 0, 1)
+RFRocObj4<- roc(Valpcafinal$TARGET, Rfpredsfinal4)
+RFAuc4=auc(RFRocObj4)
+RFAuc4
+#confusionMatrix(predsrf4, Valpcafinal$TARGET)
 
 ```
-
+SVM Parameter tuned Modeels
 ```{r}
+
+svmModel9=ksvm(TARGET~.,data=trainpcafinal,kernel="rbfdot",kpar=list(sigma=0.00390625),C=0.0625,prob.model= TRUE)
+predssvm9 <- predict(svmModel9, Valpcafinal)
+predprobs9=predict(svmModel9, Valpcafinal,type = "prob")
+svmfinalpreds9=ifelse(predprobs9[, 1] > predprobs9[, 2], 0, 1)
+svmRocObj9<- roc(Valpcafinal$TARGET, svmfinalpreds9)
+svmAuc9=auc(svmRocObj9)
+svmAuc9
+#confusionMatrix(predssvm9, Valpcafinal$TARGET)
+
+svmModel10=ksvm(TARGET~.,data=SmotedPcaTrain,kernel="rbfdot",kpar=list(sigma=16),C=1,prob.model= TRUE)
+predssvm10 <- predict(svmModel10, Valpcafinal)
+predprobs10=predict(svmModel10, Valpcafinal,type = "prob")
+svmfinalpreds10=ifelse(predprobs10[, 1] > predprobs10[, 2], 0, 1)
+svmRocObj10<- roc(Valpcafinal$TARGET, svmfinalpreds10)
+svmAuc10=auc(svmRocObj10)
+svmAuc10
+#confusionMatrix(predssvm10, Valpcafinal$TARGET)
 
 ```
-
+Testing Best Models on Test data (Unseen) Random Forest
 ```{r}
+#Non Smoted Model
+predsrf5 <- predict(RfModel3, testpcafinal)
+probpredsRf5=predict(RfModel3, testpcafinal,type = "prob")
+Rfpredsfinal5=ifelse(probpredsRf5[, 1] > probpredsRf5[, 2], 0, 1)
+RFRocObj5<- roc(testpcafinal$TARGET, Rfpredsfinal5)
+RFAuc5=auc(RFRocObj5)
+RFAuc5
+
+#Smoted Model
+predsrf6 <- predict(RfModel4, testpcafinal)
+probpredsRf6=predict(RfModel4, testpcafinal,type = "prob")
+Rfpredsfinal6=ifelse(probpredsRf6[, 1] > probpredsRf6[, 2], 0, 1)
+RFRocObj6<- roc(testpcafinal$TARGET, Rfpredsfinal6)
+RFAuc6=auc(RFRocObj6)
+RFAuc6
 
 ```
-
+Testing Best Models on Test data (Unseen) SVM
 ```{r}
+
+#Non Smoted Model
+predssvm11 <- predict(svmModel9, testpcafinal)
+predprobs11=predict(svmModel9, testpcafinal,type = "prob")
+svmfinalpreds11=ifelse(predprobs11[, 1] > predprobs11[, 2], 0, 1)
+svmRocObj11<- roc(testpcafinal$TARGET, svmfinalpreds11)
+svmAuc11=auc(svmRocObj11)
+svmAuc11
+
+#Smoted Model
+predssvm12 <- predict(svmModel10, testpcafinal)
+predprobs12=predict(svmModel10, testpcafinal,type = "prob")
+svmfinalpreds12=ifelse(predprobs12[, 1] > predprobs12[, 2], 0, 1)
+svmRocObj12<- roc(testpcafinal$TARGET, svmfinalpreds12)
+svmAuc12=auc(svmRocObj12)
+svmAuc12
 
 ```
 
