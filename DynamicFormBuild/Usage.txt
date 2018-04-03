@@ -1,0 +1,74 @@
+About:
+Using this library you can generate Form dynamically and save the data into respective list. Please follow the below steps.
+Usage:
+Step-1: 
+We will create necessary lists to host form data and form fields.
+•	Add the “DynamicFormTemplate.stp” under List Templates in site settings.
+•	Go to Site Contents now and add the list using the added  DynamicFormTemplate 
+•	Please add Picture Library with name “Image Assets” if you are using Rich Text Area in the form. This library stores all the images added into the Rich Text Area in the form.
+•	So the list is created with pre-defined columns. All the columns are explained below :
+Title: The Form Field label name should be given here. From the below example Name should be given here.
+  
+FieldType: This contains information about the Field Type at front-end on Form. This is a choice field containing below options. They are explained as below:
+1.	Single Line Input: Input Tag
+2.	Multiple Line Input:  Text Area
+3.	Multiple Line Rich Text: Rich Text Area (Please add Picture Library with name “Image Assets” if you are using this. This library stores all the images added into the Rich Text Area)
+4.	Radio Button: Radio Buttons
+5.	Checkbox: Check Boxes
+6.	Single People Picker: Client Side People Picker which allows only one user.
+7.	Multiple People Picker: Client Side People Picker which allows multiple users.
+8.	Dropdown: Dropdown (Select tag).
+9.	Multi Select Dropdown: Dropdown with multiple selections.
+10.	Date: Date field.
+11.	Vacant Space: Use this if you want to leave blank space for n-number of Bootstrap grid columns in the form.
+12.	Attachment: This adds Attachments field to form.
+
+ListFieldType: This contains information about the Field Type at back-end in the list. This is a choice field containing below options. They are explained as below:
+Note: Please make sure that field types selected here is matched with original types in list.
+1.	Single Line of Text: Select this if it is Single Line of Text in back-end.
+2.	Multiple Line of Text: Select this if it is Multiple Line of Text in back-end.
+3.	Single Lookup: Select this if it is Single Valued Lookup in back-end.
+4.	Multiple Lookup: Select this if it is Multiple Lookup in back-end.
+5.	Date: Select this if it is Date in back-end.
+6.	Single People Picker: Select this if it is Single People Picker in back-end.
+7.	Multiple People Picker: Select this if it is Multiple People Picker in back-end.
+
+ListFieldValue: This contains information about the Field Reference Name of the column in the back-end list. This is a Single Line Text field. Copy the Field Reference Name into this. This is the main mapping which is helped in creating the object.
+FieldValues: This contains information of values for the Dropdown, Checkboxes, and Radio-buttons. If the values are to be hardcoded then give it here. The delimiter is “,”.
+Example: India,USA,Argentina,Brazil
+FieldsList: If the values for the Dropdown, Checkboxes, and Radio-buttons are coming from a different list then give the list name here. So it will pull the data from the mentioned list. 
+FieldListColumnName: If you are using FieldsList for the values of Dropdown, Checkboxes, and Radio-buttons then mention the column name in the list from which this needs to be taken. 
+IsFieldValues: This is a Yes/No selection box. Yes says it to use Field values i.e; hard coded values for the Dropdown, Checkboxes, and Radio-buttons. No says it to use FieldsList and pull the data from list for the Dropdown, Checkboxes, and Radio-buttons.
+Validations: This is a multiple select choice field. Select all necessary validations to be applied for this particular form field at front end.
+BootstrapNumber: Give the grid column number to be allocated for this form field.
+Example: 4 or 6 or 12 or 2.
+Order: Order number in which this form field is to be displayed. It follows ascending order.
+Display: Yes/No checkbox to show or hide this particular Form Field.
+
+
+Step-2:
+We will refer all the Java Script and CSS files in the page and call the function. All the dependency files and original code files are given in the zip folder.
+Please refer the JS files and CSS files in the below order and add all JS and CSS files:
+JS:
+1.	jquery-3.1.1.min.js (JQuery Ref– Needed)
+2.	bootstrap.min.js (Bootstrap Ref– Needed)
+3.	bootstrap-datepicker.js (Bootstrap Date Picker Ref – Needed if Date is being used)
+4.	bootstrap-notify.min.js (Bootstrap Notification Ref – Needed)
+5.	CommonRESTScripts.js (Rest Functions– Needed)
+6.	SummerNote.js (Front End Rich Text Box Ref– Needed if it is used)
+7.	Validation.js (Validations– Needed)
+8.	DynamicFormBuild.js (Main Code File– Needed)
+CSS:
+1.	bootstrap.min.css (Bootstrap Ref– Needed)
+2.	bootstrap-datepicker.css (Bootstrap Date Picker Ref – Needed if Date is being used)
+3.	SummerNote.css (Front End Rich Text Box Ref– Needed if it is used)
+4.	DynamicFormBuild.css (Main CSS File– Needed)
+
+Calling Function in page load:
+FormBuild(ctrl,GetList,PostList)
+ctrl: Div id or class name with # for id and . for class name
+GetList: List Name where Form Fields Data is stored.
+PostList: List Name where data is to be saved. 
+Example: $(function(){   FormBuild("#FormOuterDiv","FormFields","FormData");  });
+
+
